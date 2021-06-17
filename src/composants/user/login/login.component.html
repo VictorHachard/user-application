@@ -1,0 +1,42 @@
+<section class="my-4 container">
+  <div *ngFor="let response of alertManagerManager.responseList">
+    <div class="alert {{ response.alert }}" role="alert">
+      {{ response.message }}
+    </div>
+  </div>
+  <div *ngIf="loginForm" class="vertical-center">
+    <div class="w-100">
+      <h2 class="mb-3 text-center">Sign in</h2>
+      <div class="login-center">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="border rounded">
+          <div class="mb-3">
+            <label class="form-label">Username or email address</label>
+            <input type="text" formControlName="username" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password <a class="label-link" routerLink="/forget">Forgot password?</a></label>
+            <input type="password" formControlName="password" class="form-control">
+          </div>
+          <!--<div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" formControlName="rememberMe">
+            <label class="form-check-label">Remember me</label>
+          </div>-->
+          <div class="d-grid gap-2">
+            <button [disabled]="loginForm.invalid" class="btn btn-primary btn-block" type="submit">Sign in</button>
+          </div>
+        </form>
+        <p class="login-center-p justify-content-center text-center my-4 border rounded">New here?
+          <a class="label-link" routerLink="/register">Create an account</a>.
+        </p>
+      </div>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" style="font-size: 14px;" routerLink="/terms">Terms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-size: 14px;" routerLink="/privacy">Privacy</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
