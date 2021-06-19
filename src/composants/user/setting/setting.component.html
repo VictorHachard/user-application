@@ -1,13 +1,19 @@
 <div class="">
-  <mat-form-field>
-    <mat-label>Select</mat-label>
-    <mat-select [(value)]="selected">
-      <mat-option *ngFor="let col of displayedColumns" [value]="col">{{col}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Search lessons" #input>
-  </mat-form-field>
+
+  <form class="row g-3" [formGroup]="searchForm" (ngSubmit)="ngAfterViewInit()">
+    <div class="col-auto">
+      <select class="form-select" formControlName="select">
+        <option class="dropdown-item" disabled value="undefined">Select an Option</option>
+        <option *ngFor="let col of searchColumns; let i = index" [value]="col">{{col}}</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <input type="text" class="form-control" formControlName="value" placeholder="Value">
+    </div>
+    <div class="col-auto">
+      <button type="submit" [disabled]="searchForm.invalid" class="btn btn-primary mb-3">Search</button>
+    </div>
+  </form>
 
   <div class="spinner-container" *ngIf="dataSource.loading$ | async">
     <mat-spinner></mat-spinner>

@@ -7,6 +7,7 @@ import {AlertManager} from "../../../_helpers/alert.manager";
 import {UserService} from "../../../_services/_api/user.service";
 import {AuthenticationService} from "../../../_services/authentication.service";
 import {first} from "rxjs/operators";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -30,15 +31,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.alertManagerManager = new AlertManager();
     this.loginForm = new FormGroup({
-      username: new FormControl('Paulin', Validators.required),
-      password: new FormControl('Test123*', Validators.required)
+      username: new FormControl(!environment.production ? 'Paulin' : '', Validators.required),
+      password: new FormControl(!environment.production ? 'Test123*' : '', Validators.required)
     });
   }
 
   get f() { return this.loginForm.controls; }
 
   login(): void {
-
     this.authenticationService.login(this.f.username.value, this.f.password.value).pipe(first()).subscribe(value => {
         this.router.navigate([this.route.snapshot.queryParams['returnUrl'] || '/']);
     }, error => {

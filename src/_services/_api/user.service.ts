@@ -25,4 +25,12 @@ export class UserService {
     });
   }
 
+  actionConfirm(token: string): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/action/confirm/email`, token);
+  }
+
+  actionReset(b: {token: string, password: string}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/action/confirm/email`, b);
+  }
+
 }

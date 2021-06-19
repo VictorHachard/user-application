@@ -7,6 +7,8 @@ import {UserService} from "../../../_services/_api/user.service";
 import {AuthenticationService} from "../../../_services/authentication.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {first} from "rxjs/operators";
+import {Utils} from "../../../_helpers/utils";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-register',
@@ -14,7 +16,7 @@ import {first} from "rxjs/operators";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent  implements OnInit {
-  private debug = true;
+
   private default = {
     username: 'Paulin',
     email: 'test@test.test',
@@ -37,11 +39,11 @@ export class RegisterComponent  implements OnInit {
   ngOnInit(): void {
     this.alertManagerManager = new AlertManager();
     this.registerForm = new FormGroup({
-        username: new FormControl(this.debug ? this.default.username : '', Validators.required),
-        email: new FormControl(this.debug ? this.default.email : '', [Validators.required, Validators.email]),
-        password: new FormControl(this.debug ? this.default.password : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')]),
-        password_confirm: new FormControl(this.debug ? this.default.password : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')])},
-      { validators: this.matchPassword('password', 'password_confirm')
+        username: new FormControl(!environment.production ? this.default.username : '', Validators.required),
+        email: new FormControl(!environment.production ? this.default.email : '', [Validators.required, Validators.email]),
+        password: new FormControl(!environment.production ? this.default.password : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')]),
+        password_confirm: new FormControl(!environment.production ? this.default.password : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')])},
+      { validators: Utils.matchPassword('password', 'password_confirm')
     });
   }
 
@@ -55,21 +57,6 @@ export class RegisterComponent  implements OnInit {
     });
   }
 
-  private matchPassword(firstControl: string, secondControl: string): any {
-    // @ts-ignore //TODO edit this fuck ?????
-    return (control: FormGroup): { [key: string]: boolean } | null => {
-      if (control.get(firstControl)?.value !== control.get(secondControl)?.value) {
-        const err = {noMatch: true};
-        control.get(firstControl)?.setErrors(err);
-        return err;
-      } else {
-        const noMatchError = control.get(firstControl)?.hasError('noMatch');
-        if (noMatchError) {
-          delete control.get(firstControl)?.errors?.noMatch;
-          control.get(firstControl)?.updateValueAndValidity();
-        }
-      }
-    };
-  }
+
 }
 

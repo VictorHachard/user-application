@@ -6,27 +6,27 @@
   </div>
   <form [formGroup]="registerForm" (ngSubmit)="register()" class="form-center">
     <h2 class="mb-4">Create your personal account</h2>
-    <div class="form-group">
+    <div class="mb-3">
       <label class="form-label">Username</label>
       <input type="text" formControlName="username" class="form-control">
       <small class="form-text">This will be your username. You can update your username later.</small>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
       <label class="form-label">Email address</label>
       <input type="email" formControlName="email" class="form-control">
       <small class="form-text">We’ll never share your email address with anyone. The tested email service provider are hotmail, outlook and gmail.</small>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
       <label class="form-label">Password</label>
       <input type="password" formControlName="password" class="form-control">
       <small class="form-text">Make sure it's at least 8 characters and contain at least one lowercase, uppercase, numeric, special character.</small>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
       <label class="form-label">Confirm password</label>
       <input type="password" formControlName="password_confirm" class="form-control">
     </div>
-    <h4 class="mb-3">Verify your account</h4>
-    <div class="g-recaptcha center" data-sitekey=""></div>
+    <!--<h4 class="mb-3">Verify your account</h4>
+    <div class="g-recaptcha center" data-sitekey=""></div>-->
     <p class="note my-3">By clicking “Create an account” below, you agree to our <a routerLink="/terms">Terms of Service</a> and <a routerLink="/privacy">Privacy Statement</a>. We’ll occasionally send you account-related emails.</p>
     <div class="d-grid gap-2">
       <button [disabled]="registerForm.invalid" class="btn btn-primary btn-block" type="submit">Create an account</button>
