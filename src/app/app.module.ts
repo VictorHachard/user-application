@@ -8,11 +8,21 @@ import {PasswordResetComponent} from '../composants/user/password.reset/password
 import {SettingComponent} from '../composants/user/setting/setting.component';
 import {ConnectFromCookieComponent} from '../composants/user/connect.from.cookie/connect.from.cookie.component';
 import {RouterModule} from "@angular/router";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {TokenInterceptor} from "../_helpers/jwt.intereceptor";
+import {TokenInterceptor} from "../_helpers/token.intereceptor";
 import {ErrorInterceptor} from "../_helpers/error.interceptor";
 import {AppRoutingModule} from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatInputModule} from "@angular/material/input";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -29,7 +39,18 @@ import {AppRoutingModule} from './app-routing.module';
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    FormsModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   exports: [
     HttpClientModule
