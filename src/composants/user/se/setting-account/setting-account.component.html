@@ -1,0 +1,22 @@
+<div *ngFor="let response of alertManagerManager.responseList">
+  <div class="alert {{ response.alert }}" role="alert">
+    {{ response.message }}
+  </div>
+</div>
+
+<h2 class="border-bottom">Change username</h2>
+
+<form class="mb-3" [formGroup]="usernameForm" (ngSubmit)="username()">
+  <div class="mb-3">
+    <label class="form-label">new Username</label>
+    <input type="text" class="form-control">
+  </div>
+  <button type="submit" [disabled]="usernameForm.invalid" class="btn btn-primary">Change username</button>
+</form>
+
+<h2 class="border-bottom">Delete account</h2>
+<p>Once you delete your account, there is no going back. Please be certain.</p>
+
+<form class="mb-3" [formGroup]="deleteForm" (ngSubmit)="delete()">
+  <button type="submit" [disabled]="deleteForm.invalid" class="btn btn-danger">Delete account</button>
+</form>

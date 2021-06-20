@@ -5,6 +5,7 @@
 
     <a class="nav-item nav-link" *ngIf="!currentUser" routerLink="/login">Login</a>
     <a class="nav-item nav-link" *ngIf="!currentUser" routerLink="/register">Register</a>
+    <a class="nav-item nav-link" *ngIf="currentUser" routerLink="/settings">Settings</a>
     <a class="nav-item nav-link" *ngIf="currentUser" (click)="logout()">Logout</a>
   </div>
 </nav>

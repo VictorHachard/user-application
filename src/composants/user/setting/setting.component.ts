@@ -55,7 +55,6 @@ export class SettingComponent implements OnInit, AfterViewInit {
   get f() { return this.searchForm.controls; }
 
   load() {
-
     this.dataSource.loadLessons(this.paginator.pageIndex, this.paginator.pageSize, this.sort.active, this.sort.direction, this.f.value.value != '' ? this.f.select.value : 'null', this.f.value.value !== '' ? this.f.value.value : 'null');
   }
 }

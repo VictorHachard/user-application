@@ -1,0 +1,28 @@
+<div *ngFor="let response of alertManagerManager.responseList">
+  <div class="alert {{ response.alert }}" role="alert">
+    {{ response.message }}
+  </div>
+</div>
+
+<h2 class="border-bottom">Change password</h2>
+
+<form class="mb-3" [formGroup]="passwordForm" (ngSubmit)="password()">
+  <div class="mb-3">
+    <label class="form-label">Old password</label>
+    <input type="password" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">New password</label>
+    <input type="password" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Confirm new password</label>
+    <input type="password" class="form-control">
+  </div>
+  <button type="submit" [disabled]="passwordForm.invalid" class="btn btn-primary">Update password</button>
+</form>
+
+<h2 class="border-bottom">Two-factor authentication</h2>
+<p>Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to log in.</p>
+
+

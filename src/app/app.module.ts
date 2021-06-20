@@ -25,6 +25,13 @@ import {MatSelectModule} from "@angular/material/select";
 import {ConfirmEmailComponent} from "../composants/user/actions/confirm-email/confirm-email.component";
 import {ResetPasswordComponent} from "../composants/user/actions/reset-password/reset-password.component";
 import { DeleteComponent } from '../composants/user/actions/delete/delete.component';
+import { HomeComponent } from '../composants/home/home.component';
+import { SettingProfileComponent } from '../composants/user/se/setting-profile/setting-profile.component';
+import { SettingAccountComponent } from '../composants/user/se/setting-account/setting-account.component';
+import { SettingAppearanceComponent } from '../composants/user/se/setting-appearance/setting-appearance.component';
+import { SettingSecurityComponent } from '../composants/user/se/setting-security/setting-security.component';
+import { SettingEmailsComponent } from '../composants/user/se/setting-emails/setting-emails.component';
+import { SettingsComponent } from '../composants/user/se/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +42,14 @@ import { DeleteComponent } from '../composants/user/actions/delete/delete.compon
     SettingComponent,
     ConnectFromCookieComponent,
     ConfirmEmailComponent,
-    DeleteComponent
+    DeleteComponent,
+    HomeComponent,
+    SettingProfileComponent,
+    SettingAccountComponent,
+    SettingAppearanceComponent,
+    SettingSecurityComponent,
+    SettingEmailsComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

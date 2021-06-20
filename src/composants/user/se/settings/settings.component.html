@@ -1,0 +1,33 @@
+<section class="my-4 container">
+  <div class="mb-3">
+    <div class="row">
+      <div class="col">
+        <h1 class="m-0">{{user.lastName + ' ' + user.middleName + ' ' + user.firstName}}</h1>
+        <p>Your personal account</p>
+      </div>
+      <div class="col d-flex justify-content-end">
+        <button class="btn btn-sm btn-primary">Go to your personal profile</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="d-flex align-items-start">
+    <div class="nav flex-column nav-pills me-3 border rounded" aria-orientation="vertical">
+      <button class="nav-link border-bottom rounded-0" type="button" routerLink="/settings/profile">Profile</button>
+      <button class="nav-link border-bottom rounded-0" type="button" routerLink="/settings/account">Account</button>
+      <button class="nav-link border-bottom rounded-0" type="button" routerLink="/settings/appearance">Appearance</button>
+      <button class="nav-link border-bottom rounded-0" type="button" routerLink="/settings/security">Account Security</button>
+      <button class="nav-link" type="button" routerLink="/settings/emails">Emails</button>
+    </div>
+    <div>
+      <div>
+        <app-setting-profile *ngIf="param === 'profile' || !param" [user]="user"></app-setting-profile>
+        <app-setting-account *ngIf="param === 'account'" [user]="user"></app-setting-account>
+        <app-setting-appearance *ngIf="param === 'appearance'" [user]="user"></app-setting-appearance>
+        <app-setting-security *ngIf="param === 'security'" [user]="user"></app-setting-security>
+        <app-setting-emails *ngIf="param === 'emails'" [user]="user"></app-setting-emails>
+      </div>
+    </div>
+  </div>
+</section>
