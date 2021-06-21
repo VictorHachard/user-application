@@ -6,17 +6,16 @@
 
 <h2 class="border-bottom">Theme preferences</h2>
 
-<form class="mb-3" [formGroup]="themeForm" *ngIf="themeList" (ngSubmit)="theme()">
+<form class="mb-3" [formGroup]="themeForm" *ngIf="themeList">
   <div class="row">
-    <div class="ish-from col-md-auto mb-3" *ngFor="let theme of themeList">
-      <label class="form-check-label border rounded-2">
-        <img [src]="'http://localhost:8080/api/v1/image/' + theme.image" class="border-bottom">
+    <div class="ish-from col-md-auto mb-3" *ngFor="let th of themeList">
+      <label class="form-check-label border rounded-2 {{th.id === value ? 'border-primary' : ''}}">
+        <img [src]="'http://localhost:8080/api/v1/image/' + th.image" class="border-bottom rounded-top">
         <div class="m-2">
-          <input class="form-check-input" formControlName="id" type="radio" [value]="theme.id">
-          <span class="ms-2">{{theme.name}}</span>
+          <input class="form-check-input" formControlName="id" (click)="theme(th.id)" type="radio" [value]="th.id">
+          <span class="ms-2">{{th.name}}</span>
         </div>
       </label>
     </div>
   </div>
-  <button type="submit" [disabled]="themeForm.invalid" class="btn btn-sm btn-primary">Update theme</button>
 </form>

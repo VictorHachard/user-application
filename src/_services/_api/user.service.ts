@@ -41,7 +41,7 @@ export class UserService {
     return this.http.post<any>(`${environment.apiUrl}/user/update/username`, b);
   }
 
-  updateProfile(b: {firstName: string, middleName: string, lastName: string, biography: string, url: string, profileImageUrl: string}): Observable<any> {
+  updateProfile(b: {firstName: string, middleName: string, lastName: string, biography: string, url: string, profileImage: string}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/user/update/profile`, b);
   }
 

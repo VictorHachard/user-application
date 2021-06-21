@@ -50,7 +50,7 @@ export class SettingProfileComponent implements OnInit {
         lastName: this.f.lastName.value,
         biography: this.f.biography.value,
         url: this.f.url.value,
-        profileImageUrl: name
+        profileImage: name
       }).subscribe(value => {
         this.isSummited.emit(true);
       });
@@ -61,13 +61,11 @@ export class SettingProfileComponent implements OnInit {
   onFileChange(event: any): void {
     if (event.target.files.length > 0) {
       const file: File = event.target.files[0];
-
       const reader = new FileReader();
       reader.onload = (event: any) => {
         this.trustedUrl = event.target.result;
       };
       reader.readAsDataURL(file);
-
       this.profileForm.patchValue({
         fileSource: file
       });

@@ -41,8 +41,8 @@ export class SettingAppearanceComponent implements OnInit {
 
   get f() { return this.themeForm.controls; }
 
-  theme(): void {
-    this.userService.updateAppearance(this.f.id.value).subscribe(value => {
+  theme(id: any): void {
+    this.userService.updateAppearance(id).subscribe(value => {
       this.isSummited.emit(true);
     });
   }
