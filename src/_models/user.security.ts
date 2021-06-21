@@ -6,6 +6,7 @@ import {Role} from "./role";
 
 export class UserSecurity extends AbstractModel {
   username?: string;
+  nameFormatted?: string;
   authToken?: string;
   privacy?: string;
   birth?: Date;
@@ -14,7 +15,7 @@ export class UserSecurity extends AbstractModel {
   lastName?: string;
   url?: string;
   biography?: string;
-  themeSimplified?: ThemeSimplified;
+  themeSimplifiedDto?: ThemeSimplified;
   emailList?: Email[];
   groupDtoList?: Group[];
   roleDtoList?: Role[];

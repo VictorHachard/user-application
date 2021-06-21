@@ -6,23 +6,38 @@
 
 <h2 class="border-bottom">Emails</h2>
 
+<div class="list-group mb-3">
+  <a *ngFor="let email of user.emailList" href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <p>{{email.email}} -
+        <span class="{{email.priority === 'PRINCIPAL' ? 'text-primary' : 'text-secondary'}}">{{email.priority | titlecase}}</span>
+      </p>
+      <button type="button" (click)="removeEmail(email.id!)" *ngIf="email.priority !== 'PRINCIPAL'" class="btn btn-sm btn-danger">Remove</button>
+    </div>
+    <ul>
+      <li *ngIf="!email.isConfirmed"><p class="text-success">Confirmed</p></li>
+    </ul>
+  </a>
+</div>
+
 <form class="mb-3" [formGroup]="addEmailForm" (ngSubmit)="addEmail()">
   <div class="mb-3">
     <label class="form-label">Add email address</label>
-    <input type="text" class="form-control">
+    <input type="text" formControlName="email" class="form-control">
   </div>
-  <button type="submit" [disabled]="addEmailForm.invalid" class="btn btn-primary">Add email</button>
+  <button type="submit" [disabled]="addEmailForm.invalid" class="btn btn-sm btn-primary">Add email</button>
 </form>
 
-<form class="mb-3" [formGroup]="primaryEmailForm" (ngSubmit)="primaryEmail()">
+<form class="mb-3" *ngIf="_reload" [formGroup]="primaryEmailForm" (ngSubmit)="primaryEmail()">
   <div class="mb-3">
     <label class="form-label">Primary email address</label>
-    <select class="form-select">
-      <option value="1">One</option>
+    <select formControlName="email" class="form-select">
+      <option *ngFor="let email of user.emailList" value="{{email.email}}">{{email.email}}</option>
     </select>
   </div>
-  <button type="submit" [disabled]="primaryEmailForm.invalid" class="btn btn-primary">Save</button>
+  <button type="submit" [disabled]="primaryEmailForm.invalid" class="btn btn-sm btn-primary">Save</button>
 </form>
 
 
 <h2 class="border-bottom">Email preferences</h2>
+<p>Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to log in.</p>

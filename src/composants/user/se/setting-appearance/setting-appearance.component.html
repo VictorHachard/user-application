@@ -6,17 +6,10 @@
 
 <h2 class="border-bottom">Theme preferences</h2>
 
-<form class="mb-3" [formGroup]="themeForm" (ngSubmit)="theme()">
-  <div class="form-check">
-    <input class="form-check-input" type="radio">
-    <label class="form-check-label">Default checked radio</label>
+<form class="mb-3" [formGroup]="themeForm" *ngIf="themeList" (ngSubmit)="theme()">
+  <div class="form-check" *ngFor="let theme of themeList">
+    <input class="form-check-input" formControlName="id" type="radio" [value]="theme.id">
+    <label class="form-check-label">{{theme.name}}</label>
   </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio">
-    <label class="form-check-label">Default checked radio</label>
-  </div>
-  <button type="submit" [disabled]="themeForm.invalid" class="btn btn-primary">Update theme</button>
+  <button type="submit" [disabled]="themeForm.invalid" class="mt-3 btn btn-sm btn-primary">Update theme</button>
 </form>
-
-
-

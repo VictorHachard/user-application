@@ -16,7 +16,7 @@ export class SettingsComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService,
               private route: ActivatedRoute,
               private router: Router) {
-    this.authenticationService.currentUser.subscribe(x => this.user = x);
+    this.authenticationService.currentUser.subscribe(x => {this.user = x;});
     this.route.paramMap.subscribe(params => {this.ngOnInit();});
   }
 
@@ -24,4 +24,7 @@ export class SettingsComponent implements OnInit {
     this.param = this.route.snapshot.paramMap.get('param');
   }
 
+  refresh($event: boolean): void {
+    if ($event) {this.authenticationService.updateUser().subscribe(value => {});}
+  }
 }

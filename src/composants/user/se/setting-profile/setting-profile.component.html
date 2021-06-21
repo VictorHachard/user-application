@@ -11,37 +11,26 @@
   <div class="row g-3 mb-3">
     <div class="col">
       <label class="form-label">First name</label>
-      <input type="text" class="form-control">
+      <input type="text" formControlName="firstName" class="form-control">
     </div>
     <div class="col">
       <label class="form-label">Middle name</label>
-      <input type="text" class="form-control">
+      <input type="text" formControlName="middleName" class="form-control">
     </div>
     <div class="col">
       <label class="form-label">Last name</label>
-      <input type="text" class="form-control">
+      <input type="text" formControlName="lastName" class="form-control">
     </div>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Public email</label>
-    <select class="form-select">
-      <option>Select an email</option>
-      <option value="1"></option>
-    </select>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Bio</label>
-    <textarea class="form-control" rows="3"></textarea>
+    <textarea class="form-control" formControlName="biography" rows="3"></textarea>
   </div>
 
   <div class="mb-3">
     <label class="form-label">URL</label>
-    <input type="text" class="form-control">
+    <input type="text" formControlName="url" class="form-control">
   </div>
   <button type="submit" [disabled]="profileForm.invalid" class="btn btn-primary">Update profile</button>
 </form>
-
-
-

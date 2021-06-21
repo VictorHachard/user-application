@@ -18,12 +18,20 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
+  updateUser() {
+    return this.http.post<any>(`${environment.apiUrl}user/login/update`, {}).pipe(map(user => {
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      this.currentUserSubject.next(user);
+      return user;
+    }));
+  }
+
   login(username: string, password: string) {
     return this.http.post<any>(`${environment.apiUrl}user/login`, btoa(username + ":" + password)).pipe(map(user => {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
-      }));
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      this.currentUserSubject.next(user);
+      return user;
+    }));
   }
 
   register(username: string, email: string, password: string) {

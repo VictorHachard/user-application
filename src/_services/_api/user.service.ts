@@ -25,6 +25,26 @@ export class UserService {
     });
   }
 
+  addEmail(b: {email: string}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/add/email`, b);
+  }
+
+  deleteEmail(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}/user/remove/email/${id}`);
+  }
+
+  updateEmailPriority(b: {email: string}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/update/email/priority`, b);
+  }
+
+  updateProfile(b: {firstName: string, middleName: string, lastName: string, biography: string, url: string}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/update/profile`, b);
+  }
+
+  updateAppearance(id: number): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/update/appearance/${id}`, {});
+  }
+
   actionConfirm(token: string): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/user/action/confirm/email`, token);
   }
