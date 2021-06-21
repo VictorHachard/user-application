@@ -4,4 +4,5 @@ export class Theme extends AbstractModel {
   name?: string;
   active?: boolean;
   order?: number;
+  image?: string;
 }

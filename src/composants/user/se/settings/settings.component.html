@@ -1,10 +1,14 @@
 <section class="my-4 container">
-  <div class="mb-3">
-    <div class="d-flex w-100 justify-content-between">
-      <h1 class="m-0">{{user.username}}</h1>
-      <button class="btn btn-sm btn-primary d-inline float-end">Go to your personal profile</button>
+
+  <div class="mb-3 d-flex bd-highlight">
+    <div class="p-2 bd-highlight"><img *ngIf="user.profileImage" [src]="'http://localhost:8080/api/v1/image/' + user.profileImage" class="rounded-circle" height="50" width="50" style="object-fit: cover;"></div>
+    <div class="p-2 bd-highlight">
+        <h1 class="m-0">{{user.username}}</h1>
+        <p class="m-0">Your personal account</p>
     </div>
-    <p>Your personal account</p>
+    <div class="ms-auto p-2 bd-highlight">
+      <button class="btn mt-2 btn-sm btn-primary d-inline float-end">Go to your personal profile</button>
+    </div>
   </div>
 
   <div class="row">
