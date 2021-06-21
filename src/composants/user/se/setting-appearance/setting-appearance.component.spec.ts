@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SettingAppearanceComponent } from './setting-appearance.component';
+import {SettingAppearanceComponent} from './setting-appearance.component';
 
 describe('SettingAppearanceComponent', () => {
   let component: SettingAppearanceComponent;

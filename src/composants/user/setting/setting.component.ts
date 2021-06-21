@@ -1,10 +1,10 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, PageEvent} from "@angular/material/paginator";
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {UserService} from "../../../_services/_api/user.service";
 import {UserSecurity} from "../../../_models/user.security";
-import {fromEvent, merge, Observable} from "rxjs";
-import {debounceTime, distinctUntilChanged, map, tap} from "rxjs/operators";
+import {merge} from "rxjs";
+import {tap} from "rxjs/operators";
 import {UserSecurityDataSource} from "../../../_models/_datasource/UserSecurityDataSource";
 import {ActivatedRoute} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";

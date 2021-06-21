@@ -7,7 +7,7 @@
 <h2 class="border-bottom">Emails</h2>
 
 <div class="list-group mb-3">
-  <a *ngFor="let email of user.emailList" href="#" class="list-group-item list-group-item-action">
+  <div *ngFor="let email of user.emailList" href="#" class="list-group-item">
     <div class="d-flex w-100 justify-content-between">
       <p>{{email.email}} -
         <span class="{{email.priority === 'PRINCIPAL' ? 'text-primary' : 'text-secondary'}}">{{email.priority | titlecase}}</span>
@@ -15,9 +15,10 @@
       <button type="button" (click)="removeEmail(email.id!)" *ngIf="email.priority !== 'PRINCIPAL'" class="btn btn-sm btn-danger">Remove</button>
     </div>
     <ul>
-      <li *ngIf="!email.isConfirmed"><p class="text-success">Confirmed</p></li>
+      <li *ngIf="email.confirmed"><p class="text-success">Confirmed</p></li>
+      <li *ngIf="!email.confirmed"><p class="text-danger d-inline">Not confirmed</p>, <a type="button" class="text-primary" (click)="resendEmail(email.id!)">resend confirmation email</a></li>
     </ul>
-  </a>
+  </div>
 </div>
 
 <form class="mb-3" [formGroup]="addEmailForm" (ngSubmit)="addEmail()">
@@ -38,6 +39,4 @@
   <button type="submit" [disabled]="primaryEmailForm.invalid" class="btn btn-sm btn-primary">Save</button>
 </form>
 
-
 <h2 class="border-bottom">Email preferences</h2>
-<p>Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to log in.</p>

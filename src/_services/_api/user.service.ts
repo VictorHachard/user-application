@@ -37,6 +37,10 @@ export class UserService {
     return this.http.post<any>(`${environment.apiUrl}/user/update/email/priority`, b);
   }
 
+  updateUsername(b: {username: string}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/update/username`, b);
+  }
+
   updateProfile(b: {firstName: string, middleName: string, lastName: string, biography: string, url: string}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/user/update/profile`, b);
   }
@@ -47,6 +51,14 @@ export class UserService {
 
   actionConfirm(token: string): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/user/action/confirm/email`, token);
+  }
+
+  actionConfirmResendEmail(id: number): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/action/confirm/resend/email/${id}`, {});
+  }
+
+  actionSetPassword(b: {oldPassword: string, newPassword: string}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/action/set/password`, b);
   }
 
   actionReset(b: {token: string, password: string}): Observable<any> {

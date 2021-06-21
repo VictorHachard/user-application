@@ -1,12 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output
-} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../_models/user.security";
@@ -34,7 +26,6 @@ export class SettingEmailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.alertManagerManager = new AlertManager();
     this.addEmailForm = new FormGroup({
       email: new FormControl(!environment.production ? 'test1@test.test' : '', [Validators.required, Validators.email])
@@ -72,4 +63,9 @@ export class SettingEmailsComponent implements OnInit {
     });
   }
 
+  resendEmail(id: number): void {
+    this.userService.actionConfirmResendEmail(id).subscribe(value => {
+      this.isSummited.emit(true);
+    });
+  }
 }

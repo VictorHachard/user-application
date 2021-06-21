@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserSecurity} from "../../../../_models/user.security";
 import {AuthenticationService} from "../../../../_services/authentication.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -22,6 +22,8 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.param = this.route.snapshot.paramMap.get('param');
+
+    console.log(this.user)
   }
 
   refresh($event: boolean): void {

@@ -1,0 +1,7 @@
+.ish-table button:not(:last-child), .ish-table p {
+  border-radius: 0!important;
+  border-bottom: 1px solid #dee2e6!important;
+}
+.ish-table button {
+  text-align: left!important;
+}

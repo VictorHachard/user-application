@@ -1,5 +1,5 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
 import {AlertManager} from "../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../_models/user.security";
 import {UserService} from "../../../../_services/_api/user.service";

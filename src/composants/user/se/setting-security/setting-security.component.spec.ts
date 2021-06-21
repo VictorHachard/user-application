@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SettingSecurityComponent } from './setting-security.component';
+import {SettingSecurityComponent} from './setting-security.component';
 
 describe('SettingSecurityComponent', () => {
   let component: SettingSecurityComponent;

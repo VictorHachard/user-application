@@ -12,7 +12,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptor} from "../_helpers/token.intereceptor";
 import {ErrorInterceptor} from "../_helpers/error.interceptor";
 import {AppRoutingModule} from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
@@ -24,14 +24,15 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {ConfirmEmailComponent} from "../composants/user/actions/confirm-email/confirm-email.component";
 import {ResetPasswordComponent} from "../composants/user/actions/reset-password/reset-password.component";
-import { DeleteComponent } from '../composants/user/actions/delete/delete.component';
-import { HomeComponent } from '../composants/home/home.component';
-import { SettingProfileComponent } from '../composants/user/se/setting-profile/setting-profile.component';
-import { SettingAccountComponent } from '../composants/user/se/setting-account/setting-account.component';
-import { SettingAppearanceComponent } from '../composants/user/se/setting-appearance/setting-appearance.component';
-import { SettingSecurityComponent } from '../composants/user/se/setting-security/setting-security.component';
-import { SettingEmailsComponent } from '../composants/user/se/setting-emails/setting-emails.component';
-import { SettingsComponent } from '../composants/user/se/settings/settings.component';
+import {DeleteComponent} from '../composants/user/actions/delete/delete.component';
+import {HomeComponent} from '../composants/home/home.component';
+import {SettingProfileComponent} from '../composants/user/se/setting-profile/setting-profile.component';
+import {SettingAccountComponent} from '../composants/user/se/setting-account/setting-account.component';
+import {SettingAppearanceComponent} from '../composants/user/se/setting-appearance/setting-appearance.component';
+import {SettingSecurityComponent} from '../composants/user/se/setting-security/setting-security.component';
+import {SettingEmailsComponent} from '../composants/user/se/setting-emails/setting-emails.component';
+import {SettingsComponent} from '../composants/user/se/settings/settings.component';
+import {SettingSecurityLogComponent} from '../composants/user/se/setting-security-log/setting-security-log.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SettingsComponent } from '../composants/user/se/settings/settings.compo
     SettingAppearanceComponent,
     SettingSecurityComponent,
     SettingEmailsComponent,
-    SettingsComponent
+    SettingsComponent,
+    SettingSecurityLogComponent
   ],
   imports: [
     BrowserModule,

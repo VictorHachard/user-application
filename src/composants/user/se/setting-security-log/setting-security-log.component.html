@@ -1,0 +1,17 @@
+<div *ngFor="let response of alertManagerManager.responseList">
+  <div class="alert {{ response.alert }}" role="alert">
+    {{ response.message }}
+  </div>
+</div>
+
+<h2 class="border-bottom">Security log</h2>
+
+<div class="list-group">
+  <a *ngFor="let sl of securityLogList" class="list-group-item">
+    <div class="d-flex w-100 justify-content-between">
+      <h4 class="mb-1">{{sl.securityLog | titlecase}}</h4>
+      <small class="text-muted">{{sl.createdAt | date:'dd MMMM yyyy, HH:mm'}}</small>
+    </div>
+    <p class="mb-1">{{sl.info}}</p>
+  </a>
+</div>

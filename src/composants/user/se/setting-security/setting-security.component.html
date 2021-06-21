@@ -9,17 +9,17 @@
 <form class="mb-3" [formGroup]="passwordForm" (ngSubmit)="password()">
   <div class="mb-3">
     <label class="form-label">Old password</label>
-    <input type="password" class="form-control">
+    <input type="password" formControlName="oldPassword" class="form-control">
   </div>
   <div class="mb-3">
     <label class="form-label">New password</label>
-    <input type="password" class="form-control">
+    <input type="password" formControlName="newPassword" class="form-control">
   </div>
   <div class="mb-3">
     <label class="form-label">Confirm new password</label>
-    <input type="password" class="form-control">
+    <input type="password" formControlName="newPasswordConfirm" class="form-control">
   </div>
-  <button type="submit" [disabled]="passwordForm.invalid" class="btn btn-primary">Update password</button>
+  <button type="submit" [disabled]="passwordForm.invalid" class="btn btn-sm btn-primary">Update password</button>
 </form>
 
 <h2 class="border-bottom">Two-factor authentication</h2>

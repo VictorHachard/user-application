@@ -4,5 +4,5 @@ export class Email extends AbstractModel {
   email?: string;
   priority?: string;
   privacy?: string;
-  isConfirmed?: boolean;
+  confirmed?: boolean;
 }
