@@ -1,0 +1,277 @@
+$primary-color: #202225;
+$secondary-color: #292b2f;
+$tertiary-color: #2f3136;
+$quaternary-color: #36393f;
+$white: #ffffff;
+
+.default-dark {
+  background-color: $primary-color;
+  color: $white;
+  border-color: $tertiary-color;
+
+  .border {
+    border-color: $quaternary-color!important;
+  }
+
+  input,
+  textarea,
+  select {
+    background-color: $secondary-color;
+    color: $white;
+    border-color: $tertiary-color;
+  }
+
+  input:hover,
+  textarea:hover,
+  select:hover {
+    background-color: $tertiary-color;
+    color: $white
+  }
+
+  input:focus,
+  textarea:hover:focus,
+  select:focus {
+    background-color: $quaternary-color;
+    color: $white
+  }
+  .list-group .list-group-item {
+    color: $white;
+  }
+
+  .nav-link,
+  .list-group .list-group-item,
+  .nav-pills {
+    background-color: $secondary-color;
+    border-color: $quaternary-color!important;
+  }
+
+  .nav-pills p,
+  .navbar {
+    background-color: $tertiary-color;
+    border-color: $quaternary-color!important;
+  }
+
+}
+
+
+
+
+
+
+
+.dark .alert-success {
+  color: rgb(168, 234, 183) !important;
+  background-color: rgb(23, 54, 30) !important;
+  border-color: rgb(41, 99, 54) !important;
+}
+.dark .alert-danger {
+  color: rgb(230, 155, 162) !important;
+  background-color: rgb(64, 11, 16) !important;
+  border-color: rgb(129, 23, 34) !important;
+}
+.dark .alert-warning {
+  color: rgb(251, 219, 127);
+  background-color: rgb(81, 62, 0);
+  border-color: rgb(167, 126, 0);
+}
+
+
+
+
+/* Dark - All
+
+.dark,
+.dark input,
+.dark textarea,
+.dark select,
+.dark td,
+.dark .custom-file-label,
+.dark th {
+  border-color: #575757;
+  color: #e8e6e3;
+}
+.dark .form-control,
+.custom-file-input:lang(en) ~ .custom-file-label::after,
+.dark .custom-file-label {
+  color: rgb(202, 198, 190) !important;
+  background-color: rgb(24, 26, 27) !important;
+  border-color: rgb(54, 63, 72) !important;
+}
+.dark .dropdown-item {
+  color: #c5c1b9!important;
+}
+.dark a {
+  color: #3391ff;
+}
+.dark table {
+  border-color: #4c4c4c;
+}
+.dark ::placeholder {
+  color: #bab5ab;
+}
+.dark ::selection {
+  background-color: #005ccc;
+  color: #ffffff;
+}
+.dark ::-moz-selection {
+  background-color: #005ccc;
+  color: #ffffff;
+}
+.dark input:-webkit-autofill,
+.dark textarea:-webkit-autofill,
+.dark select:-webkit-autofill {
+  background-color: #545b00 !important;
+  color: #e8e6e3 !important;
+}
+.dark ::-webkit-scrollbar {
+  background-color: #1c1e1f;
+  color: #c5c1b9;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #2a2c2e;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #323537;
+}
+.dark ::-webkit-scrollbar-thumb:active {
+  background-color: #3d4043;
+}
+.dark ::-webkit-scrollbar-corner {
+  background-color: #181a1b;
+}
+.dark * {
+  scrollbar-color: #2a2c2e #1c1e1f;
+}
+
+.dark .border:not(.ish)
+  border: 1px solid rgb(64, 60, 53) !important;
+}
+
+.dark .dropdown-menu,
+.dark .mat-select-panel {
+  color: rgb(218, 215, 210) !important;
+  background-color: rgb(24, 26, 27) !important;
+  border-color: rgba(102, 102, 102, 0.15) !important;
+}
+.dark .dropdown-item:hover,
+.dark .mat-option  {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  color: rgb(232, 230, 227) !important;
+}
+.dark .dropdown-divider {
+  border-top-color: rgb(50, 59, 68) !important;
+}
+.dark .rc-anchor-light.rc-anchor-normal {
+
+  border-color: rgb(60, 60, 60) !important;
+}
+.dark .rc-anchor-light {
+
+  background-color: rgb(26, 28, 29) !important;
+  color: rgb(232, 230, 227) !important;
+}
+.dark .card-body {
+  background-color: #101112 !important;
+}
+.dark .card {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.dark .card-header,
+.dark .input-group-prepend label,
+.dark .breadcrumb {
+  background-color: #24292e!important
+}
+.dark .input-group-prepend label {
+  color: rgb(232, 230, 227) !important;
+  border-color: #24292e!important;
+}
+.dark .modal-content {
+  background-color: #181a1b !important;
+  border-color: #181a1b !important;
+  color: rgb(232, 230, 227) !important;
+}
+.dark .close span {
+  color: rgb(232, 230, 227) !important;
+}
+.dark pre code {
+  color:rgb(232, 230, 227) !important;
+}
+.dark hr {
+  border-color:rgb(255, 255, 255, .1) !important;
+}
+.dark .input-group-addon {
+  background-color: #24292e !important;
+  border-color: rgb(54, 63, 72) !important;
+  color: rgb(232, 230, 227) !important;
+}
+.dark .nav-tabs .nav-link.active {
+  color: rgb(232, 230, 227) !important;
+  background-color: rgb(24, 26, 27) !important;
+  border-color: rgb(54, 63, 72) rgb(54, 63, 72) rgb(24, 26, 27);
+}
+.dark .nav-tabs .nav-link:hover {
+  border-color: rgb(54, 63, 72);
+}
+.dark .modal-header, .dark .modal-footer {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.dark .nav-tabs {
+  border-color: rgb(54, 63, 72);
+}
+.dark .table td,
+.dark .table th,
+.dark .table thead th {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.dark .page-link  {
+  background-color: rgb(36, 41, 46) !important;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgb(232, 230, 227) !important;
+}
+.dark .page-link.active {
+  background-color: rgb(36, 41, 46) !important;
+  border-color: #007bff;
+}
+.dark .jumbotron,
+.dark mat-form-field input {
+  background-color: rgb(30, 32, 34) !important;
+}
+.dark .list-group-item {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  border-bottom-color: rgba(102, 102, 102, 0.13) !important;
+}
+.dark .list-group-item-action,
+.dark mat-form-field input {
+  color: rgb(232, 230, 227) !important
+}
+.dark .mat-form-field-appearance-legacy .mat-form-field-label {
+  color: rgb(163, 163, 163) !important
+}
+.dark .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: rgb(220, 220, 220) !important
+}
+.dark .mat-input-element {
+  caret-color: white !important
+}
+.dark .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: rgb(151, 151, 151) !important
+}*/
+
+
+/* mat table */
+
+.dark .mat-select-arrow {
+  color: rgb(232, 230, 227) !important;
+}
+.dark .mat-form-field-underline {
+  border-color: rgb(232, 230, 227) !important;
+}
+.dark .mat-table,
+.dark .mat-paginator,
+.dark .mat-select-value,
+.dark .mat-paginator-icon,
+.dark .mat-autocomplete-panel {
+  background-color: rgb(30, 32, 34) !important;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgb(232, 230, 227) !important;
+}

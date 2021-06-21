@@ -10,11 +10,12 @@ import {UserSecurity} from "../_models/user.security";
 })
 export class AppComponent {
   title = 'user-application';
-  currentUser: UserSecurity | undefined;
+  currentUser!: UserSecurity;
+  value!: string;
 
   constructor(private router: Router,
     private authenticationService: AuthenticationService) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; this.value = this.currentUser.themeSimplifiedDto!.name!.replace(' ', '-').toLowerCase();});
   }
 
   logout() {
