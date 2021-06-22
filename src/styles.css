@@ -3,3 +3,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.form-control::-webkit-file-upload-button{
+  -webkit-transition:color 0s ease-in-out,background-color 0s ease-in-out,border-color 0s ease-in-out,box-shadow 0s ease-in-out;
+  transition:color 0s ease-in-out,background-color 0s ease-in-out,border-color 0s ease-in-out,box-shadow 0s ease-in-out
+}

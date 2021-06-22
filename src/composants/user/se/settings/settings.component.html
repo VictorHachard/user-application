@@ -1,4 +1,4 @@
-<section class="my-4 container">
+<section class="my-4 container" style="max-width: 980px">
 
   <div class="mb-3 d-flex bd-highlight">
     <div class="p-2 bd-highlight"><img *ngIf="user.profileImage" [src]="'http://localhost:8080/api/v1/image/' + user.profileImage" class="rounded-circle" height="50" width="50" style="object-fit: cover;"></div>
@@ -12,19 +12,19 @@
   </div>
 
   <div class="row">
-    <div class="col-md-auto mb-3 align-items-start" style="min-width: 200px">
+    <div class="set-nav col-md-auto mb-3 align-items-start" style="min-width: 200px">
       <div class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
         <p class="mb-0 p-2 ps-3">Account settings</p>
-        <button class="nav-link" type="button" routerLink="/settings/profile">Profile</button>
-        <button class="nav-link" type="button" routerLink="/settings/account">Account</button>
-        <button class="nav-link" type="button" routerLink="/settings/appearance">Appearance</button>
-        <button class="nav-link" type="button" routerLink="/settings/security">Security</button>
-        <button class="nav-link" type="button" routerLink="/settings/emails">Emails</button>
-        <button class="nav-link" type="button" routerLink="/settings/security-log">Security Log</button>
+        <button class="nav-link {{param === 'profile' ? 'active' : ''}}" type="button" routerLink="/settings/profile">Profile</button>
+        <button class="nav-link {{param === 'account' ? 'active' : ''}}" type="button" routerLink="/settings/account">Account</button>
+        <button class="nav-link {{param === 'appearance' ? 'active' : ''}}" type="button" routerLink="/settings/appearance">Appearance</button>
+        <button class="nav-link {{param === 'security' ? 'active' : ''}}" type="button" routerLink="/settings/security">Security</button>
+        <button class="nav-link {{param === 'emails' ? 'active' : ''}}" type="button" routerLink="/settings/emails">Emails</button>
+        <button class="nav-link {{param === 'profile' ? 'security-log' : ''}}" type="button" routerLink="/settings/security-log">Security Log</button>
       </div>
       <div class="nav flex-column nav-pills border rounded ish-table" aria-orientation="vertical">
         <p class="mb-0 p-2 ps-3">Moderation settings</p>
-        <button class="nav-link" type="button" routerLink="/settings/blocked-users">Blocked users</button>
+        <button class="nav-link {{param === 'profile' ? 'blocked-users' : ''}}" type="button" routerLink="/settings/blocked-users">Blocked users</button>
       </div>
     </div>
     <div class="col">

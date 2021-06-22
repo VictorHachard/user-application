@@ -35,7 +35,9 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css",
-              "src/default-dark.scss"
+              "src/default-dark.scss",
+              "src/dark-dimmed.scss",
+              "src/default-light.scss"
             ],
             "scripts": []
           },

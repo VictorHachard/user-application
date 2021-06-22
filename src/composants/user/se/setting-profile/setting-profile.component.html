@@ -8,8 +8,9 @@
 
 <form class="mb-3" [formGroup]="profileForm" (ngSubmit)="profile()">
   <div class="mb-3">
-    <img *ngIf="!trustedUrl" [src]="'http://localhost:8080/api/v1/image/' + user.profileImage" class="mb-2 rounded-circle" height="100" width="100" style="object-fit: cover;">
-    <img [src]="trustedUrl" class="mb-2 rounded-circle" height="100" width="100" style="object-fit: cover;">
+    <label class="form-label">Profile picture</label><br>
+    <img *ngIf="!trustedUrl && user.profileImage" [src]="'http://localhost:8080/api/v1/image/' + user.profileImage" class="mb-2 rounded-circle" height="100" width="100" style="object-fit: cover;" alt="">
+    <img *ngIf="trustedUrl" [src]="trustedUrl" class="mb-2 rounded-circle" height="100" width="100" style="object-fit: cover;" alt="">
     <input class="form-control" formControlName="fileSource" (change)="onFileChange($event)" type="file">
   </div>
   <div class="row g-3 mb-3">

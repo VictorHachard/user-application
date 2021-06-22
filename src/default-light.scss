@@ -1,13 +1,12 @@
-$primary-color: #000000;
-$secondary-color: #131313;
-$tertiary-color: #1c1c1c;
-$quaternary-color: #2f2f2f;
-$white: #ffffff;
-$secondary-white: #e5e5e5;
+$primary-color: #f1f1f1;
+$secondary-color: #eaeaea;
+$tertiary-color: #e3e3e3;
+$quaternary-color: #d4d4d4;
+$black: #1a1a1a;
+$secondary-black: #212121;
 
-.default-dark {
+.default-light {
   background-color: $primary-color;
-  color: $white;
   border-color: $tertiary-color;
 
   .border,
@@ -19,36 +18,29 @@ $secondary-white: #e5e5e5;
   textarea,
   select {
     background-color: $secondary-color;
-    color: $white;
     border-color: $tertiary-color;
   }
 
   .form-control::-webkit-file-upload-button {
     background-color: $tertiary-color;
-    color: $white;
+    color: $black;
   }
 
   .form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
     background-color: $quaternary-color!important;
-    color: $white!important;
+    color: $black!important;
   }
 
   input:hover,
   textarea:hover,
   select:hover {
     background-color: $tertiary-color;
-    color: $white
   }
 
   input:focus,
   textarea:focus,
   select:focus {
-    background-color: $quaternary-color;
-    color: $white;
-  }
-
-  .list-group .list-group-item {
-    color: $white;
+    background-color: $tertiary-color;
   }
 
   .navbar,
@@ -56,7 +48,6 @@ $secondary-white: #e5e5e5;
   .navbar-toggler-icon,
   .nav .list-group .list-group-item, {
     background-color: $secondary-color!important;
-    color: $white!important;
     border-color: $tertiary-color!important;
   }
 
@@ -69,7 +60,7 @@ $secondary-white: #e5e5e5;
   .list-group .list-group-item,
   .nav-pills {
     background-color: $primary-color;
-    color: $white;
+    color: $black;
     border-color: $quaternary-color!important;
   }
 
@@ -80,7 +71,7 @@ $secondary-white: #e5e5e5;
 
   .set-nav .nav-pills p {
     background-color: $secondary-color;
-    color: $secondary-white;
+    color: $secondary-black;
     border-color: $tertiary-color!important;
   }
 }

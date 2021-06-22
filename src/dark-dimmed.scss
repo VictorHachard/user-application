@@ -1,11 +1,11 @@
-$primary-color: #000000;
-$secondary-color: #131313;
-$tertiary-color: #1c1c1c;
-$quaternary-color: #2f2f2f;
-$white: #ffffff;
-$secondary-white: #e5e5e5;
+$primary-color: #202225;
+$secondary-color: #292b2f;
+$tertiary-color: #2f3136;
+$quaternary-color: #36393f;
+$white: #ececec;
+$secondary-white: #c1c1c1;
 
-.default-dark {
+.dark-dimmed {
   background-color: $primary-color;
   color: $white;
   border-color: $tertiary-color;
@@ -55,9 +55,9 @@ $secondary-white: #e5e5e5;
   .navbar a,
   .navbar-toggler-icon,
   .nav .list-group .list-group-item, {
-    background-color: $secondary-color!important;
+    background-color: $tertiary-color!important;
     color: $white!important;
-    border-color: $tertiary-color!important;
+    border-color: $quaternary-color!important;
   }
 
   .dropdown-menu,
