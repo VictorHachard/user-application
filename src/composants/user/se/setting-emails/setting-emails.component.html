@@ -6,13 +6,22 @@
 
 <h3 class="pb-2 border-bottom">Emails</h3>
 
-<div class="list-group mb-3">
+<div [formGroup]="backupEmailForm" class="list-group mb-3">
   <div *ngFor="let email of user.emailList" href="#" class="list-group-item">
     <div class="d-flex w-100 justify-content-between">
       <p>{{email.email}} -
-        <span class="{{email.priority === 'PRINCIPAL' ? 'text-primary' : 'text-secondary'}}">{{email.priority | titlecase}}</span>
+        <span class="{{email.priority === 'PRIMARY' ? 'text-primary' : 'text-secondary'}}">{{email.priority | titlecase}}</span>
       </p>
-      <button type="button" (click)="removeEmail(email.id!)" *ngIf="email.priority !== 'PRINCIPAL'" class="btn btn-sm btn-danger">Remove</button>
+      <div *ngIf="email.priority !== 'PRIMARY'">
+        <div class="form-check p-0 d-inline">
+          <input class="form-check-input" formControlName="{{'email' + email.id}}" [value]="email.backup" type="checkbox" (change)="backupEmail(email.id)">
+          <label class="form-check-label">Backup email</label>
+        </div>
+        <svg (click)="removeEmail(email.id!)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" style="cursor: pointer" class="ms-3 bi bi-trash" viewBox="0 0 16 16">
+          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+        </svg>
+      </div>
     </div>
     <ul>
       <li *ngIf="email.confirmed"><p class="text-success">Confirmed</p></li>
@@ -38,7 +47,7 @@
   </div>
 </form>
 
-<form class="mb-3" *ngIf="_reload" [formGroup]="backupEmailForm">
+<!--<form class="mb-3" *ngIf="_reload" [formGroup]="backupEmailForm">
   <div class="mb-3">
     <label class="form-label">Backup email address</label>
     <p>Your backup email address will be used as an additional destination for security-relevant account notifications and can also be used for password resets.</p>
@@ -48,7 +57,7 @@
       <option *ngFor="let email of user.emailList" value="{{email.email}}">{{email.email}}</option>
     </select>
   </div>
-</form>
+</form>-->
 
 <h3 class="pb-2 border-bottom">Email preferences</h3>
 

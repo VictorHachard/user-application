@@ -11,7 +11,7 @@ import {environment} from "../../../../environments/environment";
   templateUrl: './setting-security.component.html',
   styleUrls: ['./setting-security.component.css']
 })
-export class SettingSecurityComponent implements OnInit {
+export class SettingSecurityComponent {
 
   passwordForm!: FormGroup;
   twoFactorForm!: FormGroup;

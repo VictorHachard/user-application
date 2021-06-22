@@ -5,27 +5,35 @@ import {UserSecurity} from "../../../../_models/user.security";
 import {UserService} from "../../../../_services/_api/user.service";
 import {AuthenticationService} from "../../../../_services/authentication.service";
 import {ImageService} from "../../../../_services/_api/image.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-setting-profile',
   templateUrl: './setting-profile.component.html',
   styleUrls: ['./setting-profile.component.css']
 })
-export class SettingProfileComponent implements OnInit {
+export class SettingProfileComponent {
 
   profileForm!: FormGroup;
   alertManagerManager!: AlertManager;
   _reload = true;
   trustedUrl: any;
+  param!: string | null;
 
   user!: UserSecurity;
   @Output() isSummited = new EventEmitter<boolean>();
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService, private imageService: ImageService) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private authenticationService: AuthenticationService,
+              private userService: UserService,
+              private imageService: ImageService) {
     this.authenticationService.currentUser.subscribe(x => {this.user = x; this.ngOnInit();});
   }
 
   ngOnInit(): void {
+    this.param = this.route.snapshot.paramMap.get('param');
+
     this.alertManagerManager = new AlertManager();
     this.profileForm = new FormGroup({
       firstName: new FormControl(this.user.firstName),
@@ -40,22 +48,36 @@ export class SettingProfileComponent implements OnInit {
   get f() { return this.profileForm.controls; }
 
   profile(): void {
-    const formData: FormData = new FormData();
-    const name: string = (new Date()).valueOf().toString() + Math.random().toString(36).substring(10) + this.f.fileSource.value.name.slice(this.f.fileSource.value.name.lastIndexOf('.'));
-    formData.append('file', this.f.fileSource.value, name);
-    this.imageService.upload(formData).subscribe(value1 => {
+    if (this.f.fileSource.value) {
+      const formData: FormData = new FormData();
+      const name: string = (new Date()).valueOf().toString() + Math.random().toString(36).substring(10) + this.f.fileSource.value.name.slice(this.f.fileSource.value.name.lastIndexOf('.'));
+      formData.append('file', this.f.fileSource.value, name);
+      this.imageService.upload(formData).subscribe(value1 => {
+        this.userService.updateProfile({
+          firstName: this.f.firstName.value,
+          middleName: this.f.middleName.value,
+          lastName: this.f.lastName.value,
+          biography: this.f.biography.value,
+          url: this.f.url.value,
+          profileImage: name
+        }).subscribe(value => {
+          this.isSummited.emit(true);
+          this.alertManagerManager.addAlert('done', 'alert-success');
+        });
+      });
+    } else {
       this.userService.updateProfile({
         firstName: this.f.firstName.value,
         middleName: this.f.middleName.value,
         lastName: this.f.lastName.value,
         biography: this.f.biography.value,
         url: this.f.url.value,
-        profileImage: name
+        profileImage: ''
       }).subscribe(value => {
         this.isSummited.emit(true);
+        this.alertManagerManager.addAlert('done', 'alert-success');
       });
-    });
-
+    }
   }
 
   onFileChange(event: any): void {

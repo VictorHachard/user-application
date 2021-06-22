@@ -11,7 +11,7 @@ import {ThemeService} from "../../../../_services/_api/theme.service";
   templateUrl: './setting-account.component.html',
   styleUrls: ['./setting-account.component.css']
 })
-export class SettingAccountComponent implements OnInit {
+export class SettingAccountComponent {
 
   usernameForm!: FormGroup;
   deleteForm!: FormGroup;

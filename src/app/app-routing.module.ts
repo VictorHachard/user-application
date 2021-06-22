@@ -8,6 +8,7 @@ import {ResetPasswordComponent} from "../composants/user/actions/reset-password/
 import {DeleteComponent} from "../composants/user/actions/delete/delete.component";
 import {HomeComponent} from "../composants/home/home.component";
 import {SettingsComponent} from "../composants/user/se/settings/settings.component";
+import {ProfileComponent} from "../composants/user/profile/profile.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'setting', component: SettingComponent},
   { path: 'settings', component: SettingsComponent},
   { path: 'settings/:param', component: SettingsComponent},
+
+  { path: 'profile/:param', component: ProfileComponent},
 
   { path: 'confirm/email/:token', component: ConfirmEmailComponent},
   { path: 'reset/password/:token', component: ResetPasswordComponent},

@@ -10,7 +10,7 @@ import {SecurityLog} from "../../../../_models/security.log";
   templateUrl: './setting-security-log.component.html',
   styleUrls: ['./setting-security-log.component.css']
 })
-export class SettingSecurityLogComponent implements OnInit {
+export class SettingSecurityLogComponent {
 
   alertManagerManager!: AlertManager;
   securityLogList!: SecurityLog[];

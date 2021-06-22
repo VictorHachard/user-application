@@ -11,7 +11,7 @@ import {AuthenticationService} from "../../../../_services/authentication.servic
   templateUrl: './setting-emails.component.html',
   styleUrls: ['./setting-emails.component.css']
 })
-export class SettingEmailsComponent implements OnInit {
+export class SettingEmailsComponent {
 
   addEmailForm!: FormGroup;
   primaryEmailForm!: FormGroup;
@@ -23,7 +23,7 @@ export class SettingEmailsComponent implements OnInit {
   user!: UserSecurity;
   @Output() isSummited = new EventEmitter<boolean>();
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService, private cdr: ChangeDetectorRef) {
+  constructor(private authenticationService: AuthenticationService, private userService: UserService) {
     this.authenticationService.currentUser.subscribe(x => {this.user = x; this.ngOnInit();});
   }
 
@@ -33,14 +33,16 @@ export class SettingEmailsComponent implements OnInit {
       email: new FormControl(!environment.production ? 'test1@test.test' : '', [Validators.required, Validators.email])
     });
     this.primaryEmailForm = new FormGroup({
-      email: new FormControl(this.user.emailList!.filter(e => e.priority === 'PRINCIPAL')[0].email, [Validators.required])
+      email: new FormControl(this.user.emailList!.filter(e => e.priority === 'PRIMARY')[0].email, [Validators.required])
     });
     this.emailPreference = new FormGroup({
       preference: new FormControl(this.user.emailPreferences, [Validators.required])
     });
-    this.backupEmailForm = new FormGroup({
-      email: new FormControl('', [Validators.required])
-    });
+    this.backupEmailForm = new FormGroup({});
+    for (let e of this.user!.emailList!) {
+      this.backupEmailForm.addControl('email' + e.id!.toString(), new FormControl(e.backup))
+    }
+    console.log(this.user)
     this.reload(); //TODO find better way
   }
 
@@ -83,7 +85,9 @@ export class SettingEmailsComponent implements OnInit {
     });
   }
 
-  backupEmail($event: any) {
-
+  backupEmail(id: any) {
+    this.userService.updateEmailBackup(id, {backup: this.backupEmailForm.get('email' + id)!.value}).subscribe(value => {
+      this.isSummited.emit(true);
+    });
   }
 }

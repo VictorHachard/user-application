@@ -37,6 +37,10 @@ export class UserService {
     return this.http.post<any>(`${environment.apiUrl}/user/update/email-preferences`, b);
   }
 
+  updateEmailBackup(id: number, b: {backup: boolean}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/update/email/backup/${id}`, b);
+  }
+
   updateEmailPriority(b: {email: string}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/user/update/email/priority`, b);
   }

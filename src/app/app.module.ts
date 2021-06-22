@@ -33,6 +33,7 @@ import {SettingSecurityComponent} from '../composants/user/se/setting-security/s
 import {SettingEmailsComponent} from '../composants/user/se/setting-emails/setting-emails.component';
 import {SettingsComponent} from '../composants/user/se/settings/settings.component';
 import {SettingSecurityLogComponent} from '../composants/user/se/setting-security-log/setting-security-log.component';
+import { ProfileComponent } from '../composants/user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {SettingSecurityLogComponent} from '../composants/user/se/setting-securit
     SettingSecurityComponent,
     SettingEmailsComponent,
     SettingsComponent,
-    SettingSecurityLogComponent
+    SettingSecurityLogComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

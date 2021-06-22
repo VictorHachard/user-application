@@ -12,7 +12,7 @@ import {Theme} from "../../../../_models/theme";
   templateUrl: './setting-appearance.component.html',
   styleUrls: ['./setting-appearance.component.css']
 })
-export class SettingAppearanceComponent implements OnInit {
+export class SettingAppearanceComponent {
 
   themeForm!: FormGroup;
   alertManagerManager!: AlertManager;
