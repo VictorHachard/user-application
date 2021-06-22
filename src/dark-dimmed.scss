@@ -83,4 +83,16 @@ $secondary-white: #c1c1c1;
     color: $secondary-white;
     border-color: $tertiary-color!important;
   }
+
+  .pagination .page-item span {
+    background-color: $secondary-color;
+    color: $white;
+    border-color: $tertiary-color;
+  }
+
+  .pagination .page-item.disabled span {
+    background-color: $secondary-color;
+    color: $secondary-white;
+    border-color: $tertiary-color;
+  }
 }

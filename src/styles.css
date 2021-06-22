@@ -1,7 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.display-7 {
+  font-size: calc(0.9rem + 1.5vw);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 350;
+}
+
+.pagination .page-item span {
+  cursor: pointer!important;
+}
 
 .form-control::-webkit-file-upload-button{
   -webkit-transition:color 0s ease-in-out,background-color 0s ease-in-out,border-color 0s ease-in-out,box-shadow 0s ease-in-out;

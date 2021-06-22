@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<h2 class="border-bottom">Change password</h2>
+<h3 class="pb-2 border-bottom">Change password</h3>
 
 <form class="mb-3" [formGroup]="passwordForm" (ngSubmit)="password()">
   <div class="mb-3">
@@ -19,10 +19,11 @@
     <label class="form-label">Confirm new password</label>
     <input type="password" formControlName="newPasswordConfirm" class="form-control">
   </div>
+  <p>Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.</p>
   <button type="submit" [disabled]="passwordForm.invalid" class="btn btn-sm btn-primary">Update password</button>
 </form>
 
-<h2 class="border-bottom">Two-factor authentication</h2>
+<h3 class="pb-2 border-bottom">Two-factor authentication</h3>
 <p>Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to log in.</p>
 
 

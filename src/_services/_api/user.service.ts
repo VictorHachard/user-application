@@ -33,6 +33,10 @@ export class UserService {
     return this.http.delete<any>(`${environment.apiUrl}/user/remove/email/${id}`);
   }
 
+  updateEmailPreferences(b: {emailPreferences: string}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/user/update/email-preferences`, b);
+  }
+
   updateEmailPriority(b: {email: string}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/user/update/email/priority`, b);
   }

@@ -20,4 +20,5 @@ export class UserSecurity extends AbstractModel {
   groupDtoList?: Group[];
   roleDtoList?: Role[];
   profileImage?: string;
+  emailPreferences?: string;
 }

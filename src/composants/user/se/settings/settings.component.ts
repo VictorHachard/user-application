@@ -8,7 +8,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
 
   user!: UserSecurity;
   param!: string | null;
@@ -22,8 +22,6 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.param = this.route.snapshot.paramMap.get('param');
-
-    console.log(this.user)
   }
 
   refresh($event: boolean): void {

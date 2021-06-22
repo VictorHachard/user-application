@@ -15,6 +15,8 @@ export class SettingEmailsComponent implements OnInit {
 
   addEmailForm!: FormGroup;
   primaryEmailForm!: FormGroup;
+  backupEmailForm!: FormGroup;
+  emailPreference!: FormGroup;
   alertManagerManager!: AlertManager;
   _reload = true;
 
@@ -32,6 +34,12 @@ export class SettingEmailsComponent implements OnInit {
     });
     this.primaryEmailForm = new FormGroup({
       email: new FormControl(this.user.emailList!.filter(e => e.priority === 'PRINCIPAL')[0].email, [Validators.required])
+    });
+    this.emailPreference = new FormGroup({
+      preference: new FormControl(this.user.emailPreferences, [Validators.required])
+    });
+    this.backupEmailForm = new FormGroup({
+      email: new FormControl('', [Validators.required])
     });
     this.reload(); //TODO find better way
   }
@@ -51,7 +59,7 @@ export class SettingEmailsComponent implements OnInit {
     });
   }
 
-  primaryEmail(): void {
+  primaryEmail($event: any): void {
     this.userService.updateEmailPriority({email: this.fPrimary.email.value}).subscribe(value => {
       this.isSummited.emit(true);
     });
@@ -67,5 +75,15 @@ export class SettingEmailsComponent implements OnInit {
     this.userService.actionConfirmResendEmail(id).subscribe(value => {
       this.isSummited.emit(true);
     });
+  }
+
+  preferences(id: string) {
+    this.userService.updateEmailPreferences({emailPreferences: id}).subscribe(value => {
+      this.isSummited.emit(true);
+    });
+  }
+
+  backupEmail($event: any) {
+
   }
 }

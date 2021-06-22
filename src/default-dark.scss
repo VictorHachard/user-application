@@ -1,9 +1,9 @@
-$primary-color: #000000;
-$secondary-color: #131313;
-$tertiary-color: #1c1c1c;
-$quaternary-color: #2f2f2f;
-$white: #ffffff;
-$secondary-white: #e5e5e5;
+$primary-color: #0d1117;
+$secondary-color: #161b22;
+$tertiary-color: #21262f;
+$quaternary-color: #21252a;
+$white: #eeeeee;
+$secondary-white: #d4d4d4;
 
 .default-dark {
   background-color: $primary-color;
@@ -83,4 +83,17 @@ $secondary-white: #e5e5e5;
     color: $secondary-white;
     border-color: $tertiary-color!important;
   }
+
+  .pagination .page-item span {
+    background-color: $secondary-color;
+    color: $white;
+    border-color: $tertiary-color;
+  }
+
+  .pagination .page-item.disabled span {
+    background-color: $secondary-color;
+    color: $secondary-white;
+    border-color: $tertiary-color;
+  }
+
 }

@@ -3,7 +3,7 @@ $secondary-color: #eaeaea;
 $tertiary-color: #e3e3e3;
 $quaternary-color: #d4d4d4;
 $black: #1a1a1a;
-$secondary-black: #212121;
+$secondary-black: #3b3b3b;
 
 .default-light {
   background-color: $primary-color;
@@ -74,4 +74,17 @@ $secondary-black: #212121;
     color: $secondary-black;
     border-color: $tertiary-color!important;
   }
+
+  .pagination .page-item span {
+    background-color: $secondary-color;
+    color: $black;
+    border-color: $tertiary-color;
+  }
+
+  .pagination .page-item.disabled span {
+    background-color: $secondary-color;
+    color: $secondary-black;
+    border-color: $tertiary-color;
+  }
+
 }

@@ -8,6 +8,10 @@ import {SecurityLog} from "../../_models/security.log";
 export class SecurityLogService {
   constructor(private http: HttpClient) { }
 
+  count(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/security-log/count`);
+  }
+
   getAllDto(pageIndex = 0, pageSize = 10): Observable<SecurityLog[]> {
     return this.http.get<SecurityLog[]>(`${environment.apiUrl}/user/dto/security-log`, {
       params: new HttpParams()

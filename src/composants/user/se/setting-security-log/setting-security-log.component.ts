@@ -14,6 +14,8 @@ export class SettingSecurityLogComponent implements OnInit {
 
   alertManagerManager!: AlertManager;
   securityLogList!: SecurityLog[];
+  pageIndex: number = 0;
+  limit!: number;
 
   user!: UserSecurity;
   @Output() isSummited = new EventEmitter<boolean>();
@@ -22,9 +24,16 @@ export class SettingSecurityLogComponent implements OnInit {
 
   ngOnInit(): void {
     this.alertManagerManager = new AlertManager();
-    this.securityLogService.getAllDto().subscribe(value => {
+    this.securityLogService.count().subscribe(value => {
+      this.limit = Math.floor(value / 10) - (value % 10 === 0 ? 1 : 0);
+    });
+    this.page(0)
+  }
+
+  page(number: number) {
+    this.pageIndex += number;
+    this.securityLogService.getAllDto(this.pageIndex).subscribe(value => {
       this.securityLogList = value;
     });
   }
-
 }
