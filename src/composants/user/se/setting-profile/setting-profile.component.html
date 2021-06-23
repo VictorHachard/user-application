@@ -4,7 +4,10 @@
   </div>
 </div>
 
-<h3 class="pb-2 border-bottom">Public profile</h3>
+<div class="mb-3 d-flex bd-highlight border-bottom">
+  <h3 class="bd-highlight">Public profile</h3>
+  <h5 *ngIf="alertManagerManager.iconList.includes('profile')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+</div>
 
 <form class="mb-3" [formGroup]="profileForm" (ngSubmit)="profile()">
   <div class="mb-3">
@@ -35,6 +38,6 @@
     <label class="form-label">URL</label>
     <input type="text" formControlName="url" class="form-control">
   </div>
-  <p>All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears. Please see our privacy statement to learn more about how we use this information.</p>
+  <p class="text-muted">All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears. Please see our privacy statement to learn more about how we use this information.</p>
   <button type="submit" [disabled]="profileForm.invalid" class="btn btn-sm btn-primary">Update profile</button>
 </form>

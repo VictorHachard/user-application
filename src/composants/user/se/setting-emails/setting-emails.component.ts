@@ -9,7 +9,7 @@ import {AuthenticationService} from "../../../../_services/authentication.servic
 @Component({
   selector: 'app-setting-emails',
   templateUrl: './setting-emails.component.html',
-  styleUrls: ['./setting-emails.component.css']
+  styleUrls: ['./setting-emails.component.scss']
 })
 export class SettingEmailsComponent {
 
@@ -17,7 +17,7 @@ export class SettingEmailsComponent {
   primaryEmailForm!: FormGroup;
   backupEmailForm!: FormGroup;
   emailPreference!: FormGroup;
-  alertManagerManager!: AlertManager;
+  alertManagerManager: AlertManager = new AlertManager();
   _reload = true;
 
   user!: UserSecurity;
@@ -28,7 +28,6 @@ export class SettingEmailsComponent {
   }
 
   ngOnInit(): void {
-    this.alertManagerManager = new AlertManager();
     this.addEmailForm = new FormGroup({
       email: new FormControl(!environment.production ? 'test1@test.test' : '', [Validators.required, Validators.email])
     });
@@ -58,11 +57,14 @@ export class SettingEmailsComponent {
   addEmail(): void {
     this.userService.addEmail({email: this.f.email.value}).subscribe(value => {
       this.isSummited.emit(true);
+    }, error => {
+      this.alertManagerManager.addAlert('The email already exists', 'alert-danger');
     });
   }
 
   primaryEmail($event: any): void {
     this.userService.updateEmailPriority({email: this.fPrimary.email.value}).subscribe(value => {
+      this.alertManagerManager.addAlertIcon('primaryEmail');
       this.isSummited.emit(true);
     });
   }
@@ -81,6 +83,7 @@ export class SettingEmailsComponent {
 
   preferences(id: string) {
     this.userService.updateEmailPreferences({emailPreferences: id}).subscribe(value => {
+      this.alertManagerManager.addAlertIcon('preferences');
       this.isSummited.emit(true);
     });
   }

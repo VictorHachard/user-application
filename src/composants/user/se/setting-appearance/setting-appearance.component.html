@@ -4,7 +4,11 @@
   </div>
 </div>
 
-<h3 class="pb-2 border-bottom">Theme preferences</h3>
+<div class="mb-3 d-flex bd-highlight border-bottom">
+  <h3 class="bd-highlight">Theme preferences</h3>
+  <h5 *ngIf="alertManagerManager.iconList.includes('theme')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+</div>
+
 <p>Choose how the application looks to you.</p>
 
 <form class="mb-3" [formGroup]="themeForm" *ngIf="themeList">

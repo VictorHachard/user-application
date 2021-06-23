@@ -17,10 +17,7 @@
           <input class="form-check-input" formControlName="{{'email' + email.id}}" [value]="email.backup" type="checkbox" (change)="backupEmail(email.id)">
           <label class="form-check-label">Backup email</label>
         </div>
-        <svg (click)="removeEmail(email.id!)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" style="cursor: pointer" class="ms-3 bi bi-trash" viewBox="0 0 16 16">
-          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-        </svg>
+        <h6 (click)="removeEmail(email.id!)" style="cursor: pointer" class="d-inline ms-3 bi bi-trash text-danger"></h6>
       </div>
     </div>
     <ul>
@@ -40,7 +37,10 @@
 
 <form class="mb-3" *ngIf="_reload" [formGroup]="primaryEmailForm">
   <div class="mb-3">
-    <label class="form-label">Primary email address</label>
+    <div class="d-flex bd-highlight">
+      <label class="form-label bd-highlight">Primary email address</label>
+      <i *ngIf="alertManagerManager.iconList.includes('primaryEmail')" class="ms-auto bd-highlight bi bi-check-lg text-success"></i>
+    </div>
     <select formControlName="email" class="form-select" (ngModelChange)="primaryEmail($event)">
       <option *ngFor="let email of user.emailList" value="{{email.email}}">{{email.email}}</option>
     </select>
@@ -59,15 +59,20 @@
   </div>
 </form>-->
 
-<h3 class="pb-2 border-bottom">Email preferences</h3>
+<div class="mb-3 d-flex bd-highlight border-bottom">
+  <h3 class="bd-highlight">Email preferences</h3>
+  <h5 *ngIf="alertManagerManager.iconList.includes('preferences')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+</div>
 
 <form class="mb-3" [formGroup]="emailPreference" *ngIf="emailPreference">
   <div class="form-check">
     <input class="form-check-input" formControlName="preference" [value]="'ALL'" (click)="preferences('ALL')" type="radio" >
     <label class="form-check-label">Receive all emails</label>
+    <p class="text-muted">We’ll occasionally contact you with the latest news.</p>
   </div>
   <div class="form-check">
     <input class="form-check-input" formControlName="preference" [value]="'ONLY_ACCOUNT'" (click)="preferences('ONLY_ACCOUNT')" type="radio">
     <label class="form-check-label">Only receive account related emails</label>
+    <p class="text-muted">We’ll only send you legal or administrative emails, and any emails you’re specifically subscribed to.</p>
   </div>
 </form>

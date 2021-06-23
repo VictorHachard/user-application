@@ -8,11 +8,11 @@ import {SecurityLog} from "../../../../_models/security.log";
 @Component({
   selector: 'app-setting-security-log',
   templateUrl: './setting-security-log.component.html',
-  styleUrls: ['./setting-security-log.component.css']
+  styleUrls: ['./setting-security-log.component.scss']
 })
 export class SettingSecurityLogComponent {
 
-  alertManagerManager!: AlertManager;
+  alertManagerManager: AlertManager = new AlertManager();
   securityLogList!: SecurityLog[];
   pageIndex: number = 0;
   limit!: number;
@@ -23,7 +23,6 @@ export class SettingSecurityLogComponent {
   constructor(private userService: UserService, private securityLogService: SecurityLogService) { }
 
   ngOnInit(): void {
-    this.alertManagerManager = new AlertManager();
     this.securityLogService.count().subscribe(value => {
       this.limit = Math.floor(value / 10) - (value % 10 === 0 ? 1 : 0);
     });

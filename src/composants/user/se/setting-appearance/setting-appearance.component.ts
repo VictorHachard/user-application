@@ -10,12 +10,12 @@ import {Theme} from "../../../../_models/theme";
 @Component({
   selector: 'app-setting-appearance',
   templateUrl: './setting-appearance.component.html',
-  styleUrls: ['./setting-appearance.component.css']
+  styleUrls: ['./setting-appearance.component.scss']
 })
 export class SettingAppearanceComponent {
 
   themeForm!: FormGroup;
-  alertManagerManager!: AlertManager;
+  alertManagerManager: AlertManager = new AlertManager();
   themeList!: Theme[];
   _reload = true;
   value!: number | undefined;
@@ -31,8 +31,6 @@ export class SettingAppearanceComponent {
   }
 
   ngOnInit(): void {
-    this.alertManagerManager = new AlertManager();
-    console.log(this.user)
     this.value = this.user.themeSimplifiedDto?.id;
     this.themeForm = new FormGroup({
       id: new FormControl(this.user.themeSimplifiedDto?.id, Validators.required)
@@ -43,7 +41,10 @@ export class SettingAppearanceComponent {
 
   theme(id: any): void {
     this.userService.updateAppearance(id).subscribe(value => {
+      this.alertManagerManager.addAlertIcon('theme');
       this.isSummited.emit(true);
+    }, error => {
+
     });
   }
 }

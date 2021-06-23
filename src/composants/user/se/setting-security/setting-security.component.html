@@ -19,7 +19,7 @@
     <label class="form-label">Confirm new password</label>
     <input type="password" formControlName="newPasswordConfirm" class="form-control">
   </div>
-  <p>Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.</p>
+  <p class="text-muted">Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.</p>
   <button type="submit" [disabled]="passwordForm.invalid" class="btn btn-sm btn-primary">Update password</button>
 </form>
 

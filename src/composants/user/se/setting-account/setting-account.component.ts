@@ -9,13 +9,13 @@ import {ThemeService} from "../../../../_services/_api/theme.service";
 @Component({
   selector: 'app-setting-account',
   templateUrl: './setting-account.component.html',
-  styleUrls: ['./setting-account.component.css']
+  styleUrls: ['./setting-account.component.scss']
 })
 export class SettingAccountComponent {
 
   usernameForm!: FormGroup;
   deleteForm!: FormGroup;
-  alertManagerManager!: AlertManager;
+  alertManagerManager: AlertManager = new AlertManager();
 
   user!: UserSecurity;
   @Output() isSummited = new EventEmitter<boolean>();
@@ -25,7 +25,6 @@ export class SettingAccountComponent {
   }
 
   ngOnInit(): void {
-    this.alertManagerManager = new AlertManager();
     this.usernameForm = new FormGroup({
         username: new FormControl(this.user.username, Validators.required)
     });
@@ -36,6 +35,7 @@ export class SettingAccountComponent {
 
   username(): void {
     this.userService.updateUsername({username: this.f.username.value}).subscribe(value => {
+      this.alertManagerManager.addAlertIcon('username');
       this.isSummited.emit(true);
     }, error => {
       this.alertManagerManager.addAlert('The user already exists', 'alert-danger');

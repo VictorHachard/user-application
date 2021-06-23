@@ -95,4 +95,22 @@ $secondary-white: #c1c1c1;
     color: $secondary-white;
     border-color: $tertiary-color;
   }
+
+  .alert-success {
+    color: rgb(168, 234, 183) !important;
+    background-color: rgb(23, 54, 30) !important;
+    border-color: rgb(41, 99, 54) !important;
+  }
+
+  .alert-danger {
+    color: rgb(230, 155, 162) !important;
+    background-color: rgb(64, 11, 16) !important;
+    border-color: rgb(129, 23, 34) !important;
+  }
+
+  .alert-warning {
+    color: rgb(251, 219, 127);
+    background-color: rgb(81, 62, 0);
+    border-color: rgb(167, 126, 0);
+  }
 }

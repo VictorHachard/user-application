@@ -10,12 +10,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'app-setting-profile',
   templateUrl: './setting-profile.component.html',
-  styleUrls: ['./setting-profile.component.css']
+  styleUrls: ['./setting-profile.component.scss']
 })
 export class SettingProfileComponent {
 
   profileForm!: FormGroup;
-  alertManagerManager!: AlertManager;
+  alertManagerManager: AlertManager = new AlertManager();
   _reload = true;
   trustedUrl: any;
   param!: string | null;
@@ -33,8 +33,6 @@ export class SettingProfileComponent {
 
   ngOnInit(): void {
     this.param = this.route.snapshot.paramMap.get('param');
-
-    this.alertManagerManager = new AlertManager();
     this.profileForm = new FormGroup({
       firstName: new FormControl(this.user.firstName),
       middleName: new FormControl(this.user.middleName),
@@ -69,7 +67,7 @@ export class SettingProfileComponent {
       url: this.f.url.value,
       profileImage: profileImage
     }).subscribe(value => {
-      this.alertManagerManager.addAlert('done', 'alert-success');
+      this.alertManagerManager.addAlertIcon('profile');
       this.isSummited.emit(true);
     });
   }
