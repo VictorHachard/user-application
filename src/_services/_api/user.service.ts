@@ -26,51 +26,55 @@ export class UserService {
   }
 
   addEmail(b: {email: string}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/add/email`, b);
+    return this.http.post<any>(`${environment.apiUrl}user/add/email`, b);
   }
 
   deleteEmail(id: number): Observable<any> {
-    return this.http.delete<any>(`${environment.apiUrl}/user/remove/email/${id}`);
+    return this.http.delete<any>(`${environment.apiUrl}user/remove/email/${id}`);
   }
 
   updateEmailPreferences(b: {emailPreferences: string}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/update/email-preferences`, b);
+    return this.http.post<any>(`${environment.apiUrl}user/update/email-preferences`, b);
   }
 
   updateEmailBackup(id: number, b: {backup: boolean}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/update/email/backup/${id}`, b);
+    return this.http.post<any>(`${environment.apiUrl}user/update/email/backup/${id}`, b);
   }
 
   updateEmailPriority(b: {email: string}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/update/email/priority`, b);
+    return this.http.post<any>(`${environment.apiUrl}user/update/email/priority`, b);
   }
 
   updateUsername(b: {username: string}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/update/username`, b);
+    return this.http.post<any>(`${environment.apiUrl}user/update/username`, b);
   }
 
   updateProfile(b: {firstName: string, middleName: string, lastName: string, biography: string, url: string, profileImage: string}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/update/profile`, b);
+    return this.http.post<any>(`${environment.apiUrl}user/update/profile`, b);
   }
 
   updateAppearance(id: number): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/update/appearance/${id}`, {});
+    return this.http.post<any>(`${environment.apiUrl}user/update/appearance/${id}`, {});
   }
 
   actionConfirm(token: string): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/action/confirm/email`, token);
+    return this.http.post<any>(`${environment.apiUrl}user/action/confirm/email`, token);
   }
 
   actionConfirmResendEmail(id: number): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/action/confirm/resend/email/${id}`, {});
+    return this.http.post<any>(`${environment.apiUrl}user/action/confirm/resend/email/${id}`, {});
   }
 
   actionSetPassword(b: {oldPassword: string, newPassword: string}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/action/set/password`, b);
+    return this.http.post<any>(`${environment.apiUrl}user/action/set/password`, b);
   }
 
-  actionReset(b: {token: string, password: string}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/user/action/confirm/email`, b);
+  actionResetPassword(b: {token: string, password: string}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}user/action/reset/password`, b);
+  }
+
+  actionForgetPassword(username: string) {
+    return this.http.post(`${environment.apiUrl}user/action/forget/password`, username);
   }
 
 }

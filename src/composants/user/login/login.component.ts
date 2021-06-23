@@ -15,6 +15,7 @@ import {environment} from "../../../environments/environment";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   loginForm!: FormGroup;
   alertManagerManager!: AlertManager;
 
@@ -22,7 +23,6 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private route: ActivatedRoute,
               private router: Router) {
-    console.log(this.authenticationService.currentUserValue)
     if (this.authenticationService.currentUserValue) {
       this.router.navigate([this.route.snapshot.queryParams['returnUrl'] || '/']);
     }

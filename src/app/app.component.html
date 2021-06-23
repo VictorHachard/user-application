@@ -26,9 +26,9 @@
         <form class="d-flex">
           <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>-->
-          <button class="btn btn-outline-success" type="button" *ngIf="!currentUser" routerLink="/login">Login</button>
-          <button class="btn btn-outline-success" type="button" *ngIf="!currentUser" routerLink="/register">Register</button>
-          <button class="btn btn-outline-success" type="button" *ngIf="currentUser" (click)="logout()">Logout</button>
+          <button class="btn btn-outline-primary" type="button" *ngIf="!currentUser" routerLink="/login">Login</button>
+          <button class="btn btn-outline-primary ms-2" type="button" *ngIf="!currentUser" routerLink="/register">Register</button>
+          <button class="btn btn-outline-primary" type="button" *ngIf="currentUser" (click)="logout()">Logout</button>
         </form>
       </div>
     </div>

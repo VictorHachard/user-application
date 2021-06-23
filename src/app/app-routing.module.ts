@@ -9,6 +9,7 @@ import {DeleteComponent} from "../composants/user/actions/delete/delete.componen
 import {HomeComponent} from "../composants/home/home.component";
 import {SettingsComponent} from "../composants/user/se/settings/settings.component";
 import {ProfileComponent} from "../composants/user/profile/profile.component";
+import {ForgetPasswordComponent} from "../composants/user/actions/forget-password/forget-password.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'confirm/email/:token', component: ConfirmEmailComponent},
   { path: 'reset/password/:token', component: ResetPasswordComponent},
   { path: 'delete/:token', component: DeleteComponent},
+  { path: 'forget', component: ForgetPasswordComponent},
 
   { path: '**', redirectTo: ''}
 ];

@@ -53,31 +53,25 @@ export class SettingProfileComponent {
       const name: string = (new Date()).valueOf().toString() + Math.random().toString(36).substring(10) + this.f.fileSource.value.name.slice(this.f.fileSource.value.name.lastIndexOf('.'));
       formData.append('file', this.f.fileSource.value, name);
       this.imageService.upload(formData).subscribe(value1 => {
-        this.userService.updateProfile({
-          firstName: this.f.firstName.value,
-          middleName: this.f.middleName.value,
-          lastName: this.f.lastName.value,
-          biography: this.f.biography.value,
-          url: this.f.url.value,
-          profileImage: name
-        }).subscribe(value => {
-          this.isSummited.emit(true);
-          this.alertManagerManager.addAlert('done', 'alert-success');
-        });
+        this.profileUp(name);
       });
     } else {
-      this.userService.updateProfile({
-        firstName: this.f.firstName.value,
-        middleName: this.f.middleName.value,
-        lastName: this.f.lastName.value,
-        biography: this.f.biography.value,
-        url: this.f.url.value,
-        profileImage: ''
-      }).subscribe(value => {
-        this.isSummited.emit(true);
-        this.alertManagerManager.addAlert('done', 'alert-success');
-      });
+      this.profileUp('');
     }
+  }
+
+  private profileUp(profileImage: string) {
+    this.userService.updateProfile({
+      firstName: this.f.firstName.value,
+      middleName: this.f.middleName.value,
+      lastName: this.f.lastName.value,
+      biography: this.f.biography.value,
+      url: this.f.url.value,
+      profileImage: profileImage
+    }).subscribe(value => {
+      this.alertManagerManager.addAlert('done', 'alert-success');
+      this.isSummited.emit(true);
+    });
   }
 
   onFileChange(event: any): void {
