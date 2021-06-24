@@ -26,3 +26,18 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-transition:color 0s ease-in-out,background-color 0s ease-in-out,border-color 0s ease-in-out,box-shadow 0s ease-in-out;
   transition:color 0s ease-in-out,background-color 0s ease-in-out,border-color 0s ease-in-out,box-shadow 0s ease-in-out
 }
+
+.zoom {
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+}
+
+.zoom:hover {
+  -moz-transform: scale(1.025);
+  -webkit-transform: scale(1.025);
+  transform: scale(1.025);
+}

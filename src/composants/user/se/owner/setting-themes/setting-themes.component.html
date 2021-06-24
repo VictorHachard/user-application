@@ -1,0 +1,37 @@
+<div *ngFor="let response of alertManagerManager.responseList">
+  <div class="alert {{ response.alert }}" role="alert">
+    {{ response.message }}
+  </div>
+</div>
+
+<h3 class="pb-2 border-bottom">Themes</h3>
+
+<div *ngIf="activeThemeForm" [formGroup]="activeThemeForm" class="list-group mb-3">
+  <div *ngFor="let theme of themeList" href="#" class="list-group-item p-0 pe-3">
+    <div class="d-flex w-100 justify-content-between">
+      <div class="border-end">
+        <img [src]="'http://localhost:8080/api/v1/image/' + theme.image" style="max-height: 200px" class="img-fluid border-bottom" alt="{{theme.name}}">
+        <p class="ps-2 m-1 text-center">{{theme.name}}</p>
+      </div>
+      <div class="form-check pt-2 d-inline">
+        <input class="form-check-input" formControlName="{{'theme' + theme.id}}" [value]="theme.active" type="checkbox" (change)="activeTheme(theme.id!)">
+        <label class="form-check-label">Active theme</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Add Themes</p>
+
+<form class="mb-3" *ngIf="addThemeForm" [formGroup]="addThemeForm" (ngSubmit)="addTheme()">
+  <div class="mb-3">
+    <label class="form-label">Image</label><br>
+     <img *ngIf="trustedUrl" [src]="trustedUrl" class="mb-2" height="150" alt="">
+    <input class="form-control" formControlName="fileSource" (change)="onFileChange($event)" type="file">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" formControlName="name" class="form-control">
+  </div>
+  <button type="submit" [disabled]="addThemeForm.invalid" class="btn btn-sm btn-primary">Add theme</button>
+</form>

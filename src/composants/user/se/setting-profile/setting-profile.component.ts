@@ -40,7 +40,7 @@ export class SettingProfileComponent {
       lastName: new FormControl(this.user.lastName),
       biography: new FormControl(this.user.biography),
       url: new FormControl(this.user.url),
-      fileSource: new FormControl('', )
+      fileSource: new FormControl('')
     });
     this.privacyForm = new FormGroup({
       privacy: new FormControl(this.user.privacy, [Validators.required])

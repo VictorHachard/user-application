@@ -13,8 +13,18 @@ export class ThemeService {
   }
 
   getAllDto(): Observable<Theme[]> {
-    return this.http.get<Theme[]>(`${environment.apiUrl}/theme/dto`, {
-    });
+    return this.http.get<Theme[]>(`${environment.apiUrl}/theme/dto`);
   }
 
+  getAppearanceAllDto(): Observable<Theme[]> {
+    return this.http.get<Theme[]>(`${environment.apiUrl}/theme/dto/appearance`);
+  }
+
+  addTheme(b: {imageUrl: string; name: string}) {
+    return this.http.post(`${environment.apiUrl}/theme/create`, b);
+  }
+
+  updateThemeActive(id: number, b: {active: boolean}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}theme/update/active/${id}`, b);
+  }
 }

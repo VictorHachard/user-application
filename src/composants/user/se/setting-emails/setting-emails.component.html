@@ -66,13 +66,17 @@
 
 <form class="mb-3" [formGroup]="emailPreference" *ngIf="emailPreference">
   <div class="form-check">
-    <input class="form-check-input" formControlName="preference" [value]="'ALL'" (click)="preferences('ALL')" type="radio" >
-    <label class="form-check-label">Receive all emails</label>
+    <label class="form-check-label" style="cursor: pointer;">
+      <span>Receive all emails</span>
+      <input class="form-check-input" formControlName="preference" [value]="'ALL'" (click)="preferences('ALL')" type="radio">
+    </label>
     <p class="text-muted">We’ll occasionally contact you with the latest news.</p>
   </div>
   <div class="form-check">
-    <input class="form-check-input" formControlName="preference" [value]="'ONLY_ACCOUNT'" (click)="preferences('ONLY_ACCOUNT')" type="radio">
-    <label class="form-check-label">Only receive account related emails</label>
+    <label class="form-check-label" style="cursor: pointer;">
+      <span>Only receive account related emails</span>
+      <input class="form-check-input" formControlName="preference" [value]="'ONLY_ACCOUNT'" (click)="preferences('ONLY_ACCOUNT')" type="radio">
+    </label>
     <p class="text-muted">We’ll only send you legal or administrative emails, and any emails you’re specifically subscribed to.</p>
   </div>
 </form>

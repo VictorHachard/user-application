@@ -10,7 +10,9 @@ $secondary-black: #3b3b3b;
   border-color: $tertiary-color;
 
   .border,
-  .border-bottom {
+  .border-bottom,
+  .border-end,
+  .border-start {
     border-color: $quaternary-color!important;
   }
 

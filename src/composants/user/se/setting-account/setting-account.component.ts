@@ -45,4 +45,8 @@ export class SettingAccountComponent {
   delete(): void {
 
   }
+
+  export(): void {
+
+  }
 }

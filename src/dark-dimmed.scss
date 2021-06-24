@@ -11,7 +11,9 @@ $secondary-white: #c1c1c1;
   border-color: $tertiary-color;
 
   .border,
-  .border-bottom {
+  .border-bottom,
+  .border-end,
+  .border-start {
     border-color: $quaternary-color!important;
   }
 

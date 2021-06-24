@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {UserSecurity} from "../../../_models/user.security";
 import {AuthenticationService} from "../../../_services/authentication.service";
 import {UserService} from "../../../_services/_api/user.service";
 import {ImageService} from "../../../_services/_api/image.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-profile',

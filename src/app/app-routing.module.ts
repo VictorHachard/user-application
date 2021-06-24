@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: 'setting', component: SettingComponent, canActivate: [AuthGuardService]},
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]},
   { path: 'settings/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
+  { path: 'settings/owner/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
+  { path: 'settings/administrator/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
 
   { path: 'profile/:username', component: ProfileComponent},
 

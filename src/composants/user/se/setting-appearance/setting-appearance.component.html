@@ -13,8 +13,8 @@
 
 <form class="mb-3" [formGroup]="themeForm" *ngIf="themeList">
   <div class="row">
-    <div class="ish-from col mb-3" *ngFor="let th of themeList">
-      <label class="form-check-label border rounded-2" style="{{th.id === value ? 'border-color: #0d6efd!important' : ''}}">
+    <div class="ish-from col mb-3" *ngFor="let th of themeList" style="min-width: 200px">
+      <label class="form-check-label border rounded-2 zoom" style="cursor: pointer;{{th.id === value ? 'border-color: #0d6efd!important' : ''}}">
         <img [src]="'http://localhost:8080/api/v1/image/' + th.image" class="img-fluid border-bottom rounded-top">
         <div class="m-2">
           <input class="mt-1 form-check-input" formControlName="id" (click)="theme(th.id)" type="radio" [value]="th.id">

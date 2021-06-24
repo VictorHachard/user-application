@@ -36,6 +36,8 @@ import {SettingSecurityLogComponent} from '../composants/user/se/setting-securit
 import {ProfileComponent} from '../composants/user/profile/profile.component';
 import {ForgetPasswordComponent} from '../composants/user/actions/forget-password/forget-password.component';
 import {SettingBlockedUsersComponent} from '../composants/user/se/setting-blocked-users/setting-blocked-users.component';
+import {SettingInteractionLimitsComponent} from '../composants/user/se/setting-interaction-limits/setting-interaction-limits.component';
+import {SettingThemesComponent} from '../composants/user/se/owner/setting-themes/setting-themes.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import {SettingBlockedUsersComponent} from '../composants/user/se/setting-blocke
     SettingSecurityLogComponent,
     ProfileComponent,
     ForgetPasswordComponent,
-    SettingBlockedUsersComponent
+    SettingBlockedUsersComponent,
+    SettingInteractionLimitsComponent,
+    SettingThemesComponent
   ],
   imports: [
     BrowserModule,

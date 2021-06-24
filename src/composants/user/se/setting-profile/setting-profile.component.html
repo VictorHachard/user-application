@@ -49,13 +49,17 @@
 
 <form class="mb-3" [formGroup]="privacyForm" *ngIf="privacyForm">
   <div class="form-check">
-    <input class="form-check-input" formControlName="privacy" [value]="'PUBLIC'" (click)="privacy('PUBLIC')" type="radio" >
-    <label class="form-check-label">Public</label>
+    <label class="form-check-label" style="cursor: pointer;">
+      <span>Public</span>
+      <input class="form-check-input" formControlName="privacy" [value]="'PUBLIC'" (click)="privacy('PUBLIC')" type="radio" >
+    </label>
     <p class="text-muted">Everyone can see your profile.</p>
   </div>
   <div class="form-check">
-    <input class="form-check-input" formControlName="privacy" [value]="'PRIVATE'" (click)="privacy('PRIVATE')" type="radio">
-    <label class="form-check-label">Private</label>
+    <label class="form-check-label" style="cursor: pointer;">
+      <span>Private</span>
+      <input class="form-check-input" formControlName="privacy" [value]="'PRIVATE'" (click)="privacy('PRIVATE')" type="radio">
+    </label>
     <p class="text-muted">No one can see your profile.</p>
   </div>
 </form>

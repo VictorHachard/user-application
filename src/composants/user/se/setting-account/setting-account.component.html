@@ -17,6 +17,10 @@
   <button type="submit" [disabled]="usernameForm.invalid" class="btn btn-sm btn-primary">Change username</button>
 </form>
 
+<h3 class="pb-2 border-bottom">Export account data</h3>
+<p>Export all data related to you. Exports will be available for 7 days.</p>
+<button type="button" (click)="export()" class="btn btn-sm btn-primary">Start export</button>
+
 <h3 class="pb-2 border-bottom">Delete account</h3>
 <p>Once you delete your account, there is no going back. Please be certain.</p>
 

@@ -23,9 +23,11 @@ export class SettingAppearanceComponent {
   user!: UserSecurity;
   @Output() isSummited = new EventEmitter<boolean>();
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService, private themeService: ThemeService) {
+  constructor(private authenticationService: AuthenticationService,
+              private userService: UserService,
+              private themeService: ThemeService) {
     this.authenticationService.currentUser.subscribe(x => {this.user = x; this.ngOnInit();});
-    this.themeService.getAllDto().subscribe(value => {
+    this.themeService.getAppearanceAllDto().subscribe(value => {
       this.themeList = value;
     });
   }
