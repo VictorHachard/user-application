@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../_models/user.security";
@@ -6,7 +6,6 @@ import {UserService} from "../../../../_services/_api/user.service";
 import {Utils} from "../../../../_helpers/utils";
 import {environment} from "../../../../environments/environment";
 import {AuthenticationService} from "../../../../_services/authentication.service";
-import {ThemeService} from "../../../../_services/_api/theme.service";
 
 @Component({
   selector: 'app-setting-security',
@@ -39,10 +38,11 @@ export class SettingSecurityComponent {
 
   password(): void {
     this.userService.actionSetPassword({oldPassword: this.f.oldPassword.value, newPassword: this.f.newPassword.value}).subscribe(value => {
-      this.alertManagerManager.addAlert('done', 'alert-success');
+      this.alertManagerManager.addAlertIcon('password');
+      this.alertManagerManager.addAlert('Your password has been changed', 'alert-success');
       this.isSummited.emit(true);
     }, error => {
-      this.alertManagerManager.addAlert('error', 'alert-danger');
+      this.alertManagerManager.addAlert('Your old password is incorrect', 'alert-danger');
     });
   }
 }

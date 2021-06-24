@@ -33,9 +33,9 @@ import {SettingSecurityComponent} from '../composants/user/se/setting-security/s
 import {SettingEmailsComponent} from '../composants/user/se/setting-emails/setting-emails.component';
 import {SettingsComponent} from '../composants/user/se/settings/settings.component';
 import {SettingSecurityLogComponent} from '../composants/user/se/setting-security-log/setting-security-log.component';
-import { ProfileComponent } from '../composants/user/profile/profile.component';
-import { ForgetPasswordComponent } from '../composants/user/actions/forget-password/forget-password.component';
-import { SettingBlockedUsersComponent } from '../composants/user/se/setting-blocked-users/setting-blocked-users.component';
+import {ProfileComponent} from '../composants/user/profile/profile.component';
+import {ForgetPasswordComponent} from '../composants/user/actions/forget-password/forget-password.component';
+import {SettingBlockedUsersComponent} from '../composants/user/se/setting-blocked-users/setting-blocked-users.component';
 
 @NgModule({
   declarations: [

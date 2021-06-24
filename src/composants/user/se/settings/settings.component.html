@@ -9,7 +9,7 @@
         <p class="m-0">Your personal account</p>
     </div>
     <div class="ms-auto px-2 bd-highlight">
-      <button class="btn mt-3 btn-sm btn-primary d-inline float-end">Go to your personal profile</button>
+      <button class="btn mt-3 btn-sm btn-primary d-inline float-end" routerLink="/profile/{{user.username}}">Go to your personal profile</button>
     </div>
   </div>
 
@@ -36,7 +36,7 @@
       <app-setting-security *ngIf="param === 'security'" (isSummited)="refresh($event)"></app-setting-security>
       <app-setting-emails *ngIf="param === 'emails'" (isSummited)="refresh($event)"></app-setting-emails>
       <app-setting-security-log *ngIf="param === 'security-log'" (isSummited)="refresh($event)"></app-setting-security-log>
-      <app-setting-security-log *ngIf="param === 'blocked-users'" (isSummited)="refresh($event)"></app-setting-security-log>
+      <app-setting-blocked-users *ngIf="param === 'blocked-users'" (isSummited)="refresh($event)"></app-setting-blocked-users>
     </div>
   </div>
 </section>

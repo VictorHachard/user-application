@@ -10,19 +10,20 @@ import {HomeComponent} from "../composants/home/home.component";
 import {SettingsComponent} from "../composants/user/se/settings/settings.component";
 import {ProfileComponent} from "../composants/user/profile/profile.component";
 import {ForgetPasswordComponent} from "../composants/user/actions/forget-password/forget-password.component";
+import {AuthGuardService, NotAuthGuardService} from "../_helpers/_guards/auth-guard.service";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'home', component: HomeComponent},
 
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: 'login', component: LoginComponent, canActivate: [NotAuthGuardService]},
+  { path: 'register', component: RegisterComponent, canActivate: [NotAuthGuardService]},
 
-  { path: 'setting', component: SettingComponent},
-  { path: 'settings', component: SettingsComponent},
-  { path: 'settings/:param', component: SettingsComponent},
+  { path: 'setting', component: SettingComponent, canActivate: [AuthGuardService]},
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]},
+  { path: 'settings/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
 
-  { path: 'profile/:param', component: ProfileComponent},
+  { path: 'profile/:username', component: ProfileComponent},
 
   { path: 'confirm/email/:token', component: ConfirmEmailComponent},
   { path: 'reset/password/:token', component: ResetPasswordComponent},

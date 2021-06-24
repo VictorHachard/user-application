@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../_models/user.security";
@@ -41,7 +41,6 @@ export class SettingEmailsComponent {
     for (let e of this.user!.emailList!) {
       this.backupEmailForm.addControl('email' + e.id!.toString(), new FormControl(e.backup))
     }
-    console.log(this.user)
     this.reload(); //TODO find better way
   }
 

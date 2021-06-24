@@ -1,6 +1,6 @@
 // noinspection JSIgnoredPromiseFromCall
 
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../_helpers/alert.manager";
 import {UserService} from "../../../../_services/_api/user.service";

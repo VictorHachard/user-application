@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SettingBlockedUsersComponent } from './setting-blocked-users.component';
+import {SettingBlockedUsersComponent} from './setting-blocked-users.component';
 
 describe('SettingBlockedUsersComponent', () => {
   let component: SettingBlockedUsersComponent;

@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {Component, EventEmitter, Output} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../_models/user.security";
 import {UserService} from "../../../../_services/_api/user.service";
@@ -15,6 +15,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class SettingProfileComponent {
 
   profileForm!: FormGroup;
+  privacyForm!: FormGroup;
   alertManagerManager: AlertManager = new AlertManager();
   _reload = true;
   trustedUrl: any;
@@ -40,6 +41,9 @@ export class SettingProfileComponent {
       biography: new FormControl(this.user.biography),
       url: new FormControl(this.user.url),
       fileSource: new FormControl('', )
+    });
+    this.privacyForm = new FormGroup({
+      privacy: new FormControl(this.user.privacy, [Validators.required])
     });
   }
 
@@ -86,4 +90,10 @@ export class SettingProfileComponent {
     }
   }
 
+  privacy(id: string) {
+    this.userService.updateProfilePrivacy({profilePrivacy: id}).subscribe(value => {
+      this.alertManagerManager.addAlertIcon('privacy');
+      this.isSummited.emit(true);
+    });
+  }
 }

@@ -25,6 +25,10 @@ export class UserService {
     });
   }
 
+  getProfile(username: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}user/dto/profile/{username}`);
+  }
+
   addEmail(b: {email: string}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}user/add/email`, b);
   }
@@ -43,6 +47,10 @@ export class UserService {
 
   updateEmailPriority(b: {email: string}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}user/update/email/priority`, b);
+  }
+
+  updateProfilePrivacy(b: {profilePrivacy: string}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}user/update/profile-privacy`, b);
   }
 
   updateUsername(b: {username: string}): Observable<any> {
