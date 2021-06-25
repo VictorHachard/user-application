@@ -68,7 +68,7 @@
       <input type="color" class="form-control form-control-color" formControlName="secondaryTextColor" (change)="preview()" value="#fffff" title="Choose your color">
     </div>
   </div>
-  <img *ngIf="trustedUrl" [src]="trustedUrl" class="mb-2" height="150" alt="">
+  <img *ngIf="trustedUrl" [src]="trustedUrl" class="mb-3" height="150" alt="">
+  <br *ngIf="trustedUrl">
   <button type="submit" [disabled]="addThemeForm.invalid" class="btn btn-sm btn-primary">Add theme</button>
-
 </form>

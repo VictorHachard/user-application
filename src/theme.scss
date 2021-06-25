@@ -11,6 +11,10 @@ $secondary-text-color: var(--secondary-text-color);
   border-color: $tertiary-color;
 }
 
+.text-muted {
+  color: $secondary-text-color!important;
+}
+
 .border,
 .border-top,
 .border-bottom,
@@ -50,8 +54,8 @@ select:hover {
 input:focus,
 textarea:focus,
 select:focus {
-  background-color: $quaternary-color;
-  color: $primary-text-color;
+  background-color: $quaternary-color!important;
+  color: $primary-text-color!important;
 }
 
 .list-group .list-group-item {
@@ -61,7 +65,7 @@ select:focus {
 .navbar,
 .navbar a,
 .navbar-toggler-icon,
-.nav .list-group .list-group-item, {
+.nav .list-group .list-group-item {
   background-color: $tertiary-color!important;
   color: $primary-text-color!important;
   border-color: $quaternary-color!important;
@@ -86,7 +90,9 @@ select:focus {
   color: $secondary-text-color;
 }
 
-.set-nav .nav-pills p {
+.set-nav .nav-pills p,
+.card,
+.card-body {
   background-color: $secondary-color;
   color: $secondary-text-color;
   border-color: $tertiary-color!important;
