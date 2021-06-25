@@ -9,7 +9,7 @@
   <h5 *ngIf="alertManagerManager.iconList.includes('theme')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
 </div>
 
-<div *ngIf="activeThemeForm" [formGroup]="activeThemeForm" class="list-group mb-3">
+<div *ngIf="themeList && themeList.length > 0 && activeThemeForm; else noData" [formGroup]="activeThemeForm" class="list-group mb-3">
   <div *ngFor="let theme of themeList" href="#" class="list-group-item p-0 pe-3">
     <div class="d-flex w-100 justify-content-between">
       <div class="border-end">
@@ -23,6 +23,13 @@
     </div>
   </div>
 </div>
+<ng-template #noData>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4 class="m-0 text-center">No themes</h4>
+    </div>
+  </div>
+</ng-template>
 
 <div class="mb-3 d-flex bd-highlight">
   <p class="m-0">Add Themes</p>
@@ -30,14 +37,38 @@
 </div>
 
 <form class="mb-3" *ngIf="addThemeForm" [formGroup]="addThemeForm" (ngSubmit)="addTheme()">
-  <div class="mb-3">
-    <label class="form-label">Image</label><br>
-     <img *ngIf="trustedUrl" [src]="trustedUrl" class="mb-2" height="150" alt="">
+  <div class="input-group mb-3">
+    <span class="input-group-text">Name</span>
+    <input type="text" formControlName="name" class="form-control">
     <input class="form-control" formControlName="fileSource" (change)="onFileChange($event)" type="file">
   </div>
-  <div class="mb-3">
-    <label class="form-label">Name</label>
-    <input type="text" formControlName="name" class="form-control">
+  <div class="color-ish mb-3">
+    <div class="input-group">
+      <span class="input-group-text">Primary color</span>
+      <input type="color" class="form-control form-control-color" formControlName="primaryColor" (change)="preview()" value="#fffff" title="Choose your color">
+    </div>
+    <div class="input-group">
+      <span class="input-group-text">Secondary color</span>
+      <input type="color" class="form-control form-control-color" formControlName="secondaryColor" (change)="preview()" value="#fffff" title="Choose your color">
+    </div>
+    <div class="input-group">
+      <span class="input-group-text">Tertiary color</span>
+      <input type="color" class="form-control form-control-color" formControlName="tertiaryColor" (change)="preview()" value="#fffff" title="Choose your color">
+    </div>
+    <div class="input-group">
+      <span class="input-group-text">Quaternary color</span>
+      <input type="color" class="form-control form-control-color" formControlName="quaternaryColor" (change)="preview()" value="#fffff" title="Choose your color">
+    </div>
+    <div class="input-group">
+      <span class="input-group-text">Primary text color</span>
+      <input type="color" class="form-control form-control-color" formControlName="primaryTextColor" (change)="preview()" value="#fffff" title="Choose your color">
+    </div>
+    <div class="input-group">
+      <span class="input-group-text">Secondary text color</span>
+      <input type="color" class="form-control form-control-color" formControlName="secondaryTextColor" (change)="preview()" value="#fffff" title="Choose your color">
+    </div>
   </div>
+  <img *ngIf="trustedUrl" [src]="trustedUrl" class="mb-2" height="150" alt="">
   <button type="submit" [disabled]="addThemeForm.invalid" class="btn btn-sm btn-primary">Add theme</button>
+
 </form>

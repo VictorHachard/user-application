@@ -5,4 +5,10 @@ export class Theme extends AbstractModel {
   active?: boolean;
   order?: number;
   image?: string;
+  primaryColor?: string;
+  secondaryColor?: string;
+  tertiaryColor?: string;
+  quaternaryColor?: string;
+  primaryTextColor?: string;
+  secondaryTextColor?: string;
 }

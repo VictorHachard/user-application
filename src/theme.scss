@@ -1,0 +1,123 @@
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$tertiary-color: var(--tertiary-color);
+$quaternary-color: var(--quaternary-color);
+$primary-text-color: var(--primary-text-color);
+$secondary-text-color: var(--secondary-text-color);
+
+.theme {
+  background-color: $primary-color;
+  color: $primary-text-color;
+  border-color: $tertiary-color;
+}
+
+.border,
+.border-top,
+.border-bottom,
+.border-end,
+.border-start,
+.input-group-text {
+  border-color: $quaternary-color!important;
+}
+
+input,
+textarea,
+select,
+.form-control {
+  background-color: $secondary-color;
+  color: $primary-text-color;
+  border-color: $quaternary-color;
+}
+
+.form-control::-webkit-file-upload-button,
+.input-group-text {
+  background-color: $tertiary-color;
+  color: $primary-text-color;
+}
+
+.form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
+  background-color: $quaternary-color!important;
+  color: $primary-text-color!important;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  background-color: $tertiary-color;
+  color: $primary-text-color
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: $quaternary-color;
+  color: $primary-text-color;
+}
+
+.list-group .list-group-item {
+  color: $primary-text-color;
+}
+
+.navbar,
+.navbar a,
+.navbar-toggler-icon,
+.nav .list-group .list-group-item, {
+  background-color: $tertiary-color!important;
+  color: $primary-text-color!important;
+  border-color: $quaternary-color!important;
+}
+
+.dropdown-menu,
+.dropdown-menu .dropdown-item {
+  background-color: $tertiary-color!important;
+}
+
+.set-nav .nav-link,
+.list-group .list-group-item,
+.nav-pills {
+  background-color: $primary-color;
+  color: $primary-text-color;
+  border-color: $quaternary-color!important;
+}
+
+.set-nav .nav-link.active,
+.set-nav .nav-link:hover {
+  background-color: $tertiary-color!important;
+  color: $secondary-text-color;
+}
+
+.set-nav .nav-pills p {
+  background-color: $secondary-color;
+  color: $secondary-text-color;
+  border-color: $tertiary-color!important;
+}
+
+.pagination .page-item span {
+  background-color: $secondary-color;
+  color: $primary-text-color;
+  border-color: $tertiary-color;
+}
+
+.pagination .page-item.disabled span {
+  background-color: $secondary-color;
+  color: $secondary-text-color;
+  border-color: $tertiary-color;
+}
+
+.alert-success {
+  color: rgb(168, 234, 183) !important;
+  background-color: rgb(23, 54, 30) !important;
+  border-color: rgb(41, 99, 54) !important;
+}
+
+.alert-danger {
+  color: rgb(230, 155, 162) !important;
+  background-color: rgb(64, 11, 16) !important;
+  border-color: rgb(129, 23, 34) !important;
+}
+
+.alert-warning {
+  color: rgb(251, 219, 127);
+  background-color: rgb(81, 62, 0);
+  border-color: rgb(167, 126, 0);
+}

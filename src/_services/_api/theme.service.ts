@@ -20,8 +20,25 @@ export class ThemeService {
     return this.http.get<Theme[]>(`${environment.apiUrl}theme/dto/active`);
   }
 
-  addTheme(b: {imageUrl: string; name: string}) {
+  addTheme(b: {imageUrl: string,
+               name: string,
+               primaryColor: string,
+               secondaryColor: string,
+               tertiaryColor: string,
+               quaternaryColor: string,
+               primaryTextColor: string,
+               secondaryTextColor: string}) {
     return this.http.post(`${environment.apiUrl}theme/create`, b);
+  }
+
+  updateTheme(id: number, b: {name: string,
+                              primaryColor: string,
+                              secondaryColor: string,
+                              tertiaryColor: string,
+                              quaternaryColor: string,
+                              primaryTextColor: string,
+                              secondaryTextColor: string}) {
+    return this.http.post(`${environment.apiUrl}theme/update`, b);
   }
 
   updateThemeActive(id: number, b: {active: boolean}): Observable<any> {

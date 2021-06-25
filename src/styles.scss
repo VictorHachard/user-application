@@ -41,3 +41,34 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-transform: scale(1.025);
   transform: scale(1.025);
 }
+
+.color-ish .input-group span {
+  min-width: 200px;
+}
+
+.color-ish .input-group .input-group-text,
+.color-ish .input-group .form-control-color {
+  border-radius: 0;
+}
+
+.color-ish .input-group:not(:last-child) .input-group-text,
+.color-ish .input-group:not(:last-child) .form-control-color {
+  border-bottom: 0;
+}
+
+.color-ish .input-group:last-child .input-group-text {
+  border-bottom-left-radius: .25rem;
+}
+
+.color-ish .input-group:first-child .input-group-text {
+  border-top-left-radius: .25rem;
+}
+
+.color-ish .input-group:last-child .form-control-color {
+  border-bottom-right-radius: .25rem;
+}
+
+.color-ish .input-group:first-child .form-control-color {
+  border-top-right-radius: .25rem;
+}
+

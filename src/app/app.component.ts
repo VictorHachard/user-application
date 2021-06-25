@@ -22,9 +22,19 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.currentUser) {
-      this.value = this.currentUser.themeSimplifiedDto!.name!.replace(' ', '-').toLowerCase();
+      document.documentElement.style.setProperty('--primary-color', this.currentUser.themeSimplifiedDto!.primaryColor!);
+      document.documentElement.style.setProperty('--secondary-color', this.currentUser.themeSimplifiedDto!.secondaryColor!);
+      document.documentElement.style.setProperty('--tertiary-color', this.currentUser.themeSimplifiedDto!.tertiaryColor!);
+      document.documentElement.style.setProperty('--quaternary-color', this.currentUser.themeSimplifiedDto!.quaternaryColor!);
+      document.documentElement.style.setProperty('--primary-text-color', this.currentUser.themeSimplifiedDto!.primaryTextColor!);
+      document.documentElement.style.setProperty('--secondary-text-color', this.currentUser.themeSimplifiedDto!.secondaryTextColor!);
     } else {
-      this.value = 'default-light';
+      document.documentElement.style.setProperty('--primary-color', '#f1f1f1');
+      document.documentElement.style.setProperty('--secondary-color', '#eaeaea');
+      document.documentElement.style.setProperty('--tertiary-color', '#e3e3e3');
+      document.documentElement.style.setProperty('--quaternary-color', '#d4d4d4');
+      document.documentElement.style.setProperty('--primary-text-color', '#1a1a1a');
+      document.documentElement.style.setProperty('--secondary-text-color', '#3b3b3b');
     }
   }
 

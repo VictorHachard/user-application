@@ -9,7 +9,7 @@
   <h5 *ngIf="alertManagerManager.iconList.includes('group')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
 </div>
 
-<div *ngIf="activeGroupForm" [formGroup]="activeGroupForm" class="list-group mb-3">
+<div *ngIf="groupList && groupList.length > 0 && activeGroupForm; else noData" [formGroup]="activeGroupForm" class="list-group mb-3">
   <div *ngFor="let group of groupList" href="#" class="list-group-item">
     <div class="d-flex w-100 justify-content-between">
       <b [style]="'color:' + group.color + '!important'">{{group.name}}</b>
@@ -20,6 +20,13 @@
     </div>
   </div>
 </div>
+<ng-template #noData>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4 class="m-0 text-center">No groups</h4>
+    </div>
+  </div>
+</ng-template>
 
 <div class="mb-3 d-flex bd-highlight">
   <p class="m-0">Add group</p>

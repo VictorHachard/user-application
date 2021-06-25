@@ -1,1 +1,29 @@
-<p>setting-blocked-users works!</p>
+<div *ngFor="let response of alertManagerManager.responseList">
+  <div class="alert {{ response.alert }}" role="alert">
+    {{ response.message }}
+  </div>
+</div>
+
+<div class="mb-3 d-flex bd-highlight border-bottom">
+  <h3 class="bd-highlight">Blocked users</h3>
+  <h5 *ngIf="alertManagerManager.iconList.includes('blocked')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+</div>
+
+<div *ngIf="false; else noData" class="list-group mb-3">
+  <!--<div *ngFor="let group of groupList" href="#" class="list-group-item">
+    <div class="d-flex w-100 justify-content-between">
+      <b [style]="'color:' + group.color + '!important'">{{group.name}}</b>
+      <div class="form-check d-inline">
+        <input class="form-check-input" formControlName="{{'group' + group.id}}" [value]="group.active" type="checkbox" (change)="activeGroup(group.id!)">
+        <label class="form-check-label">Active group</label>
+      </div>
+    </div>
+  </div>-->
+</div>
+<ng-template #noData>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4 class="m-0 text-center">No blocked users</h4>
+    </div>
+  </div>
+</ng-template>
