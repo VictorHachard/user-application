@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {LoginComponent} from '../composants/user/login/login.component';
 import {RegisterComponent} from '../composants/user/register/register.component';
-import {SettingComponent} from '../composants/user/setting/setting.component';
 import {ConnectFromCookieComponent} from '../composants/user/connect-from-cookie/connect-from-cookie.component';
 import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -26,18 +25,20 @@ import {ConfirmEmailComponent} from "../composants/user/actions/confirm-email/co
 import {ResetPasswordComponent} from "../composants/user/actions/reset-password/reset-password.component";
 import {DeleteComponent} from '../composants/user/actions/delete/delete.component';
 import {HomeComponent} from '../composants/home/home.component';
-import {SettingProfileComponent} from '../composants/user/se/setting-profile/setting-profile.component';
-import {SettingAccountComponent} from '../composants/user/se/setting-account/setting-account.component';
-import {SettingAppearanceComponent} from '../composants/user/se/setting-appearance/setting-appearance.component';
-import {SettingSecurityComponent} from '../composants/user/se/setting-security/setting-security.component';
-import {SettingEmailsComponent} from '../composants/user/se/setting-emails/setting-emails.component';
-import {SettingsComponent} from '../composants/user/se/settings/settings.component';
-import {SettingSecurityLogComponent} from '../composants/user/se/setting-security-log/setting-security-log.component';
+import {SettingProfileComponent} from '../composants/user/settings/user/setting-profile/setting-profile.component';
+import {SettingAccountComponent} from '../composants/user/settings/user/setting-account/setting-account.component';
+import {SettingAppearanceComponent} from '../composants/user/settings/user/setting-appearance/setting-appearance.component';
+import {SettingSecurityComponent} from '../composants/user/settings/user/setting-security/setting-security.component';
+import {SettingEmailsComponent} from '../composants/user/settings/user/setting-emails/setting-emails.component';
+import {SettingsComponent} from '../composants/user/settings/settings/settings.component';
+import {SettingSecurityLogComponent} from '../composants/user/settings/user/setting-security-log/setting-security-log.component';
 import {ProfileComponent} from '../composants/user/profile/profile.component';
 import {ForgetPasswordComponent} from '../composants/user/actions/forget-password/forget-password.component';
-import {SettingBlockedUsersComponent} from '../composants/user/se/setting-blocked-users/setting-blocked-users.component';
-import {SettingInteractionLimitsComponent} from '../composants/user/se/setting-interaction-limits/setting-interaction-limits.component';
-import {SettingThemesComponent} from '../composants/user/se/owner/setting-themes/setting-themes.component';
+import {SettingBlockedUsersComponent} from '../composants/user/settings/user/setting-blocked-users/setting-blocked-users.component';
+import {SettingInteractionLimitsComponent} from '../composants/user/settings/user/setting-interaction-limits/setting-interaction-limits.component';
+import {SettingThemesComponent} from '../composants/user/settings/owner/setting-themes/setting-themes.component';
+import { SettingGroupsComponent } from '../composants/user/settings/owner/setting-groups/setting-groups.component';
+import { SettingUsersComponent } from '../composants/user/settings/administrator/setting-users/setting-users.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,6 @@ import {SettingThemesComponent} from '../composants/user/se/owner/setting-themes
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
-    SettingComponent,
     ConnectFromCookieComponent,
     ConfirmEmailComponent,
     DeleteComponent,
@@ -61,7 +61,9 @@ import {SettingThemesComponent} from '../composants/user/se/owner/setting-themes
     ForgetPasswordComponent,
     SettingBlockedUsersComponent,
     SettingInteractionLimitsComponent,
-    SettingThemesComponent
+    SettingThemesComponent,
+    SettingGroupsComponent,
+    SettingUsersComponent
   ],
   imports: [
     BrowserModule,

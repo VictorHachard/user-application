@@ -1,0 +1,59 @@
+<section class="my-4 container" style="max-width: 980px">
+
+  <div class="mb-3 d-flex bd-highlight">
+    <div *ngIf="user.profileImage" class="p-2 bd-highlight">
+      <img [src]="'http://localhost:8080/api/v1/image/' + user.profileImage" class="rounded-circle" height="50" width="50" style="object-fit: cover;" alt="">
+    </div>
+    <div class="px-2 pt-1 bd-highlight">
+        <h2 class="m-0">{{user.username}}</h2>
+        <p class="m-0">Your personal account</p>
+    </div>
+    <div class="ms-auto px-2 bd-highlight">
+      <button class="btn mt-3 btn-sm btn-primary d-inline float-end" routerLink="/profile/{{user.username}}">Go to your personal profile</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="set-nav col-md-auto mb-3 align-items-start" style="min-width: 250px">
+      <div class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
+        <p class="mb-0 p-2 ps-3">Account settings</p>
+        <button class="nav-link {{param === 'profile' || !param ? 'active' : ''}}" type="button" routerLink="/settings/profile">Profile</button>
+        <button class="nav-link {{param === 'account' ? 'active' : ''}}" type="button" routerLink="/settings/account">Account</button>
+        <button class="nav-link {{param === 'appearance' ? 'active' : ''}}" type="button" routerLink="/settings/appearance">Appearance</button>
+        <button class="nav-link {{param === 'security' ? 'active' : ''}}" type="button" routerLink="/settings/security">Account Security</button>
+        <button class="nav-link {{param === 'emails' ? 'active' : ''}}" type="button" routerLink="/settings/emails">Emails</button>
+        <button class="nav-link {{param === 'security-log' ? 'active' : ''}}" type="button" routerLink="/settings/security-log">Security log</button>
+      </div>
+      <div class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
+        <p class="mb-0 p-2 ps-3">Moderation settings</p>
+        <button class="nav-link {{param === 'blocked-users' ? 'active' : ''}}" type="button" routerLink="/settings/blocked-users">Blocked users</button>
+        <button class="nav-link {{param === 'interaction-limits' ? 'active' : ''}}" type="button" routerLink="/settings/interaction-limits">Interaction limits</button>
+      </div>
+      <div class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
+        <p class="mb-0 p-2 ps-3">Administrator settings</p>
+        <button class="nav-link {{param === 'users' ? 'active' : ''}}" type="button" routerLink="/settings/administrator/users">Users</button>
+      </div>
+      <div class="nav flex-column nav-pills border rounded ish-table" aria-orientation="vertical">
+        <p class="mb-0 p-2 ps-3">Owner settings</p>
+        <button class="nav-link {{param === 'groups' ? 'active' : ''}}" type="button" routerLink="/settings/owner/groups">Groups</button>
+        <button class="nav-link {{param === 'themes' ? 'active' : ''}}" type="button" routerLink="/settings/owner/themes">Themes</button>
+      </div>
+    </div>
+    <div class="col">
+      <app-setting-profile *ngIf="param === 'profile' || !param" (isSummited)="refresh($event)"></app-setting-profile>
+      <app-setting-account *ngIf="param === 'account'" (isSummited)="refresh($event)"></app-setting-account>
+      <app-setting-appearance *ngIf="param === 'appearance'" (isSummited)="refresh($event)"></app-setting-appearance>
+      <app-setting-security *ngIf="param === 'security'" (isSummited)="refresh($event)"></app-setting-security>
+      <app-setting-emails *ngIf="param === 'emails'" (isSummited)="refresh($event)"></app-setting-emails>
+      <app-setting-security-log *ngIf="param === 'security-log'" (isSummited)="refresh($event)"></app-setting-security-log>
+
+      <app-setting-blocked-users *ngIf="param === 'blocked-users'" (isSummited)="refresh($event)"></app-setting-blocked-users>
+      <app-setting-interaction-limits *ngIf="param === 'interaction-limits'" (isSummited)="refresh($event)"></app-setting-interaction-limits>
+
+      <app-setting-users *ngIf="param === 'users'"></app-setting-users>
+
+      <app-setting-groups *ngIf="param === 'groups'"></app-setting-groups>
+      <app-setting-themes *ngIf="param === 'themes'"></app-setting-themes>
+    </div>
+  </div>
+</section>

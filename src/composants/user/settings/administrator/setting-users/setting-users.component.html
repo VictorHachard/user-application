@@ -1,0 +1,54 @@
+<div class="mb-3 d-flex bd-highlight border-bottom">
+  <h3 class="bd-highlight">Users administration</h3>
+  <h5 *ngIf="alertManagerManager.iconList.includes('username')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+</div>
+
+<form class="row g-3 mb-3" [formGroup]="searchForm" (ngSubmit)="ngAfterViewInit()">
+  <div class="col-auto">
+    <select class="form-select" formControlName="select">
+      <option class="dropdown-item" disabled value="undefined">Select an Option</option>
+      <option *ngFor="let col of searchColumns; let i = index" [value]="col">{{col}}</option>
+    </select>
+  </div>
+  <div class="col-auto">
+    <input type="text" class="form-control" formControlName="value" placeholder="Value">
+  </div>
+  <div class="col-auto">
+    <button type="submit" [disabled]="searchForm.invalid" class="btn btn-primary">Search</button>
+  </div>
+</form>
+
+<div class="spinner-container" *ngIf="dataSource.loading$ | async">
+  <mat-spinner></mat-spinner>
+</div>
+
+<table mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="asc" matSortDisableClear style="width: 100%;">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+    <td mat-cell *matCellDef="let element">{{element.id}}</td>
+  </ng-container>
+  <ng-container matColumnDef="username">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+    <td mat-cell *matCellDef="let element">{{element.username}}</td>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+    <td mat-cell *matCellDef="let element">{{element.emailList[0].email}}</td>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="input-group">
+        <button class="btn btn-sm btn-outline-primary">Edit</button>
+        <button class="btn btn-sm btn-outline-primary">Permission</button>
+        <button class="btn btn-sm btn-outline-primary">Role</button>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [length]="length" [pageSize]="10"
+               [pageSizeOptions]="[10, 25, 50]"></mat-paginator>

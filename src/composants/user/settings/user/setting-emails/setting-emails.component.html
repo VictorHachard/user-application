@@ -1,0 +1,85 @@
+<div *ngFor="let response of alertManagerManager.responseList">
+  <div class="alert {{ response.alert }}" role="alert">
+    {{ response.message }}
+  </div>
+</div>
+
+<h3 class="pb-2 border-bottom">Emails</h3>
+
+<div [formGroup]="backupEmailForm" class="list-group mb-3">
+  <div *ngFor="let email of user.emailList" href="#" class="list-group-item">
+    <div class="d-flex w-100 justify-content-between">
+      <p>{{email.email}} -
+        <span class="{{email.priority === 'PRIMARY' ? 'text-primary' : 'text-secondary'}}">{{email.priority | titlecase}}</span>
+      </p>
+      <div *ngIf="email.priority !== 'PRIMARY'">
+        <div class="form-check p-0 d-inline">
+          <input class="form-check-input" formControlName="{{'email' + email.id}}" [value]="email.backup" type="checkbox" (change)="backupEmail(email.id)">
+          <label class="form-check-label">Backup email</label>
+        </div>
+        <h6 (click)="removeEmail(email.id!)" style="cursor: pointer" class="d-inline ms-3 bi bi-trash text-danger"></h6>
+      </div>
+    </div>
+    <ul>
+      <li *ngIf="email.confirmed"><p class="text-success">Confirmed</p></li>
+      <li *ngIf="!email.confirmed"><p class="text-danger d-inline">Not confirmed</p>, <a type="button" class="text-primary" (click)="resendEmail(email.id!)">resend confirmation email</a></li>
+    </ul>
+  </div>
+</div>
+
+<form class="mb-3" [formGroup]="addEmailForm" (ngSubmit)="addEmail()">
+  <div class="mb-3">
+    <div class="d-flex bd-highlight">
+      <label class="form-label">Add email address</label>
+      <i *ngIf="alertManagerManager.iconList.includes('addEmail')" class="ms-auto bd-highlight mb-0 bi bi-check-lg text-success"></i>
+    </div>
+    <input type="text" formControlName="email" class="form-control">
+  </div>
+  <button type="submit" [disabled]="addEmailForm.invalid" class="btn btn-sm btn-primary">Add email</button>
+</form>
+
+<form class="mb-3" *ngIf="_reload" [formGroup]="primaryEmailForm">
+  <div class="mb-3">
+    <div class="d-flex bd-highlight">
+      <label class="form-label">Primary email address</label>
+      <i *ngIf="alertManagerManager.iconList.includes('primaryEmail')" class="ms-auto bd-highlight bi bi-check-lg text-success"></i>
+    </div>
+    <select formControlName="email" class="form-select" (ngModelChange)="primaryEmail($event)">
+      <option *ngFor="let email of user.emailList" value="{{email.email}}">{{email.email}}</option>
+    </select>
+  </div>
+</form>
+
+<!--<form class="mb-3" *ngIf="_reload" [formGroup]="backupEmailForm">
+  <div class="mb-3">
+    <label class="form-label">Backup email address</label>
+    <p>Your backup email address will be used as an additional destination for security-relevant account notifications and can also be used for password resets.</p>
+    <select formControlName="email" class="form-select" (ngModelChange)="backupEmail($event)">
+      <option value="ALL">Allow all verified emails</option>
+      <option value="ALL">Only allow primary email</option>
+      <option *ngFor="let email of user.emailList" value="{{email.email}}">{{email.email}}</option>
+    </select>
+  </div>
+</form>-->
+
+<div class="mb-3 d-flex bd-highlight border-bottom">
+  <h3 class="bd-highlight">Email preferences</h3>
+  <h5 *ngIf="alertManagerManager.iconList.includes('preferences')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+</div>
+
+<form class="mb-3" [formGroup]="emailPreference" *ngIf="emailPreference">
+  <div class="form-check">
+    <label class="form-check-label" style="cursor: pointer;">
+      <span>Receive all emails</span>
+      <input class="form-check-input" formControlName="preference" [value]="'ALL'" (click)="preferences('ALL')" type="radio">
+    </label>
+    <p class="text-muted">We’ll occasionally contact you with the latest news.</p>
+  </div>
+  <div class="form-check">
+    <label class="form-check-label" style="cursor: pointer;">
+      <span>Only receive account related emails</span>
+      <input class="form-check-input" formControlName="preference" [value]="'ONLY_ACCOUNT'" (click)="preferences('ONLY_ACCOUNT')" type="radio">
+    </label>
+    <p class="text-muted">We’ll only send you legal or administrative emails, and any emails you’re specifically subscribed to.</p>
+  </div>
+</form>

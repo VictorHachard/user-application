@@ -1,0 +1,33 @@
+<div *ngFor="let response of alertManagerManager.responseList">
+  <div class="alert {{ response.alert }}" role="alert">
+    {{ response.message }}
+  </div>
+</div>
+
+<h3 class="pb-2 border-bottom">Groups</h3>
+
+<div class="list-group mb-3">
+  <div *ngFor="let group of groupList" href="#" class="list-group-item">
+    <div class="d-flex w-100 justify-content-between">
+        <p>{{group.name}}</p>
+      <!--<div class="form-check pt-2 d-inline">
+        <input class="form-check-input" formControlName="{{'role' + theme.id}}" [value]="theme.active" type="checkbox" (change)="activeTheme(theme.id!)">
+        <label class="form-check-label">Active theme</label>
+      </div>-->
+    </div>
+  </div>
+</div>
+
+
+<div class="mb-3 d-flex bd-highlight">
+  <p class="m-0">Add group</p>
+  <i *ngIf="alertManagerManager.iconList.includes('group')" class="ms-auto bd-highlight mb-0 bi bi-check-lg text-success"></i>
+</div>
+
+<form class="mb-3" *ngIf="addGroupForm" [formGroup]="addGroupForm" (ngSubmit)="addGroup()">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" formControlName="name" class="form-control">
+  </div>
+  <button type="submit" [disabled]="addGroupForm.invalid" class="btn btn-sm btn-primary">Add group</button>
+</form>
