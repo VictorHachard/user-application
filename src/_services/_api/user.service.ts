@@ -9,8 +9,14 @@ import {Observable} from "rxjs";
 export class UserService {
   constructor(private http: HttpClient) { }
 
+
+
   count(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/user/count`);
+  }
+
+  get(id: number): Observable<UserSecurity> {
+    return this.http.get<UserSecurity>(`${environment.apiUrl}/user/dto/${id}`);
   }
 
   getAll(pageIndex = 0, pageSize = 10, sortBy= 'id', orderBy = 'asc', searchBy = 'null', searchValue = 'null'): Observable<UserSecurity[]> {

@@ -4,7 +4,10 @@
   </div>
 </div>
 
-<h3 class="pb-2 border-bottom">Themes</h3>
+<div class="mb-3 d-flex bd-highlight border-bottom">
+  <h3 class="bd-highlight">Themes</h3>
+  <h5 *ngIf="alertManagerManager.iconList.includes('theme')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+</div>
 
 <div *ngIf="activeThemeForm" [formGroup]="activeThemeForm" class="list-group mb-3">
   <div *ngFor="let theme of themeList" href="#" class="list-group-item p-0 pe-3">
@@ -21,7 +24,10 @@
   </div>
 </div>
 
-<p>Add Themes</p>
+<div class="mb-3 d-flex bd-highlight">
+  <p class="m-0">Add Themes</p>
+  <i *ngIf="alertManagerManager.iconList.includes('addTheme')" class="ms-auto bd-highlight mb-0 bi bi-check-lg text-success"></i>
+</div>
 
 <form class="mb-3" *ngIf="addThemeForm" [formGroup]="addThemeForm" (ngSubmit)="addTheme()">
   <div class="mb-3">

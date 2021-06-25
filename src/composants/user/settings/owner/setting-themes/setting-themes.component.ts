@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {AuthenticationService} from "../../../../../_services/authentication.service";
-import {UserService} from "../../../../../_services/_api/user.service";
 import {ThemeService} from "../../../../../_services/_api/theme.service";
 import {Theme} from "../../../../../_models/theme";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
@@ -50,7 +48,7 @@ export class SettingThemesComponent {
         name: this.f.name.value,
         imageUrl: name
       }).subscribe(value => {
-        this.alertManagerManager.addAlertIcon('theme');
+        this.alertManagerManager.addAlertIcon('addTheme');
         this.ngOnInit();
       });
     });
@@ -58,6 +56,7 @@ export class SettingThemesComponent {
 
   activeTheme(id: number) {
     this.themeService.updateThemeActive(id, {active: this.activeThemeForm.get('theme' + id)!.value}).subscribe(value => {
+      this.alertManagerManager.addAlertIcon('theme');
       this.ngOnInit();
     });
   }

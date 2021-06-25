@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {UserSecurity} from "../../../../_models/user.security";
 import {AuthenticationService} from "../../../../_services/authentication.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-settings',

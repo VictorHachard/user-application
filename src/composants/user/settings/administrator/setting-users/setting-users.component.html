@@ -3,17 +3,13 @@
   <h5 *ngIf="alertManagerManager.iconList.includes('username')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
 </div>
 
-<form class="row g-3 mb-3" [formGroup]="searchForm" (ngSubmit)="ngAfterViewInit()">
-  <div class="col-auto">
+<form class="mb-3" [formGroup]="searchForm" (ngSubmit)="ngAfterViewInit()">
+  <div class="input-group">
     <select class="form-select" formControlName="select">
       <option class="dropdown-item" disabled value="undefined">Select an Option</option>
       <option *ngFor="let col of searchColumns; let i = index" [value]="col">{{col}}</option>
     </select>
-  </div>
-  <div class="col-auto">
     <input type="text" class="form-control" formControlName="value" placeholder="Value">
-  </div>
-  <div class="col-auto">
     <button type="submit" [disabled]="searchForm.invalid" class="btn btn-primary">Search</button>
   </div>
 </form>
@@ -39,9 +35,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
     <td mat-cell *matCellDef="let element">
       <div class="input-group">
-        <button class="btn btn-sm btn-outline-primary">Edit</button>
-        <button class="btn btn-sm btn-outline-primary">Permission</button>
-        <button class="btn btn-sm btn-outline-primary">Role</button>
+        <button class="btn btn-sm btn-outline-primary" (click)="edit(element.id)">Edit</button>
       </div>
     </td>
   </ng-container>
@@ -52,3 +46,37 @@
 
 <mat-paginator [length]="length" [pageSize]="10"
                [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
+
+<div class="mt-3" *ngIf="user">
+
+  <h3 class="">Edit user: {{user.username}}</h3>
+
+  <div class="mb-3 d-flex bd-highlight border-bottom">
+    <h3 class="bd-highlight">Roles</h3>
+    <h5 *ngIf="alertManagerManager.iconList.includes('role')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+  </div>
+
+  <form class="mb-3" *ngIf="roleForm" [formGroup]="roleForm">
+    <div class="form-check">
+      <input class="form-check-input" formControlName="ROLE_OWNER" [value]="'ROLE_OWNER'" type="checkbox" (change)="roleChange('ROLE_OWNER')">
+      <label class="form-check-label">Owner</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" formControlName="ROLE_ADMINISTRATOR" [value]="'ROLE_ADMINISTRATOR'" type="checkbox" (change)="roleChange('ROLE_ADMINISTRATOR')">
+      <label class="form-check-label">Administrator</label>
+    </div>
+  </form>
+
+  <div class="mb-3 d-flex bd-highlight border-bottom">
+    <h3 class="bd-highlight">Groups</h3>
+    <h5 *ngIf="alertManagerManager.iconList.includes('group')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+  </div>
+
+  <form class="mb-3" *ngIf="groupList && groupForm" [formGroup]="groupForm">
+    <div class="form-check" *ngFor="let group of groupList">
+      <input class="form-check-input" formControlName="{{'group' + group.id}}" [value]="group.id" type="checkbox" (change)="groupChange(group.id!)">
+      <label class="form-check-label"><b [style]="'color:' + group.color + '!important'">{{group.name}}</b></label>
+    </div>
+  </form>
+
+</div>

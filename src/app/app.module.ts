@@ -37,8 +37,8 @@ import {ForgetPasswordComponent} from '../composants/user/actions/forget-passwor
 import {SettingBlockedUsersComponent} from '../composants/user/settings/user/setting-blocked-users/setting-blocked-users.component';
 import {SettingInteractionLimitsComponent} from '../composants/user/settings/user/setting-interaction-limits/setting-interaction-limits.component';
 import {SettingThemesComponent} from '../composants/user/settings/owner/setting-themes/setting-themes.component';
-import { SettingGroupsComponent } from '../composants/user/settings/owner/setting-groups/setting-groups.component';
-import { SettingUsersComponent } from '../composants/user/settings/administrator/setting-users/setting-users.component';
+import {SettingGroupsComponent} from '../composants/user/settings/owner/setting-groups/setting-groups.component';
+import {SettingUsersComponent} from '../composants/user/settings/administrator/setting-users/setting-users.component';
 
 @NgModule({
   declarations: [

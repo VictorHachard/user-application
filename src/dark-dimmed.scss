@@ -13,7 +13,8 @@ $secondary-white: #c1c1c1;
   .border,
   .border-bottom,
   .border-end,
-  .border-start {
+  .border-start,
+  .input-group-text {
     border-color: $quaternary-color!important;
   }
 
@@ -22,10 +23,11 @@ $secondary-white: #c1c1c1;
   select {
     background-color: $secondary-color;
     color: $white;
-    border-color: $tertiary-color;
+    border-color: $quaternary-color;
   }
 
-  .form-control::-webkit-file-upload-button {
+  .form-control::-webkit-file-upload-button,
+  .input-group-text {
     background-color: $tertiary-color;
     color: $white;
   }

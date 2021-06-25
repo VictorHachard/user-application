@@ -27,7 +27,7 @@ export class SettingAppearanceComponent {
               private userService: UserService,
               private themeService: ThemeService) {
     this.authenticationService.currentUser.subscribe(x => {this.user = x; this.ngOnInit();});
-    this.themeService.getAppearanceAllDto().subscribe(value => {
+    this.themeService.getAllActiveDto().subscribe(value => {
       this.themeList = value;
     });
   }

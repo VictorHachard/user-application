@@ -16,8 +16,16 @@ export class GroupService {
     return this.http.get<Group[]>(`${environment.apiUrl}group/dto`);
   }
 
-  addGroup(b: {name: string}) {
+  getAllActiveDto(): Observable<Group[]> {
+    return this.http.get<Group[]>(`${environment.apiUrl}group/dto/active`);
+  }
+
+  addGroup(b: {name: string, color: string}) {
     return this.http.post(`${environment.apiUrl}group/create`, b);
+  }
+
+  updateGroupActive(id: number, b: {active: boolean}) {
+    return this.http.post<any>(`${environment.apiUrl}group/update/active/${id}`, b);
   }
 
 }

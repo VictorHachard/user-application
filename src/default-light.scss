@@ -12,7 +12,8 @@ $secondary-black: #3b3b3b;
   .border,
   .border-bottom,
   .border-end,
-  .border-start {
+  .border-start,
+  .input-group-text {
     border-color: $quaternary-color!important;
   }
 
@@ -20,10 +21,11 @@ $secondary-black: #3b3b3b;
   textarea,
   select {
     background-color: $secondary-color;
-    border-color: $tertiary-color;
+    border-color: $quaternary-color;
   }
 
-  .form-control::-webkit-file-upload-button {
+  .form-control::-webkit-file-upload-button,
+  .input-group-text {
     background-color: $tertiary-color;
     color: $black;
   }

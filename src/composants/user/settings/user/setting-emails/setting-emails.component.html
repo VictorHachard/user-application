@@ -28,14 +28,14 @@
 </div>
 
 <form class="mb-3" [formGroup]="addEmailForm" (ngSubmit)="addEmail()">
-  <div class="mb-3">
-    <div class="d-flex bd-highlight">
-      <label class="form-label">Add email address</label>
-      <i *ngIf="alertManagerManager.iconList.includes('addEmail')" class="ms-auto bd-highlight mb-0 bi bi-check-lg text-success"></i>
-    </div>
-    <input type="text" formControlName="email" class="form-control">
+  <div class="d-flex bd-highlight">
+    <label class="form-label">Add email address</label>
+    <i *ngIf="alertManagerManager.iconList.includes('addEmail')" class="ms-auto bd-highlight mb-0 bi bi-check-lg text-success"></i>
   </div>
-  <button type="submit" [disabled]="addEmailForm.invalid" class="btn btn-sm btn-primary">Add email</button>
+  <div class="input-group mb-3">
+    <input type="text" formControlName="email" class="form-control">
+    <button type="submit" [disabled]="addEmailForm.invalid" class="btn btn-sm btn-primary">Add email</button>
+  </div>
 </form>
 
 <form class="mb-3" *ngIf="_reload" [formGroup]="primaryEmailForm">

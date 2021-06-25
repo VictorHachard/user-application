@@ -16,7 +16,7 @@ export class AlertManager {
   private async addIcon(id: any): Promise<void> {
     const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
     this._iconList.push(id);
-    await delay(5000);
+    await delay(3000);
     this._iconList = this._iconList.filter(obj => obj !== id);
   }
 
