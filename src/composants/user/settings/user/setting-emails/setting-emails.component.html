@@ -69,14 +69,14 @@
 
 <form class="mb-3" [formGroup]="emailPreference" *ngIf="emailPreference">
   <div class="form-check">
-    <label class="form-check-label" style="cursor: pointer;">
+    <label class="form-check-label">
       <span>Receive all emails</span>
       <input class="form-check-input" formControlName="preference" [value]="'ALL'" (click)="preferences('ALL')" type="radio">
     </label>
     <p class="text-muted">We’ll occasionally contact you with the latest news.</p>
   </div>
   <div class="form-check">
-    <label class="form-check-label" style="cursor: pointer;">
+    <label class="form-check-label">
       <span>Only receive account related emails</span>
       <input class="form-check-input" formControlName="preference" [value]="'ONLY_ACCOUNT'" (click)="preferences('ONLY_ACCOUNT')" type="radio">
     </label>

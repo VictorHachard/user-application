@@ -5,6 +5,9 @@ $quaternary-color: var(--quaternary-color);
 $primary-text-color: var(--primary-text-color);
 $secondary-text-color: var(--secondary-text-color);
 
+$primary-btn-color: var(--primary-btn-color);
+$secondary-btn-color: var(--secondary-btn-color);
+
 .theme {
   background-color: $primary-color;
   color: $primary-text-color;
@@ -27,7 +30,8 @@ $secondary-text-color: var(--secondary-text-color);
 input,
 textarea,
 select,
-.form-control {
+.form-control,
+.form-select {
   background-color: $secondary-color;
   color: $primary-text-color;
   border-color: $quaternary-color;
