@@ -36,6 +36,8 @@ export class AppComponent implements OnInit {
       document.documentElement.style.setProperty('--primary-text-color', '#1a1a1a');
       document.documentElement.style.setProperty('--secondary-text-color', '#3b3b3b');
     }
+    document.documentElement.style.setProperty('--primary-btn-color', '#0d6efd');
+    document.documentElement.style.setProperty('--secondary-btn-color', '#eaeaea');
   }
 
   logout() {

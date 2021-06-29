@@ -27,6 +27,10 @@ $secondary-btn-color: var(--secondary-btn-color);
   border-color: $quaternary-color!important;
 }
 
+.form-check-input:hover {
+  background-color: $primary-btn-color;
+}
+
 input,
 textarea,
 select,
