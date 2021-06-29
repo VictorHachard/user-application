@@ -8,10 +8,24 @@ $secondary-text-color: var(--secondary-text-color);
 $primary-btn-color: var(--primary-btn-color);
 $secondary-btn-color: var(--secondary-btn-color);
 
-.theme {
+body {
   background-color: $primary-color;
   color: $primary-text-color;
   border-color: $tertiary-color;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: $secondary-color!important;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $tertiary-color!important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: $quaternary-color!important;
 }
 
 .text-muted {

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserSecurity} from "../../../../_models/user.security";
 import {AuthenticationService} from "../../../../_services/authentication.service";
 import {ActivatedRoute} from "@angular/router";
@@ -8,7 +8,7 @@ import {ActivatedRoute} from "@angular/router";
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent {
+export class SettingsComponent implements OnInit {
 
   user!: UserSecurity;
   param!: string | null;
@@ -21,6 +21,7 @@ export class SettingsComponent {
 
   ngOnInit(): void {
     this.param = this.route.snapshot.paramMap.get('param');
+    this.refresh(true);
   }
 
   refresh($event: boolean): void {
