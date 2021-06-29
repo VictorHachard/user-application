@@ -9,10 +9,16 @@
 <div [formGroup]="backupEmailForm" class="list-group mb-3">
   <div *ngFor="let email of user.emailList" href="#" class="list-group-item">
     <div class="d-flex w-100 justify-content-between">
-      <p>{{email.email}} -
-        <span class="{{email.priority === 'PRIMARY' ? 'text-primary' : 'text-secondary'}}">{{email.priority | titlecase}}</span>
-      </p>
-      <div *ngIf="email.priority !== 'PRIMARY'">
+      <div class="bd-highlight">
+        <p class="mb-1">{{email.email}} -
+          <span class="badge {{email.priority === 'PRIMARY' ? 'bg-primary' : 'bg-secondary'}}">{{email.priority | titlecase}}</span>
+        </p>
+        <ul class="mb-1">
+          <li *ngIf="email.confirmed"><p class="text-success m-0">Confirmed</p></li>
+          <li *ngIf="!email.confirmed"><p class="text-danger d-inline m-0">Not confirmed</p>, <a type="button" class="text-primary" (click)="resendEmail(email.id!)">resend confirmation email</a></li>
+        </ul>
+      </div>
+      <div *ngIf="email.priority !== 'PRIMARY'" class="ms-auto bd-highlight">
         <div class="form-check p-0 d-inline">
           <input class="form-check-input" formControlName="{{'email' + email.id}}" [value]="email.backup" type="checkbox" (change)="backupEmail(email.id)">
           <label class="form-check-label">Backup email</label>
@@ -20,10 +26,6 @@
         <h6 (click)="removeEmail(email.id!)" style="cursor: pointer" class="d-inline ms-3 bi bi-trash text-danger"></h6>
       </div>
     </div>
-    <ul>
-      <li *ngIf="email.confirmed"><p class="text-success">Confirmed</p></li>
-      <li *ngIf="!email.confirmed"><p class="text-danger d-inline">Not confirmed</p>, <a type="button" class="text-primary" (click)="resendEmail(email.id!)">resend confirmation email</a></li>
-    </ul>
   </div>
 </div>
 

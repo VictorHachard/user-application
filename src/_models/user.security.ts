@@ -21,4 +21,5 @@ export class UserSecurity extends AbstractModel {
   roleDtoList?: Role[];
   profileImage?: string;
   emailPreferences?: string;
+  twoFactorEmail?: boolean;
 }

@@ -71,6 +71,10 @@ export class UserService {
     return this.http.post<any>(`${environment.apiUrl}user/update/appearance/${id}`, {});
   }
 
+  updateTwoFactorEmail(b: {active: boolean}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}user/update/two-factor/email`, b);
+  }
+
   actionConfirm(token: string): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}user/action/confirm/email`, token);
   }
