@@ -39,10 +39,14 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   login(): void {
-    this.authenticationService.login(this.f.username.value, this.f.password.value).pipe(first()).subscribe(value => {
+    this.authenticationService.login(btoa(this.f.username.value + ":" + this.f.password.value), '').pipe(first()).subscribe(value => {
         this.router.navigate([this.route.snapshot.queryParams['returnUrl'] || '/']);
     }, error => {
-      this.alertManagerManager.addAlert('The username or password is incorrect', 'alert-danger');
+      if (error.includes('2FA')) {
+        this.router.navigate(['/two-factor'], {queryParams: {auth: btoa(this.f.username.value + ":" + this.f.password.value)}});
+      } else {
+        this.alertManagerManager.addAlert('The username or password is incorrect', 'alert-danger');
+      }
     });
   }
 }

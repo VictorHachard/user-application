@@ -26,8 +26,8 @@ export class AuthenticationService {
     }));
   }
 
-  login(username: string, password: string) {
-    return this.http.post<any>(`${environment.apiUrl}user/login`, btoa(username + ":" + password)).pipe(map(user => {
+  login(auth: string, code: string) {
+    return this.http.post<any>(`${environment.apiUrl}user/login`, {auth: auth, code: code}).pipe(map(user => {
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
       return user;

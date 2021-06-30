@@ -21,7 +21,8 @@ export class SettingSecurityComponent {
   user!: UserSecurity;
   @Output() isSummited = new EventEmitter<boolean>();
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService) {
+  constructor(private authenticationService: AuthenticationService,
+              private userService: UserService) {
     this.authenticationService.currentUser.subscribe(x => {this.user = x; this.ngOnInit();});
   }
 

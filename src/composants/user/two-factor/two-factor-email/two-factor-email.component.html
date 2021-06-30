@@ -1,0 +1,24 @@
+<section class="my-4 container">
+  <div *ngFor="let response of alertManagerManager.responseList">
+    <div class="alert {{ response.alert }}" role="alert">
+      {{ response.message }}
+    </div>
+  </div>
+  <div *ngIf="twoFactorEmailForm" class="vertical-center">
+    <div class="w-100">
+      <h2 class="mb-3 text-center">Two Factor Authentication</h2>
+      <div class="login-center">
+        <form [formGroup]="twoFactorEmailForm" (ngSubmit)="twoFactorEmail()" class="border rounded">
+          <div class="mb-3">
+            <label class="form-label">Code</label>
+            <input type="text" formControlName="code" class="form-control">
+          </div>
+          <div class="d-grid gap-2">
+            <button [disabled]="twoFactorEmailForm.invalid" class="btn btn-sm btn-primary btn-block" type="submit">Sign in</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
