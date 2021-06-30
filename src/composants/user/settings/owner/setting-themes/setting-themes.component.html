@@ -13,7 +13,7 @@
   <div *ngFor="let theme of themeList" href="#" class="list-group-item p-0 pe-3">
     <div class="d-flex w-100 justify-content-between">
       <div class="border-end">
-        <img [src]="'http://localhost:8080/api/v1/image/' + theme.image" style="max-height: 200px" class="img-fluid border-bottom" alt="{{theme.name}}">
+        <div class="img-fluid border-bottom" [innerHTML]="theme.image"></div>
         <p class="ps-2 m-1 text-center">{{theme.name}}</p>
       </div>
       <div class="form-check pt-2 d-inline">
@@ -40,7 +40,6 @@
   <div class="input-group mb-3">
     <span class="input-group-text">Name</span>
     <input type="text" formControlName="name" class="form-control">
-    <input class="form-control" formControlName="fileSource" (change)="onFileChange($event)" type="file">
   </div>
   <div class="color-ish mb-3">
     <div class="input-group">
@@ -68,7 +67,5 @@
       <input type="color" class="form-control form-control-color" formControlName="secondaryTextColor" (change)="preview()" value="#fffff" title="Choose your color">
     </div>
   </div>
-  <img *ngIf="trustedUrl" [src]="trustedUrl" class="mb-3" height="150" alt="">
-  <br *ngIf="trustedUrl">
   <button type="submit" [disabled]="addThemeForm.invalid" class="btn btn-sm btn-primary">Add theme</button>
 </form>

@@ -6,6 +6,7 @@ import {UserService} from "../../../../../_services/_api/user.service";
 import {AuthenticationService} from "../../../../../_services/authentication.service";
 import {ThemeService} from "../../../../../_services/_api/theme.service";
 import {Theme} from "../../../../../_models/theme";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-setting-appearance',
@@ -25,10 +26,14 @@ export class SettingAppearanceComponent {
 
   constructor(private authenticationService: AuthenticationService,
               private userService: UserService,
-              private themeService: ThemeService) {
+              private themeService: ThemeService,
+              private sanitizer: DomSanitizer) {
     this.authenticationService.currentUser.subscribe(x => {this.user = x; this.ngOnInit();});
     this.themeService.getAllActiveDto().subscribe(value => {
       this.themeList = value;
+      for (let theme of this.themeList) {
+        theme.image = this.sanitizer.bypassSecurityTrustHtml(<string>theme.image!);
+      }
     });
   }
 

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TwoFactorEmailComponent } from './two-factor-email.component';
+import {TwoFactorEmailComponent} from './two-factor-email.component';
 
 describe('TwoFactorEmailComponent', () => {
   let component: TwoFactorEmailComponent;

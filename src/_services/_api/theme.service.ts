@@ -20,8 +20,7 @@ export class ThemeService {
     return this.http.get<Theme[]>(`${environment.apiUrl}theme/dto/active`);
   }
 
-  addTheme(b: {imageUrl: string,
-               name: string,
+  addTheme(b: {name: string,
                primaryColor: string,
                secondaryColor: string,
                tertiaryColor: string,

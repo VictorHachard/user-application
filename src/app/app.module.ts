@@ -39,7 +39,7 @@ import {SettingInteractionLimitsComponent} from '../composants/user/settings/use
 import {SettingThemesComponent} from '../composants/user/settings/owner/setting-themes/setting-themes.component';
 import {SettingGroupsComponent} from '../composants/user/settings/owner/setting-groups/setting-groups.component';
 import {SettingUsersComponent} from '../composants/user/settings/administrator/setting-users/setting-users.component';
-import { TwoFactorEmailComponent } from '../composants/user/two-factor/two-factor-email/two-factor-email.component';
+import {TwoFactorEmailComponent} from '../composants/user/two-factor/two-factor-email/two-factor-email.component';
 
 @NgModule({
   declarations: [
