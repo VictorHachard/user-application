@@ -1,4 +1,9 @@
+[![BCH compliance](https://bettercodehub.com/edge/badge/VictorHachard/user-application?branch=master)](https://bettercodehub.com/)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/89c960f1999542b4befa368dd2e1f697)](https://www.codacy.com/gh/VictorHachard/user-application/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VictorHachard/user-application&amp;utm_campaign=Badge_Grade)
+
 # User Application
+
+![screenshot](../master/res/tfe-application.gif)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
 
@@ -25,3 +30,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## What I Learned
+
+-   Angular
+-   TypeScript
+
+## Authors & Contributors
+
+-   **Hachard Victor** - *Initial work* - [VictorHachard](https://github.com/VictorHachard)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](../master/LICENSE) file for details.
