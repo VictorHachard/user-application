@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -21,21 +24,21 @@ h1, h2, h3, h4, h5, h6 {
 .pagination .page-item span,
 .form-check .form-check-label,
 .form-check .form-check-input {
-  cursor: pointer!important;
+  cursor: pointer !important;
 }
 
 .form-control::-webkit-file-upload-button {
-  -webkit-transition:color 0s ease-in-out,background-color 0s ease-in-out,border-color 0s ease-in-out,box-shadow 0s ease-in-out;
-  transition:color 0s ease-in-out,background-color 0s ease-in-out,border-color 0s ease-in-out,box-shadow 0s ease-in-out
+  -webkit-transition: color 0s ease-in-out, background-color 0s ease-in-out, border-color 0s ease-in-out, box-shadow 0s ease-in-out;
+  transition: color 0s ease-in-out, background-color 0s ease-in-out, border-color 0s ease-in-out, box-shadow 0s ease-in-out
 }
 
 .zoom {
   -moz-transform: scale(1);
   -webkit-transform: scale(1);
   transform: scale(1);
-  transition:0.2s ease all;
-  -webkit-transition:0.2s ease all;
-  -moz-transition:0.2s ease all;
+  transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
 }
 
 .zoom:hover {
@@ -59,18 +62,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .color-ish .input-group:last-child .input-group-text {
-  border-bottom-left-radius: .25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .color-ish .input-group:first-child .input-group-text {
-  border-top-left-radius: .25rem;
+  border-top-left-radius: 0.25rem;
 }
 
 .color-ish .input-group:last-child .form-control-color {
-  border-bottom-right-radius: .25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 .color-ish .input-group:first-child .form-control-color {
-  border-top-right-radius: .25rem;
+  border-top-right-radius: 0.25rem;
 }
 
+.login-center {
+  width: 100%;
+  max-width: 330px;
+  margin: auto;
+}
+
+.login-center .login-center-p, .login-center form {
+  padding: 15px;
+}
+
+.form-center .form-control:focus {
+  z-index: 2;
+}

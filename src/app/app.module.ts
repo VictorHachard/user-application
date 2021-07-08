@@ -40,6 +40,9 @@ import {SettingThemesComponent} from '../composants/user/settings/owner/setting-
 import {SettingGroupsComponent} from '../composants/user/settings/owner/setting-groups/setting-groups.component';
 import {SettingUsersComponent} from '../composants/user/settings/administrator/setting-users/setting-users.component';
 import {TwoFactorEmailComponent} from '../composants/user/two-factor/two-factor-email/two-factor-email.component';
+import { SettingTermsOfServiceComponent } from '../composants/user/settings/owner/setting-terms-of-service/setting-terms-of-service.component';
+import { SettingPrivacyComponent } from '../composants/user/settings/owner/setting-privacy/setting-privacy.component';
+import { SettingLawsComponent } from '../composants/user/settings/owner/setting-laws/setting-laws.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,10 @@ import {TwoFactorEmailComponent} from '../composants/user/two-factor/two-factor-
     SettingThemesComponent,
     SettingGroupsComponent,
     SettingUsersComponent,
-    TwoFactorEmailComponent
+    TwoFactorEmailComponent,
+    SettingTermsOfServiceComponent,
+    SettingPrivacyComponent,
+    SettingLawsComponent
   ],
   imports: [
     BrowserModule,

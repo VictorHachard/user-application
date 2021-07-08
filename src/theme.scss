@@ -18,18 +18,21 @@ body {
   width: 15px;
   height: 15px;
 }
+
 ::-webkit-scrollbar-track-piece {
-  background-color: $secondary-color!important;
+  background-color: $secondary-color !important;
 }
+
 ::-webkit-scrollbar-thumb {
-  background-color: $tertiary-color!important;
+  background-color: $tertiary-color !important;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background-color: $quaternary-color!important;
+  background-color: $quaternary-color !important;
 }
 
 .text-muted {
-  color: $secondary-text-color!important;
+  color: $secondary-text-color !important;
 }
 
 .border,
@@ -38,7 +41,7 @@ body {
 .border-end,
 .border-start,
 .input-group-text {
-  border-color: $quaternary-color!important;
+  border-color: $quaternary-color !important;
 }
 
 .form-check-input:hover {
@@ -55,17 +58,6 @@ select,
   border-color: $quaternary-color;
 }
 
-.form-control::-webkit-file-upload-button,
-.input-group-text {
-  background-color: $tertiary-color;
-  color: $primary-text-color;
-}
-
-.form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
-  background-color: $quaternary-color!important;
-  color: $primary-text-color!important;
-}
-
 input:hover,
 textarea:hover,
 select:hover {
@@ -76,26 +68,33 @@ select:hover {
 input:focus,
 textarea:focus,
 select:focus {
-  background-color: $quaternary-color!important;
-  color: $primary-text-color!important;
+  background-color: $quaternary-color !important;
+  color: $primary-text-color !important;
 }
 
-.list-group .list-group-item {
+.form-control::-webkit-file-upload-button,
+.input-group-text {
+  background-color: $tertiary-color;
   color: $primary-text-color;
+}
+
+.form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
+  background-color: $quaternary-color !important;
+  color: $primary-text-color !important;
 }
 
 .navbar,
 .navbar a,
 .navbar-toggler-icon,
 .nav .list-group .list-group-item {
-  background-color: $tertiary-color!important;
-  color: $primary-text-color!important;
-  border-color: $quaternary-color!important;
+  background-color: $tertiary-color !important;
+  color: $primary-text-color !important;
+  border-color: $quaternary-color !important;
 }
 
 .dropdown-menu,
 .dropdown-menu .dropdown-item {
-  background-color: $tertiary-color!important;
+  background-color: $tertiary-color !important;
 }
 
 .set-nav .nav-link,
@@ -103,12 +102,12 @@ select:focus {
 .nav-pills {
   background-color: $primary-color;
   color: $primary-text-color;
-  border-color: $quaternary-color!important;
+  border-color: $quaternary-color !important;
 }
 
 .set-nav .nav-link.active,
 .set-nav .nav-link:hover {
-  background-color: $tertiary-color!important;
+  background-color: $tertiary-color !important;
   color: $secondary-text-color;
 }
 
@@ -117,7 +116,7 @@ select:focus {
 .card-body {
   background-color: $secondary-color;
   color: $secondary-text-color;
-  border-color: $tertiary-color!important;
+  border-color: $tertiary-color !important;
 }
 
 .pagination .page-item span {
