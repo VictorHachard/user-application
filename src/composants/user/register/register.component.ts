@@ -15,7 +15,7 @@ import {environment} from "../../../environments/environment";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent  implements OnInit {
+export class RegisterComponent implements OnInit {
 
   private default = {
     username: 'Paulin',

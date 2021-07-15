@@ -28,6 +28,15 @@ export class AppComponent implements OnInit {
       document.documentElement.style.setProperty('--quaternary-color', this.currentUser.themeSimplifiedDto!.quaternaryColor!);
       document.documentElement.style.setProperty('--primary-text-color', this.currentUser.themeSimplifiedDto!.primaryTextColor!);
       document.documentElement.style.setProperty('--secondary-text-color', this.currentUser.themeSimplifiedDto!.secondaryTextColor!);
+      document.documentElement.style.setProperty('--primary-alert-success-color', this.currentUser.themeSimplifiedDto!.primaryAlertSuccessColor!);
+      document.documentElement.style.setProperty('--secondary-alert-success-color', this.currentUser.themeSimplifiedDto!.secondaryAlertSuccessColor!);
+      document.documentElement.style.setProperty('--tertiary-alert-success-color', this.currentUser.themeSimplifiedDto!.tertiaryAlertSuccessColor!);
+      document.documentElement.style.setProperty('--primary-alert-warning-color', this.currentUser.themeSimplifiedDto!.primaryAlertWarningColor!);
+      document.documentElement.style.setProperty('--secondary-alert-warning-color', this.currentUser.themeSimplifiedDto!.secondaryAlertWarningColor!);
+      document.documentElement.style.setProperty('--tertiary-alert-warning-color', this.currentUser.themeSimplifiedDto!.tertiaryAlertWarningColor!);
+      document.documentElement.style.setProperty('--primary-alert-danger-color', this.currentUser.themeSimplifiedDto!.primaryAlertDangerColor!);
+      document.documentElement.style.setProperty('--secondary-alert-danger-color', this.currentUser.themeSimplifiedDto!.secondaryAlertDangerColor!);
+      document.documentElement.style.setProperty('--tertiary-alert-danger-color', this.currentUser.themeSimplifiedDto!.tertiaryAlertDangerColor!);
     } else {
       document.documentElement.style.setProperty('--primary-color', '#f1f1f1');
       document.documentElement.style.setProperty('--secondary-color', '#eaeaea');
@@ -35,6 +44,15 @@ export class AppComponent implements OnInit {
       document.documentElement.style.setProperty('--quaternary-color', '#d4d4d4');
       document.documentElement.style.setProperty('--primary-text-color', '#1a1a1a');
       document.documentElement.style.setProperty('--secondary-text-color', '#3b3b3b');
+      document.documentElement.style.setProperty('--primary-alert-success-color', '#d1e7dd');
+      document.documentElement.style.setProperty('--secondary-alert-success-color', '#badbcc');
+      document.documentElement.style.setProperty('--tertiary-alert-success-color', '#0f5132');
+      document.documentElement.style.setProperty('--primary-alert-warning-color', '#fff3cd');
+      document.documentElement.style.setProperty('--secondary-alert-warning-color', '#ffecb5');
+      document.documentElement.style.setProperty('--tertiary-alert-warning-color', '#664d03');
+      document.documentElement.style.setProperty('--primary-alert-danger-color', '#f8d7da');
+      document.documentElement.style.setProperty('--secondary-alert-danger-color', '#f5c2c7');
+      document.documentElement.style.setProperty('--tertiary-alert-danger-color', '#842029');
     }
     document.documentElement.style.setProperty('--primary-btn-color', '#0d6efd');
     document.documentElement.style.setProperty('--secondary-btn-color', '#eaeaea');

@@ -43,6 +43,7 @@ import {TwoFactorEmailComponent} from '../composants/user/two-factor/two-factor-
 import { SettingTermsOfServiceComponent } from '../composants/user/settings/owner/setting-terms-of-service/setting-terms-of-service.component';
 import { SettingPrivacyComponent } from '../composants/user/settings/owner/setting-privacy/setting-privacy.component';
 import { SettingLawsComponent } from '../composants/user/settings/owner/setting-laws/setting-laws.component';
+import {NgxEditorModule} from "ngx-editor";
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { SettingLawsComponent } from '../composants/user/settings/owner/setting-
     MatButtonModule,
     FormsModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxEditorModule
   ],
   exports: [
     HttpClientModule

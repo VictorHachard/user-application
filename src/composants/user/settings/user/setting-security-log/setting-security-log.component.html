@@ -6,7 +6,7 @@
 
 <h3 class="pb-2 border-bottom">Security log</h3>
 
-<div class="list-group">
+<div *ngIf="securityLogList && securityLogList.length > 0; else noData" class="list-group">
   <a *ngFor="let sl of securityLogList" class="list-group-item">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{sl.securityLog | titlecase}}</h5>
@@ -15,6 +15,13 @@
     <p class="mb-1">{{sl.info}}</p>
   </a>
 </div>
+<ng-template #noData>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4 class="m-0 text-center">No log</h4>
+    </div>
+  </div>
+</ng-template>
 
 <nav>
   <ul *ngIf="limit > 0" class="mt-3 pagination justify-content-center">

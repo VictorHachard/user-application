@@ -8,6 +8,16 @@ $secondary-text-color: var(--secondary-text-color);
 $primary-btn-color: var(--primary-btn-color);
 $secondary-btn-color: var(--secondary-btn-color);
 
+$primary-alert-success-color: var(--primary-alert-success-color);
+$secondary-alert-success-color: var(--secondary-alert-success-color);
+$tertiary-alert-success-color: var(--tertiary-alert-success-color);
+$primary-alert-warning-color: var(--primary-alert-warning-color);
+$secondary-alert-warning-color: var(--secondary-alert-warning-color);
+$tertiary-alert-warning-color: var(--tertiary-alert-warning-color);
+$primary-alert-danger-color: var(--primary-alert-danger-color);
+$secondary-alert-danger-color: var(--secondary-alert-danger-color);
+$tertiary-alert-danger-color: var(--tertiary-alert-danger-color);
+
 body {
   background-color: $primary-color;
   color: $primary-text-color;
@@ -87,9 +97,9 @@ select:focus {
 .navbar a,
 .navbar-toggler-icon,
 .nav .list-group .list-group-item {
-  background-color: $tertiary-color !important;
+  background-color: $secondary-color !important;
   color: $primary-text-color !important;
-  border-color: $quaternary-color !important;
+  border-color: $tertiary-color !important;
 }
 
 .dropdown-menu,
@@ -132,19 +142,19 @@ select:focus {
 }
 
 .alert-success {
-  color: rgb(168, 234, 183) !important;
-  background-color: rgb(23, 54, 30) !important;
-  border-color: rgb(41, 99, 54) !important;
+  color: $tertiary-alert-success-color !important;
+  background-color: $primary-alert-success-color !important;
+  border-color: $secondary-alert-success-color !important;
 }
 
 .alert-danger {
-  color: rgb(230, 155, 162) !important;
-  background-color: rgb(64, 11, 16) !important;
-  border-color: rgb(129, 23, 34) !important;
+  color: $tertiary-alert-danger-color !important;
+  background-color: $primary-alert-danger-color !important;
+  border-color: $secondary-alert-danger-color !important;
 }
 
 .alert-warning {
-  color: rgb(251, 219, 127);
-  background-color: rgb(81, 62, 0);
-  border-color: rgb(167, 126, 0);
+  color: $tertiary-alert-warning-color !important;
+  background-color: $primary-alert-warning-color !important;
+  border-color: $secondary-alert-warning-color !important;
 }
