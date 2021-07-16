@@ -98,13 +98,17 @@ select:focus {
 .navbar-toggler-icon,
 .nav .list-group .list-group-item {
   background-color: $secondary-color !important;
-  color: $primary-text-color !important;
-  border-color: $tertiary-color !important;
+  color: $primary-text-color !important;;
+  border-color: $tertiary-color;
 }
 
 .dropdown-menu,
 .dropdown-menu .dropdown-item {
   background-color: $tertiary-color !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: $quaternary-color !important;
 }
 
 .set-nav .nav-link,
