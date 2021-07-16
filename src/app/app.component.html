@@ -11,13 +11,13 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul *ngIf="currentUser" class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item">Feature preview</a></li>
             <li><a class="dropdown-item" routerLink="/help">Help</a></li>
             <li><a class="dropdown-item" routerLink="/settings">Settings</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Log out</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Log out</a></li>
           </ul>
         </li>
       </ul>
@@ -26,7 +26,6 @@
         <button class="btn btn-outline-success" type="submit">Search</button>-->
         <button class="btn btn-sm btn-outline-primary" type="button" *ngIf="!currentUser" routerLink="/login">Login</button>
         <button class="btn btn-sm btn-outline-primary ms-2" type="button" *ngIf="!currentUser" routerLink="/register">Register</button>
-        <button class="btn btn-sm btn-outline-primary" type="button" *ngIf="currentUser" (click)="logout()">Logout</button>
       </form>
     </div>
   </div>

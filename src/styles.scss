@@ -23,7 +23,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .pagination .page-item span,
 .form-check .form-check-label,
-.form-check .form-check-input {
+.form-check .form-check-input,
+nav.navbar a,
+.pointer {
   cursor: pointer !important;
 }
 

@@ -32,7 +32,8 @@ export class SettingAppearanceComponent {
     this.themeService.getAllActiveDto().subscribe(value => {
       this.themeList = value;
       for (let theme of this.themeList) {
-        theme.image = this.sanitizer.bypassSecurityTrustHtml(<string>theme.image!);
+        let imageStyle: string = <string>theme.image!;
+        theme.image = this.sanitizer.bypassSecurityTrustHtml(imageStyle.replace('style=""', 'style="width: 100%;border-top-left-radius: 0.18rem;border-top-right-radius: 0.18rem"'));
       }
     });
   }
