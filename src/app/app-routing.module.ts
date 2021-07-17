@@ -12,6 +12,7 @@ import {ForgetPasswordComponent} from "../composants/user/actions/forget-passwor
 import {AuthGuardService, NotAuthGuardService} from "../_helpers/_guards/auth-guard.service";
 import {TwoFactorEmailComponent} from "../composants/user/two-factor/two-factor-email/two-factor-email.component";
 import {NotificationsComponent} from "../composants/user/notifications/notifications.component";
+import {HelpComponent} from "../composants/help/help.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'two-factor', component: TwoFactorEmailComponent, canActivate: [NotAuthGuardService]},
 
   { path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuardService]},
+  { path: 'help', component: HelpComponent},
 
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]},
   { path: 'settings/:param', component: SettingsComponent, canActivate: [AuthGuardService]},

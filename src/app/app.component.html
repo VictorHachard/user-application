@@ -31,7 +31,10 @@
         </li>
         <li *ngIf="currentUser" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {{ currentUser.username }}
+            <img *ngIf="currentUser.profileImage; else noData" [src]="'http://localhost:8080/api/v1/image/' + currentUser.profileImage" class="rounded-circle" height="22" width="22" style="object-fit: cover;" alt="">
+            <ng-template #noData>
+              {{ currentUser.username }}
+            </ng-template>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown22">
             <li><a class="dropdown-item" routerLink="/profile/{{currentUser.username}}">Signed in as <b>{{currentUser.username}}</b></a></li>
