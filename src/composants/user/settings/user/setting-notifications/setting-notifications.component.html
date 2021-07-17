@@ -1,0 +1,7 @@
+<div *ngFor="let response of alertManagerManager.responseList">
+  <div class="alert {{ response.alert }}" role="alert">
+    {{ response.message }}
+  </div>
+</div>
+
+<h3 class="pb-2 border-bottom">Notifications</h3>

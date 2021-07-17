@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SettingTermsOfServiceComponent } from './setting-terms-of-service.component';
+import {SettingTermsOfServiceComponent} from './setting-terms-of-service.component';
 
 describe('SettingTermsOfServiceComponent', () => {
   let component: SettingTermsOfServiceComponent;

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SettingLawsComponent } from './setting-laws.component';
+import {SettingLawsComponent} from './setting-laws.component';
 
 describe('SettingLawsComponent', () => {
   let component: SettingLawsComponent;

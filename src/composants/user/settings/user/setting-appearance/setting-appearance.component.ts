@@ -6,7 +6,7 @@ import {UserService} from "../../../../../_services/_api/user.service";
 import {AuthenticationService} from "../../../../../_services/authentication.service";
 import {ThemeService} from "../../../../../_services/_api/theme.service";
 import {Theme} from "../../../../../_models/theme";
-import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-setting-appearance',

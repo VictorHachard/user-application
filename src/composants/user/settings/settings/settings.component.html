@@ -22,6 +22,7 @@
         <button class="nav-link {{param === 'appearance' ? 'active' : ''}}" type="button" routerLink="/settings/appearance">Appearance</button>
         <button class="nav-link {{param === 'security' ? 'active' : ''}}" type="button" routerLink="/settings/security">Account Security</button>
         <button class="nav-link {{param === 'emails' ? 'active' : ''}}" type="button" routerLink="/settings/emails">Emails</button>
+        <button class="nav-link {{param === 'notifications' ? 'active' : ''}}" type="button" routerLink="/settings/notifications">Notifications</button>
         <button class="nav-link {{param === 'security-log' ? 'active' : ''}}" type="button" routerLink="/settings/security-log">Security log</button>
       </div>
       <div class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
@@ -46,6 +47,7 @@
       <app-setting-appearance *ngIf="param === 'appearance'" (isSummited)="refresh($event)"></app-setting-appearance>
       <app-setting-security *ngIf="param === 'security'" (isSummited)="refresh($event)"></app-setting-security>
       <app-setting-emails *ngIf="param === 'emails'" (isSummited)="refresh($event)"></app-setting-emails>
+      <app-setting-notifications *ngIf="param === 'notifications'" (isSummited)="refresh($event)"></app-setting-notifications>
       <app-setting-security-log *ngIf="param === 'security-log'" (isSummited)="refresh($event)"></app-setting-security-log>
 
       <app-setting-blocked-users *ngIf="param === 'blocked-users'" (isSummited)="refresh($event)"></app-setting-blocked-users>

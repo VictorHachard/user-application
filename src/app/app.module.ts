@@ -40,10 +40,12 @@ import {SettingThemesComponent} from '../composants/user/settings/owner/setting-
 import {SettingGroupsComponent} from '../composants/user/settings/owner/setting-groups/setting-groups.component';
 import {SettingUsersComponent} from '../composants/user/settings/administrator/setting-users/setting-users.component';
 import {TwoFactorEmailComponent} from '../composants/user/two-factor/two-factor-email/two-factor-email.component';
-import { SettingTermsOfServiceComponent } from '../composants/user/settings/owner/setting-terms-of-service/setting-terms-of-service.component';
-import { SettingPrivacyComponent } from '../composants/user/settings/owner/setting-privacy/setting-privacy.component';
-import { SettingLawsComponent } from '../composants/user/settings/owner/setting-laws/setting-laws.component';
+import {SettingTermsOfServiceComponent} from '../composants/user/settings/owner/setting-terms-of-service/setting-terms-of-service.component';
+import {SettingPrivacyComponent} from '../composants/user/settings/owner/setting-privacy/setting-privacy.component';
+import {SettingLawsComponent} from '../composants/user/settings/owner/setting-laws/setting-laws.component';
 import {NgxEditorModule} from "ngx-editor";
+import {NotificationsComponent} from '../composants/user/notifications/notifications.component';
+import {SettingNotificationsComponent} from '../composants/user/settings/user/setting-notifications/setting-notifications.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import {NgxEditorModule} from "ngx-editor";
     TwoFactorEmailComponent,
     SettingTermsOfServiceComponent,
     SettingPrivacyComponent,
-    SettingLawsComponent
+    SettingLawsComponent,
+    NotificationsComponent,
+    SettingNotificationsComponent
   ],
   imports: [
     BrowserModule,
