@@ -6,9 +6,7 @@ import {AlertManager} from "../../../../../_helpers/alert.manager";
   templateUrl: './setting-laws.component.html',
   styleUrls: ['./setting-laws.component.scss']
 })
-export class SettingLawsComponent implements OnInit {
-
-  alertManagerManager: AlertManager = new AlertManager();
+export class SettingLawsComponent {
 
   ngOnInit(): void {
   }
