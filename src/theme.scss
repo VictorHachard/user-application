@@ -102,6 +102,14 @@ select:focus {
   border-color: $tertiary-color;
 }
 
+.navbar-toggler {
+  border-color: $secondary-text-color !important;
+}
+
+.navbar-toggler:focus {
+  border-color: $primary-text-color !important;
+}
+
 .dropdown-menu,
 .dropdown-menu .dropdown-item {
   background-color: $tertiary-color !important;
