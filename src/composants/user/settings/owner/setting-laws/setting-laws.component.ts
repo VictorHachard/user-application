@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {AlertManager} from "../../../../../_helpers/alert.manager";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-setting-laws',

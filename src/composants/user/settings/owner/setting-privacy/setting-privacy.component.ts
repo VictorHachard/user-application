@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertManager} from "../../../../../_helpers/alert.manager";
 
 @Component({

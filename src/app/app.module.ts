@@ -46,7 +46,7 @@ import {SettingLawsComponent} from '../composants/user/settings/owner/setting-la
 import {NgxEditorModule} from "ngx-editor";
 import {NotificationsComponent} from '../composants/user/notifications/notifications.component';
 import {SettingNotificationsComponent} from '../composants/user/settings/user/setting-notifications/setting-notifications.component';
-import { HelpComponent } from '../composants/help/help.component';
+import {HelpComponent} from '../composants/help/help.component';
 
 @NgModule({
   declarations: [
