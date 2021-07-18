@@ -6,12 +6,12 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Archived Terms of Service</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Archived Privacy Policy</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="list-group">
-            <button *ngFor="let ht of htmlHistory" class="list-group-item {{ htmlText.createdAt === ht.createdAt ? 'active' : '' }}" type="button" (click)="update(ht.id!)">{{ ht.createdAt | date:'dd MMMM yyyy - HH:mm' }}</button>
+            <button *ngFor="let ht of htmlHistory" class="list-group-item list-group-item-action {{ htmlText.createdAt === ht.createdAt ? 'active' : '' }}" type="button" (click)="update(ht.id!)">{{ ht.createdAt | date:'dd MMMM yyyy - HH:mm' }}</button>
           </div>
         </div>
       </div>

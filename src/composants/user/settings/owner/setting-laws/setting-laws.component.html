@@ -1,2 +1,9 @@
-<app-setting-terms-of-service></app-setting-terms-of-service>
-<app-setting-privacy></app-setting-privacy>
+<div class="set-nav mb-3">
+  <div class="nav nav-pills border rounded ish-table nav-fill">
+    <button class="nav-link {{param2 === 'terms' || !param2 ? 'active' : ''}}" type="button" routerLink="/settings/owner/laws/terms">Terms of service</button>
+    <button class="nav-link {{param2 === 'privacy' ? 'active' : ''}}" type="button" routerLink="/settings/owner/laws/privacy">Privacy</button>
+  </div>
+</div>
+
+<app-setting-terms-of-service *ngIf="param2 === 'terms' || !param2"></app-setting-terms-of-service>
+<app-setting-privacy *ngIf="param2 === 'privacy'"></app-setting-privacy>

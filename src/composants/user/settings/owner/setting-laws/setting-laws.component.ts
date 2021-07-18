@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {AuthenticationService} from "../../../../../_services/authentication.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-setting-laws',
@@ -7,7 +9,14 @@ import {Component} from '@angular/core';
 })
 export class SettingLawsComponent {
 
+  param2!: string | null;
+
+  constructor(private route: ActivatedRoute) {
+    this.route.paramMap.subscribe(params => {this.ngOnInit();});
+  }
+
   ngOnInit(): void {
+    this.param2 = this.route.snapshot.paramMap.get('param2');
   }
 
 }

@@ -11,7 +11,7 @@
         </div>
         <div class="modal-body">
           <div class="list-group">
-            <button *ngFor="let ht of htmlHistory" class="list-group-item {{ htmlText.createdAt === ht.createdAt ? 'active' : '' }}" type="button" (click)="update(ht.id!)">{{ ht.createdAt | date:'dd MMMM yyyy - HH:mm' }}</button>
+            <button *ngFor="let ht of htmlHistory" class="list-group-item list-group-item-action {{ htmlText.createdAt === ht.createdAt ? 'active' : '' }}" type="button" (click)="update(ht.id!)">{{ ht.createdAt | date:'dd MMMM yyyy - HH:mm' }}</button>
           </div>
         </div>
       </div>

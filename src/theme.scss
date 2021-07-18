@@ -132,8 +132,8 @@ select:focus {
 
 .set-nav .nav-link.active,
 .set-nav .nav-link:hover,
-.list-group .list-group-item.active,
-.list-group .list-group-item:hover {
+.list-group .list-group-item.list-group-item-action.active,
+.list-group .list-group-item.list-group-item-action:hover {
   background-color: $tertiary-color !important;
   color: $secondary-text-color;
 }
@@ -158,6 +158,13 @@ select:focus {
   border-color: $tertiary-color;
 }
 
+.modal-content,
+.modal-header {
+  background-color: $primary-color;
+  color: $primary-text-color;
+  border-color: $tertiary-color;
+}
+
 .alert-success {
   color: $tertiary-alert-success-color !important;
   background-color: $primary-alert-success-color !important;
@@ -174,4 +181,10 @@ select:focus {
   color: $tertiary-alert-warning-color !important;
   background-color: $primary-alert-warning-color !important;
   border-color: $secondary-alert-warning-color !important;
+}
+
+.alert-primary {
+  color: $tertiary-alert-primary-color !important;
+  background-color: $primary-alert-primary-color !important;
+  border-color: $secondary-alert-primary-color !important;
 }
