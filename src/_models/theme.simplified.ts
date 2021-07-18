@@ -18,4 +18,7 @@ export class ThemeSimplified extends AbstractModel {
   primaryAlertDangerColor?: string;
   secondaryAlertDangerColor?: string;
   tertiaryAlertDangerColor?: string;
+  primaryAlertPrimaryColor?: string;
+  secondaryAlertPrimaryColor?: string;
+  tertiaryAlertPrimaryColor?: string;
 }

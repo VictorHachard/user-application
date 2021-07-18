@@ -13,10 +13,15 @@ import {AuthGuardService, NotAuthGuardService} from "../_helpers/_guards/auth-gu
 import {TwoFactorEmailComponent} from "../composants/user/two-factor/two-factor-email/two-factor-email.component";
 import {NotificationsComponent} from "../composants/user/notifications/notifications.component";
 import {HelpComponent} from "../composants/help/help.component";
+import {TermsOfServiceComponent} from "../composants/laws/terms-of-service/terms-of-service.component";
+import {PrivacyComponent} from "../composants/laws/privacy/privacy.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'home', component: HomeComponent},
+
+  { path: 'terms-of-service', component: TermsOfServiceComponent },
+  { path: 'privacy', component: PrivacyComponent },
 
   { path: 'login', component: LoginComponent, canActivate: [NotAuthGuardService]},
   { path: 'register', component: RegisterComponent, canActivate: [NotAuthGuardService]},

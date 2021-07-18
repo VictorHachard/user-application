@@ -21,4 +21,7 @@ export class Theme extends AbstractModel {
   primaryAlertDangerColor?: string;
   secondaryAlertDangerColor?: string;
   tertiaryAlertDangerColor?: string;
+  primaryAlertPrimaryColor?: string;
+  secondaryAlertPrimaryColor?: string;
+  tertiaryAlertPrimaryColor?: string;
 }

@@ -47,6 +47,8 @@ import {NgxEditorModule} from "ngx-editor";
 import {NotificationsComponent} from '../composants/user/notifications/notifications.component';
 import {SettingNotificationsComponent} from '../composants/user/settings/user/setting-notifications/setting-notifications.component';
 import {HelpComponent} from '../composants/help/help.component';
+import {PrivacyComponent} from '../composants/laws/privacy/privacy.component';
+import {TermsOfServiceComponent} from '../composants/laws/terms-of-service/terms-of-service.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import {HelpComponent} from '../composants/help/help.component';
     SettingLawsComponent,
     NotificationsComponent,
     SettingNotificationsComponent,
-    HelpComponent
+    HelpComponent,
+    PrivacyComponent,
+    TermsOfServiceComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Editor} from "ngx-editor";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Toolbar} from "ngx-editor/lib/types";
+import {HtmlTextHistoryService} from "../../../../../_services/_api/html.text.history.service";
+import {HtmlTextHistory} from "../../../../../_models/html.text.history";
 
 @Component({
   selector: 'app-setting-terms-of-service',
@@ -24,6 +26,7 @@ export class SettingTermsOfServiceComponent implements OnDestroy {
     ["align_left", "align_center", "align_right", "align_justify"]
   ];*/
 
+  private htmlTextHistory!: HtmlTextHistory;
   alertManagerManager: AlertManager = new AlertManager();
   updateTermsForm!: FormGroup;
   editor!: Editor;
@@ -39,14 +42,18 @@ export class SettingTermsOfServiceComponent implements OnDestroy {
   ];
 
   constructor(private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private htmlTextHistoryService: HtmlTextHistoryService) {
     this.ngOnInit();
   }
 
   ngOnInit(): void {
-    this.editor = new Editor();
-    this.updateTermsForm = new FormGroup({
-      html: new FormControl('', Validators.required)
+    this.htmlTextHistoryService.getAllDto('name', 'terms').subscribe(value => {
+      this.htmlTextHistory = value[0];
+      this.editor = new Editor();
+      this.updateTermsForm = new FormGroup({
+        html: new FormControl(value[0].htmlHistory![0].htmlContent, Validators.required)
+      });
     });
   }
 
@@ -57,7 +64,12 @@ export class SettingTermsOfServiceComponent implements OnDestroy {
 
   get f() { return this.updateTermsForm.controls; }
 
-  updateTerms(): void {
-    console.log(this.f.html.value);
+  update(): void {
+    console.log(this.htmlTextHistory)
+    this.htmlTextHistoryService.add({htmlContent: this.f.html.value}, this.htmlTextHistory.id!).subscribe(value => {
+      this.alertManagerManager.addAlertIcon('terms');
+      this.ngOnInit();
+    });
   }
+
 }

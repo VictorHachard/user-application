@@ -32,7 +32,7 @@ export class UserService {
   }
 
   getProfile(username: string): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}user/dto/profile/{username}`);
+    return this.http.get<any>(`${environment.apiUrl}user/dto/profile/${username}`);
   }
 
   addEmail(b: {email: string}): Observable<any> {

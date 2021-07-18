@@ -17,6 +17,9 @@ $tertiary-alert-warning-color: var(--tertiary-alert-warning-color);
 $primary-alert-danger-color: var(--primary-alert-danger-color);
 $secondary-alert-danger-color: var(--secondary-alert-danger-color);
 $tertiary-alert-danger-color: var(--tertiary-alert-danger-color);
+$primary-alert-primary-color: var(--primary-alert-primary-color);
+$secondary-alert-primary-color: var(--secondary-alert-primary-color);
+$tertiary-alert-primary-color: var(--tertiary-alert-primary-color);
 
 body {
   background-color: $primary-color;
@@ -128,7 +131,9 @@ select:focus {
 }
 
 .set-nav .nav-link.active,
-.set-nav .nav-link:hover {
+.set-nav .nav-link:hover,
+.list-group .list-group-item.active,
+.list-group .list-group-item:hover {
   background-color: $tertiary-color !important;
   color: $secondary-text-color;
 }

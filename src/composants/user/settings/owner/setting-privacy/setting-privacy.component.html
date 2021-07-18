@@ -8,3 +8,16 @@
   <h3 class="bd-highlight">Privacy</h3>
   <h5 *ngIf="alertManagerManager.iconList.includes('privacy')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
 </div>
+
+<form class="mb-3" *ngIf="updatePrivacyForm" [formGroup]="updatePrivacyForm" (ngSubmit)="update()">
+  <div class="NgxEditor__Wrapper">
+    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"></ngx-editor-menu>
+    <ngx-editor
+      formControlName="html"
+      [editor]="editor"
+      [placeholder]="'Type here...'"
+    ></ngx-editor>
+  </div>
+
+  <button type="submit" [disabled]="updatePrivacyForm.invalid" class="btn btn-sm btn-primary mt-3">Update privacy</button>
+</form>

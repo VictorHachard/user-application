@@ -1,0 +1,22 @@
+<section class="my-4 container" *ngIf="htmlHistory">
+  <div class="alert alert-primary" role="alert">
+    We’ve updated our Terms of Service on {{ htmlHistory[htmlHistory.length -1].createdAt | date:'dd MMMM yyyy - HH:mm' }}.<span> | </span><a href="" data-bs-toggle="modal" data-bs-target="#archived">Archived versions</a>
+  </div>
+  <div class="modal fade" id="archived" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Archived Terms of Service</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group">
+            <button *ngFor="let ht of htmlHistory" class="list-group-item {{ htmlText.createdAt === ht.createdAt ? 'active' : '' }}" type="button" (click)="update(ht.id!)">{{ ht.createdAt | date:'dd MMMM yyyy - HH:mm' }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div [innerHTML]="htmlText.htmlContent"></div>
+</section>

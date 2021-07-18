@@ -37,6 +37,9 @@ export class AppComponent implements OnInit {
       document.documentElement.style.setProperty('--primary-alert-danger-color', this.currentUser.themeSimplifiedDto!.primaryAlertDangerColor!);
       document.documentElement.style.setProperty('--secondary-alert-danger-color', this.currentUser.themeSimplifiedDto!.secondaryAlertDangerColor!);
       document.documentElement.style.setProperty('--tertiary-alert-danger-color', this.currentUser.themeSimplifiedDto!.tertiaryAlertDangerColor!);
+      document.documentElement.style.setProperty('--primary-alert-primary-color', this.currentUser.themeSimplifiedDto!.primaryAlertPrimaryColor!);
+      document.documentElement.style.setProperty('--secondary-alert-primary-color', this.currentUser.themeSimplifiedDto!.secondaryAlertPrimaryColor!);
+      document.documentElement.style.setProperty('--tertiary-alert-primary-color', this.currentUser.themeSimplifiedDto!.tertiaryAlertPrimaryColor!);
     } else {
       document.documentElement.style.setProperty('--primary-color', '#f1f1f1');
       document.documentElement.style.setProperty('--secondary-color', '#eaeaea');
@@ -53,6 +56,9 @@ export class AppComponent implements OnInit {
       document.documentElement.style.setProperty('--primary-alert-danger-color', '#f8d7da');
       document.documentElement.style.setProperty('--secondary-alert-danger-color', '#f5c2c7');
       document.documentElement.style.setProperty('--tertiary-alert-danger-color', '#842029');
+      document.documentElement.style.setProperty('--primary-alert-primary-color', '#cce5ff');
+      document.documentElement.style.setProperty('--secondary-alert-primary-color', '#b8daff');
+      document.documentElement.style.setProperty('--tertiary-alert-primary-color', '#004085');
     }
     document.documentElement.style.setProperty('--primary-btn-color', '#0d6efd');
     document.documentElement.style.setProperty('--secondary-btn-color', '#eaeaea');
