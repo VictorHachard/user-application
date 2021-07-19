@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {AuthenticationService} from "../../../../../_services/authentication.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({

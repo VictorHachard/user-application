@@ -30,11 +30,12 @@ const routes: Routes = [
   { path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuardService]},
   { path: 'help', component: HelpComponent},
 
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]},
-  { path: 'settings/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
   { path: 'settings/owner/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
   { path: 'settings/owner/:param/:param2', component: SettingsComponent, canActivate: [AuthGuardService]},
   { path: 'settings/administrator/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]},
+  { path: 'settings/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
+  { path: 'settings/:param/:param2', component: SettingsComponent, canActivate: [AuthGuardService]},
 
   { path: 'profile/:username', component: ProfileComponent},
 

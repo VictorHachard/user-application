@@ -1,0 +1,11 @@
+.ish-table.nav-pills .nav-link:last-child,
+.ish-table.nav-pills .nav-link:last-child:hover,
+.ish-table.nav-pills .nav-link:last-child.active, {
+  border-radius: 0 0.17rem 0.17rem 0 !important;
+}
+
+.ish-table.nav-pills .nav-link:first-child,
+.ish-table.nav-pills .nav-link:first-child:hover,
+.ish-table.nav-pills .nav-link:first-child.active, {
+  border-radius: 0.17rem 0 0 0.17rem !important;
+}

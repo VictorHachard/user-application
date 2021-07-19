@@ -1,11 +1,11 @@
 import {Component, OnDestroy} from '@angular/core';
-import {AlertManager} from "../../../../../_helpers/alert.manager";
+import {AlertManager} from "../../../../../../_helpers/alert.manager";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Editor} from "ngx-editor";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Toolbar} from "ngx-editor/lib/types";
-import {HtmlTextHistoryService} from "../../../../../_services/_api/html.text.history.service";
-import {HtmlTextHistory} from "../../../../../_models/html.text.history";
+import {HtmlTextHistoryService} from "../../../../../../_services/_api/html.text.history.service";
+import {HtmlTextHistory} from "../../../../../../_models/html.text.history";
 
 @Component({
   selector: 'app-setting-terms-of-service',

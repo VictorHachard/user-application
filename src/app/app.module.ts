@@ -40,15 +40,19 @@ import {SettingThemesComponent} from '../composants/user/settings/owner/setting-
 import {SettingGroupsComponent} from '../composants/user/settings/owner/setting-groups/setting-groups.component';
 import {SettingUsersComponent} from '../composants/user/settings/administrator/setting-users/setting-users.component';
 import {TwoFactorEmailComponent} from '../composants/user/two-factor/two-factor-email/two-factor-email.component';
-import {SettingTermsOfServiceComponent} from '../composants/user/settings/owner/setting-terms-of-service/setting-terms-of-service.component';
-import {SettingPrivacyComponent} from '../composants/user/settings/owner/setting-privacy/setting-privacy.component';
-import {SettingLawsComponent} from '../composants/user/settings/owner/setting-laws/setting-laws.component';
+import {SettingTermsOfServiceComponent} from '../composants/user/settings/owner/laws/setting-terms-of-service/setting-terms-of-service.component';
+import {SettingPrivacyComponent} from '../composants/user/settings/owner/laws/setting-privacy/setting-privacy.component';
+import {SettingLawsComponent} from '../composants/user/settings/owner/laws/setting-laws/setting-laws.component';
 import {NgxEditorModule} from "ngx-editor";
 import {NotificationsComponent} from '../composants/user/notifications/notifications.component';
 import {SettingNotificationsComponent} from '../composants/user/settings/user/setting-notifications/setting-notifications.component';
 import {HelpComponent} from '../composants/help/help.component';
 import {PrivacyComponent} from '../composants/laws/privacy/privacy.component';
 import {TermsOfServiceComponent} from '../composants/laws/terms-of-service/terms-of-service.component';
+import { SettingCookiesAuthenticationComponent } from '../composants/user/settings/user/cookies/setting-cookies-authentication/setting-cookies-authentication.component';
+import { SettingCookiesComponent } from '../composants/user/settings/user/cookies/setting-cookies/setting-cookies.component';
+import { SettingEmailsTemplatesComponent } from '../composants/user/settings/owner/setting-emails-templates/setting-emails-templates.component';
+import { SettingEmailsActionComponent } from '../composants/user/settings/administrator/setting-emails-action/setting-emails-action.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +86,11 @@ import {TermsOfServiceComponent} from '../composants/laws/terms-of-service/terms
     SettingNotificationsComponent,
     HelpComponent,
     PrivacyComponent,
-    TermsOfServiceComponent
+    TermsOfServiceComponent,
+    SettingCookiesAuthenticationComponent,
+    SettingCookiesComponent,
+    SettingEmailsTemplatesComponent,
+    SettingEmailsActionComponent
   ],
   imports: [
     BrowserModule,

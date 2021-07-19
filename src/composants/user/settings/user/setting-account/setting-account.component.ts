@@ -20,7 +20,7 @@ export class SettingAccountComponent {
   user!: UserSecurity;
   @Output() isSummited = new EventEmitter<boolean>();
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService, private themeService: ThemeService) {
+  constructor(private authenticationService: AuthenticationService, private userService: UserService) {
     this.authenticationService.currentUser.subscribe(x => {this.user = x; this.ngOnInit();});
   }
 

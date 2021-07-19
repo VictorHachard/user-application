@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {AlertManager} from "../../../../../_helpers/alert.manager";
-import {HtmlTextHistory} from "../../../../../_models/html.text.history";
+import {AlertManager} from "../../../../../../_helpers/alert.manager";
+import {HtmlTextHistory} from "../../../../../../_models/html.text.history";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Editor} from "ngx-editor";
 import {Toolbar} from "ngx-editor/lib/types";
 import {ActivatedRoute, Router} from "@angular/router";
-import {HtmlTextHistoryService} from "../../../../../_services/_api/html.text.history.service";
+import {HtmlTextHistoryService} from "../../../../../../_services/_api/html.text.history.service";
 
 @Component({
   selector: 'app-setting-privacy',
