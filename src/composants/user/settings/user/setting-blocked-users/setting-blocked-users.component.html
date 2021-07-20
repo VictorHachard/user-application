@@ -9,16 +9,12 @@
   <h5 *ngIf="alertManagerManager.iconList.includes('blocked')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
 </div>
 
-<div *ngIf="false; else noData" class="list-group mb-3">
-  <!--<div *ngFor="let group of groupList" href="#" class="list-group-item">
+<div *ngIf="user.blockedUserDtoList && user.blockedUserDtoList.length > 0; else noData" class="list-group mb-3">
+  <div *ngFor="let blockedUser of user.blockedUserDtoList" href="#" class="list-group-item">
     <div class="d-flex w-100 justify-content-between">
-      <b [style]="'color:' + group.color + '!important'">{{group.name}}</b>
-      <div class="form-check d-inline">
-        <input class="form-check-input" formControlName="{{'group' + group.id}}" [value]="group.active" type="checkbox" (change)="activeGroup(group.id!)">
-        <label class="form-check-label">Active group</label>
-      </div>
+      <b>{{blockedUser.username}}</b>
     </div>
-  </div>-->
+  </div>
 </div>
 <ng-template #noData>
   <div class="card mb-3">
@@ -27,3 +23,19 @@
     </div>
   </div>
 </ng-template>
+
+<form *ngIf="searchFormHeader" [formGroup]="searchFormHeader" (ngSubmit)="block()">
+  <div class="d-flex bd-highlight">
+    <label class="form-label">Block an user</label>
+    <i *ngIf="alertManagerManager.iconList.includes('addBlockedUser')" class="ms-auto bd-highlight mb-0 bi bi-check-lg text-success"></i>
+  </div>
+  <div class="autocomplete">
+    <div class="input-group">
+      <input type="text" class="form-control no-click-ish" formControlName="preference" placeholder="Search" (click)="inputChange($event)" (ngModelChange)="inputChange($event)">
+      <div class="autocomplete-items">
+        <div *ngFor="let user of proposal" (click)="select(user)">{{ user.username }}</div>
+      </div>
+      <button class="btn btn-sm btn-danger" [disabled]="searchFormHeader.invalid" type="submit">Block</button>
+    </div>
+  </div>
+</form>

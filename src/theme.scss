@@ -188,3 +188,16 @@ select:focus {
   background-color: $primary-alert-primary-color !important;
   border-color: $secondary-alert-primary-color !important;
 }
+
+.autocomplete-items {
+  border-color: $tertiary-color !important;
+}
+
+.autocomplete-items div {
+  background-color: $secondary-color !important;
+  border-bottom-color: $tertiary-color !important;
+}
+
+.autocomplete-items div:hover {
+  background-color: $tertiary-color !important;
+}

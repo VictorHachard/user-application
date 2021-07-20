@@ -43,6 +43,14 @@ export class UserService {
     return this.http.delete<any>(`${environment.apiUrl}user/remove/email/${id}`);
   }
 
+  addBlockedUser(id: number): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}user/add/blocked-user/${id}`, {});
+  }
+
+  deleteBlockedUser(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}user/remove/blocked-user/${id}`);
+  }
+
   updateEmailPreferences(b: {emailPreferences: string}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}user/update/email-preferences`, b);
   }

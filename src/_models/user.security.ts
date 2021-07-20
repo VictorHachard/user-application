@@ -3,6 +3,7 @@ import {ThemeSimplified} from "./theme.simplified";
 import {Email} from "./email";
 import {Group} from "./group";
 import {Role} from "./role";
+import {UserSecuritySimplified} from "./user.security.simplified";
 
 export class UserSecurity extends AbstractModel {
   username?: string;
@@ -16,6 +17,7 @@ export class UserSecurity extends AbstractModel {
   url?: string;
   biography?: string;
   themeSimplifiedDto?: ThemeSimplified;
+  blockedUserDtoList?: UserSecuritySimplified[];
   emailList?: Email[];
   groupDtoList?: Group[];
   roleDtoList?: Role[];
