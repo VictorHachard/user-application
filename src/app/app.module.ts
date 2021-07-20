@@ -49,10 +49,10 @@ import {SettingNotificationsComponent} from '../composants/user/settings/user/se
 import {HelpComponent} from '../composants/help/help.component';
 import {PrivacyComponent} from '../composants/laws/privacy/privacy.component';
 import {TermsOfServiceComponent} from '../composants/laws/terms-of-service/terms-of-service.component';
-import { SettingCookiesAuthenticationComponent } from '../composants/user/settings/user/cookies/setting-cookies-authentication/setting-cookies-authentication.component';
-import { SettingCookiesComponent } from '../composants/user/settings/user/cookies/setting-cookies/setting-cookies.component';
-import { SettingEmailsTemplatesComponent } from '../composants/user/settings/owner/setting-emails-templates/setting-emails-templates.component';
-import { SettingEmailsActionComponent } from '../composants/user/settings/administrator/setting-emails-action/setting-emails-action.component';
+import {SettingCookiesAuthenticationComponent} from '../composants/user/settings/user/cookies/setting-cookies-authentication/setting-cookies-authentication.component';
+import {SettingCookiesComponent} from '../composants/user/settings/user/cookies/setting-cookies/setting-cookies.component';
+import {SettingEmailsTemplatesComponent} from '../composants/user/settings/owner/setting-emails-templates/setting-emails-templates.component';
+import {SettingEmailsActionComponent} from '../composants/user/settings/administrator/setting-emails-action/setting-emails-action.component';
 
 @NgModule({
   declarations: [

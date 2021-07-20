@@ -6,13 +6,26 @@
 
 <div class="mb-3 d-flex bd-highlight border-bottom">
   <h3 class="bd-highlight">Blocked users</h3>
-  <h5 *ngIf="alertManagerManager.iconList.includes('blocked')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+  <h5 *ngIf="alertManagerManager.iconList.includes('removeBlockedUser')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+</div>
+
+<div>
+  <p class="mb-1">test</p>
+  <ul class="list-style-none">
+    <li><i class="bi bi-x-lg text-danger"></i></li>
+    <li><i class="bi bi-x-lg text-danger"></i></li>
+  </ul>
 </div>
 
 <div *ngIf="user.blockedUserDtoList && user.blockedUserDtoList.length > 0; else noData" class="list-group mb-3">
   <div *ngFor="let blockedUser of user.blockedUserDtoList" href="#" class="list-group-item">
     <div class="d-flex w-100 justify-content-between">
-      <b>{{blockedUser.username}}</b>
+      <div class="bd-highlight">
+        <b>{{blockedUser.username}}</b>
+      </div>
+      <div class="ms-auto bd-highlight">
+        <h6 (click)="removeBlockedUser(blockedUser.id!)" style="cursor: pointer" class="d-inline ms-3 bi bi-trash text-danger"></h6>
+      </div>
     </div>
   </div>
 </div>
@@ -26,7 +39,7 @@
 
 <form *ngIf="searchFormHeader" [formGroup]="searchFormHeader" (ngSubmit)="block()">
   <div class="d-flex bd-highlight">
-    <label class="form-label">Block an user</label>
+    <label class="form-label">Block an user - Search by username</label>
     <i *ngIf="alertManagerManager.iconList.includes('addBlockedUser')" class="ms-auto bd-highlight mb-0 bi bi-check-lg text-success"></i>
   </div>
   <div class="autocomplete">
@@ -35,7 +48,7 @@
       <div class="autocomplete-items">
         <div *ngFor="let user of proposal" (click)="select(user)">{{ user.username }}</div>
       </div>
-      <button class="btn btn-sm btn-danger" [disabled]="searchFormHeader.invalid" type="submit">Block</button>
+      <button class="btn btn-sm btn-danger" [disabled]="searchFormHeader.invalid" type="submit">Block user</button>
     </div>
   </div>
 </form>

@@ -4,7 +4,6 @@ import {AlertManager} from "../../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../../_models/user.security";
 import {UserService} from "../../../../../_services/_api/user.service";
 import {AuthenticationService} from "../../../../../_services/authentication.service";
-import {ThemeService} from "../../../../../_services/_api/theme.service";
 
 @Component({
   selector: 'app-setting-account',

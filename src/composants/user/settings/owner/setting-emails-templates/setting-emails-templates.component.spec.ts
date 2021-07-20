@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SettingEmailsTemplatesComponent } from './setting-emails-templates.component';
+import {SettingEmailsTemplatesComponent} from './setting-emails-templates.component';
 
 describe('SettingEmailsTemplatesComponent', () => {
   let component: SettingEmailsTemplatesComponent;

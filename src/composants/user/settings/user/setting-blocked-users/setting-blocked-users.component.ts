@@ -60,4 +60,10 @@ export class SettingBlockedUsersComponent implements OnInit {
     }
   }
 
+  removeBlockedUser(number: number): void {
+    this.userService.removeBlockedUser(number).subscribe(value => {
+      this.alertManagerManager.addAlertIcon('removeBlockedUser');
+      this.isSummited.emit(true);
+    });
+  }
 }

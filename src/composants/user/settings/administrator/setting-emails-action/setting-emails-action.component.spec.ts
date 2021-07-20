@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SettingEmailsActionComponent } from './setting-emails-action.component';
+import {SettingEmailsActionComponent} from './setting-emails-action.component';
 
 describe('SettingEmailsActionComponent', () => {
   let component: SettingEmailsActionComponent;
