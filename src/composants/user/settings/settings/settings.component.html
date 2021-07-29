@@ -22,6 +22,7 @@
         <button class="nav-link {{param === 'appearance' ? 'active' : ''}}" type="button" routerLink="/settings/appearance">Appearance</button>
         <button class="nav-link {{param === 'security' ? 'active' : ''}}" type="button" routerLink="/settings/security">Account security</button>
         <button class="nav-link {{param === 'emails' ? 'active' : ''}}" type="button" routerLink="/settings/emails">Emails</button>
+        <button class="nav-link {{param === 'address' ? 'active' : ''}}" type="button" routerLink="/settings/emails">Address</button>
         <button class="nav-link {{param === 'cookies' ? 'active' : ''}}" type="button" routerLink="/settings/cookies">Cookies</button>
         <button class="nav-link {{param === 'notifications' ? 'active' : ''}}" type="button" routerLink="/settings/notifications">Notifications</button>
         <button class="nav-link {{param === 'security-log' ? 'active' : ''}}" type="button" routerLink="/settings/security-log">Security log</button>
@@ -38,6 +39,7 @@
       </div>
       <div class="nav flex-column nav-pills border rounded ish-table" aria-orientation="vertical">
         <p class="mb-0 p-2 ps-3">Owner settings</p>
+        <button class="nav-link {{param === 'user-settings' ? 'active' : ''}}" type="button" routerLink="/settings/owner/user-settings">User settings</button>
         <button class="nav-link {{param === 'groups' ? 'active' : ''}}" type="button" routerLink="/settings/owner/groups">Groups</button>
         <button class="nav-link {{param === 'themes' ? 'active' : ''}}" type="button" routerLink="/settings/owner/themes">Themes</button>
         <button class="nav-link {{param === 'emails-templates' ? 'active' : ''}}" type="button" routerLink="/settings/owner/emails-templates">Emails templates</button>
@@ -50,6 +52,7 @@
       <app-setting-appearance *ngIf="param === 'appearance'" (isSummited)="refresh($event)"></app-setting-appearance>
       <app-setting-security *ngIf="param === 'security'" (isSummited)="refresh($event)"></app-setting-security>
       <app-setting-emails *ngIf="param === 'emails'" (isSummited)="refresh($event)"></app-setting-emails>
+      <app-setting-address *ngIf="param === 'address'" (isSummited)="refresh($event)"></app-setting-address>
       <app-setting-cookies *ngIf="param === 'cookies'" (isSummited)="refresh($event)"></app-setting-cookies>
       <app-setting-notifications *ngIf="param === 'notifications'" (isSummited)="refresh($event)"></app-setting-notifications>
       <app-setting-security-log *ngIf="param === 'security-log'" (isSummited)="refresh($event)"></app-setting-security-log>
@@ -60,6 +63,7 @@
       <app-setting-users *ngIf="param === 'users'"></app-setting-users>
       <app-setting-emails-action *ngIf="param === 'emails-action'"></app-setting-emails-action>
 
+      <app-setting-user-settings *ngIf="param === 'user-settings'"></app-setting-user-settings>
       <app-setting-groups *ngIf="param === 'groups'"></app-setting-groups>
       <app-setting-themes *ngIf="param === 'themes'"></app-setting-themes>
       <app-setting-emails-templates *ngIf="param === 'emails-templates'"></app-setting-emails-templates>

@@ -10,7 +10,7 @@ import {AlertManager} from "../../../../../_helpers/alert.manager";
   templateUrl: './setting-blocked-users.component.html',
   styleUrls: ['./setting-blocked-users.component.scss']
 })
-export class SettingBlockedUsersComponent implements OnInit {
+export class SettingBlockedUsersComponent {
 
   alertManagerManager: AlertManager = new AlertManager();
   user!: UserSecurity;

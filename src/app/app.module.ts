@@ -53,6 +53,8 @@ import {SettingCookiesAuthenticationComponent} from '../composants/user/settings
 import {SettingCookiesComponent} from '../composants/user/settings/user/cookies/setting-cookies/setting-cookies.component';
 import {SettingEmailsTemplatesComponent} from '../composants/user/settings/owner/setting-emails-templates/setting-emails-templates.component';
 import {SettingEmailsActionComponent} from '../composants/user/settings/administrator/setting-emails-action/setting-emails-action.component';
+import {SettingUserSettingsComponent} from '../composants/user/settings/owner/setting-user-settings/setting-user-settings.component';
+import {SettingAddressComponent} from '../composants/user/settings/user/setting-address/setting-address.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +92,9 @@ import {SettingEmailsActionComponent} from '../composants/user/settings/administ
     SettingCookiesAuthenticationComponent,
     SettingCookiesComponent,
     SettingEmailsTemplatesComponent,
-    SettingEmailsActionComponent
+    SettingEmailsActionComponent,
+    SettingUserSettingsComponent,
+    SettingAddressComponent
   ],
   imports: [
     BrowserModule,
