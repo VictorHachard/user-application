@@ -4,6 +4,7 @@ import {Email} from "./email";
 import {Group} from "./group";
 import {Role} from "./role";
 import {UserSecuritySimplified} from "./user.security.simplified";
+import {Address} from "./address";
 
 export class UserSecurity extends AbstractModel {
   username?: string;
@@ -24,4 +25,5 @@ export class UserSecurity extends AbstractModel {
   profileImage?: string;
   emailPreferences?: string;
   twoFactorEmail?: boolean;
+  addressDtoList?: Address[];
 }

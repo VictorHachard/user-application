@@ -1,1 +1,69 @@
-<p>setting-address works!</p>
+<div *ngFor="let response of alertManagerManager.responseList">
+  <div class="alert {{ response.alert }}" role="alert">
+    {{ response.message }}
+  </div>
+</div>
+
+<div class="mb-3 d-flex bd-highlight border-bottom">
+  <h3 class="bd-highlight">Address</h3>
+  <h5 *ngIf="alertManagerManager.iconList.includes('address')" class="ms-auto bd-highlight mt-2 mb-0 bi bi-check-lg text-success"></h5>
+</div>
+
+<form class="mb-3" [formGroup]="addressForm" *ngIf="user.addressDtoList && user.addressDtoList.length > 0; else noData">
+  <div class="row g-2">
+    <div class="col-6" *ngFor="let a of user.addressDtoList">
+      <label class="w-100 form-check-label border rounded-2 zoom" style="cursor: pointer;{{a.id === value ? 'border-color: #0d6efd!important' : ''}}">
+        <div class="p-2 d-flex w-100 justify-content-between">
+          <div class="ish-address bd-highlight">
+            <p><i>{{a.alias}}</i></p>
+            <p><b>{{a.name}}</b></p>
+            <p>{{a.building}}</p>
+            <p>{{a.street}}</p>
+            <p>{{a.postcode}}</p>
+          </div>
+          <div class="ms-auto bd-highlight">
+            <h6 (click)="removeAddress(a.id!)" style="cursor: pointer" class="d-inline ms-3 bi bi-trash text-danger"></h6>
+          </div>
+        </div>
+        <div class="m-2">
+          <input class="mt-1 form-check-input" formControlName="id" (click)="address(a.id!)" type="radio" [value]="a.id">
+          <span class="ms-2">Default</span>
+        </div>
+      </label>
+    </div>
+  </div>
+</form>
+<ng-template #noData>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4 class="m-0 text-center">No address</h4>
+    </div>
+  </div>
+</ng-template>
+
+<form class="mb-3" [formGroup]="addAddressForm" (ngSubmit)="addAddress()">
+  <label class="form-label">Add address</label>
+  <i *ngIf="alertManagerManager.iconList.includes('addAddress')" class="ms-auto bd-highlight mb-0 bi bi-check-lg text-success"></i>
+
+  <div class="mb-3">
+    <label class="form-label">Alias</label>
+    <input type="text" formControlName="alias" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">First name and last name</label>
+    <input type="text" formControlName="name" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Building, floor...</label>
+    <input type="text" formControlName="building" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Street, house number, box number</label>
+    <input type="text" formControlName="street" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Postcode and name of city</label>
+    <input type="text" formControlName="postcode" class="form-control">
+  </div>
+  <button type="submit" [disabled]="addAddressForm.invalid" class="btn btn-sm btn-primary">Add address</button>
+</form>

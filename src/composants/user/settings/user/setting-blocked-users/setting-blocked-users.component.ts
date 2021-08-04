@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Output} from '@angular/core';
 import {UserSecurity} from "../../../../../_models/user.security";
 import {AuthenticationService} from "../../../../../_services/authentication.service";
 import {UserService} from "../../../../../_services/_api/user.service";

@@ -35,32 +35,12 @@ export class UserService {
     return this.http.get<any>(`${environment.apiUrl}user/dto/profile/${username}`);
   }
 
-  addEmail(b: {email: string}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}user/add/email`, b);
-  }
-
-  deleteEmail(id: number): Observable<any> {
-    return this.http.delete<any>(`${environment.apiUrl}user/remove/email/${id}`);
-  }
-
   addBlockedUser(id: number): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}user/add/blocked-user/${id}`, {});
   }
 
   removeBlockedUser(id: number): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}user/remove/blocked-user/${id}`);
-  }
-
-  updateEmailPreferences(b: {emailPreferences: string}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}user/update/email-preferences`, b);
-  }
-
-  updateEmailBackup(id: number, b: {backup: boolean}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}user/update/email/backup/${id}`, b);
-  }
-
-  updateEmailPriority(b: {email: string}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}user/update/email/priority`, b);
   }
 
   updateProfilePrivacy(b: {profilePrivacy: string}): Observable<any> {
@@ -81,14 +61,6 @@ export class UserService {
 
   updateTwoFactorEmail(b: {active: boolean}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}user/update/two-factor/email`, b);
-  }
-
-  actionConfirm(token: string): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}user/action/confirm/email`, token);
-  }
-
-  actionConfirmResendEmail(id: number): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}user/action/confirm/resend/email/${id}`, {});
   }
 
   actionSetPassword(b: {oldPassword: string, newPassword: string}): Observable<any> {
