@@ -4,6 +4,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../_services/authentication.service";
 import {Router} from "@angular/router";
 import {UserSecurity} from "../_models/user.security";
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,9 @@ import {UserSecurity} from "../_models/user.security";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  apiRessourceUrl = environment.apiRessourceUrl
+
   title = 'user-application';
   currentUser!: UserSecurity;
   value!: string;

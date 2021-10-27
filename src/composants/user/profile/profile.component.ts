@@ -4,6 +4,7 @@ import {AuthenticationService} from "../../../_services/authentication.service";
 import {UserService} from "../../../_services/_api/user.service";
 import {ImageService} from "../../../_services/_api/image.service";
 import {ActivatedRoute} from "@angular/router";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +12,8 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
+
+  apiRessourceUrl = environment.apiRessourceUrl
 
   user!: UserSecurity;
   currentUser!: UserSecurity;

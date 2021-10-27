@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserSecurity} from "../../../../_models/user.security";
 import {AuthenticationService} from "../../../../_services/authentication.service";
 import {ActivatedRoute} from "@angular/router";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-settings',
@@ -9,6 +10,8 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+
+  apiRessourceUrl = environment.apiRessourceUrl
 
   user!: UserSecurity;
   param!: string | null;

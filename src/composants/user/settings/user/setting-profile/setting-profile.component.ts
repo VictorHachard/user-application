@@ -6,6 +6,7 @@ import {UserService} from "../../../../../_services/_api/user.service";
 import {AuthenticationService} from "../../../../../_services/authentication.service";
 import {ImageService} from "../../../../../_services/_api/image.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-setting-profile',
@@ -13,6 +14,8 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./setting-profile.component.scss']
 })
 export class SettingProfileComponent {
+
+  apiRessourceUrl = environment.apiRessourceUrl
 
   profileForm!: FormGroup;
   privacyForm!: FormGroup;
