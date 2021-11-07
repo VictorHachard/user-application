@@ -19,6 +19,58 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+### Build and Deploy with Nginx on Linux
+
+[How to Deploy an Angular app in Production with Nginx](https://arjunphp.com/deploy-angular-app-production-nginx/)
+
+First update the apt-get package lists and then install Nginx using apt-get:
+
+```bash
+sudo apt-get update
+sudo apt-get install nginx
+```
+
+Then open the default file to configure server which is located in /etc/nginx/sites-available/ directory. Delete everything in this configuration file and paste the following content:
+
+```bash
+server {
+listen 80 default_server;
+listen [::]:80 default_server;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+ 
+    server_name _;
+ 
+    location / {
+        try_files $uri $uri/ /index.html =404;
+    }
+}
+```
+
+To make the changes active, restart the web server nginx:
+
+```bash
+sudo systemctl restart nginx
+sudo systemctl restart nginx
+```
+
+Now check the status of Nginx service by running following command, you should get “active” green color text along with other text.
+
+```bash
+sudo systemctl status nginx
+sudo systemctl status nginx
+```
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+When you run the `ng build --prod` command, it creates a `/dist` folder and it places all compiled files inside it. You have to move those files to web server root folder, ex: `/var/www/html`.
+
+```bash
+sudo rm -R /var/www/html/*
+sudo mv dist/<application>/* /var/www/html/
+```
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
