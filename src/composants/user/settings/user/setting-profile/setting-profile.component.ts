@@ -15,7 +15,7 @@ import {environment} from "../../../../../environments/environment";
 })
 export class SettingProfileComponent {
 
-  apiRessourceUrl = environment.apiRessourceUrl
+  apiResourceUrl = environment.apiResourceUrl
 
   profileForm!: FormGroup;
   privacyForm!: FormGroup;

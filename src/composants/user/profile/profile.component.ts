@@ -13,7 +13,7 @@ import {environment} from "../../../environments/environment";
 })
 export class ProfileComponent {
 
-  apiRessourceUrl = environment.apiRessourceUrl
+  apiResourceUrl = environment.apiResourceUrl
 
   user!: UserSecurity;
   currentUser!: UserSecurity;

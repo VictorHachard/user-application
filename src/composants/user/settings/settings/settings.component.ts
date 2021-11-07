@@ -11,7 +11,7 @@ import {environment} from "../../../../environments/environment";
 })
 export class SettingsComponent implements OnInit {
 
-  apiRessourceUrl = environment.apiRessourceUrl
+  apiResourceUrl = environment.apiResourceUrl
 
   user!: UserSecurity;
   param!: string | null;

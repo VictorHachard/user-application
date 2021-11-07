@@ -13,7 +13,7 @@ import {environment} from "../environments/environment";
 })
 export class AppComponent implements OnInit {
 
-  apiRessourceUrl = environment.apiRessourceUrl
+  apiResourceUrl = environment.apiResourceUrl
 
   title = 'user-application';
   currentUser!: UserSecurity;
