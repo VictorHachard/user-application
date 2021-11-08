@@ -1,0 +1,89 @@
+name: actions-ci-cd-angular-app
+
+on:
+  push:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node modules # this allows for re-using node_modules caching, making builds a bit faster.
+        id: cache-nodemodules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: |
+          npm ci
+      - name: Build
+        run: |
+          npm run build -- --prod
+      - name: Archive build
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_dist
+          path: dist
+  cd:
+    needs: ci
+    name: Continuous Deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Create folder
+        run: mkdir ~/deploy_dist
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: deploy_dist
+          path: deploy_dist
+      - name: Delete target folder
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            ls -al ${{ secrets.PATH }}
+            rm -rf ${{ secrets.PATH }}*
+      - name: Copy file via ssh key
+        uses: appleboy/scp-action@master
+        with: # sudo chmod 777 target directory
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: deploy_dist/user-application/*
+          target: ${{ secrets.PATH }}
+      - name: Move files
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            mv ${{ secrets.PATH }}/deploy_dist/user-application/* ${{ secrets.PATH }}
