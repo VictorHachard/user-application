@@ -12,31 +12,40 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    name: Build for Production
+  ci:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 12.x ]
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Use Node 12.x
-        uses: actions/setup-node@v1 # this installs node and npm
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-      - uses: actions/cache@v1 # this allows for re-using node_modules caching, making builds a bit faster.
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Clean Cache
-        run: npm cache clean --force
-      - name: Install dependencies
-        run: npm install
-      - name: Install angular
-        run: npm install -g @angular/cli > /dev/null
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: |
+          npm ci
       - name: Build
-        run: ng build
+        run: |
+          npm run build -- --prod
       - name: Archive build
         uses: actions/upload-artifact@v1
         with:
