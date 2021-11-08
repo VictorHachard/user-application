@@ -1,5 +1,6 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/VictorHachard/user-application?branch=master)](https://bettercodehub.com/)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/89c960f1999542b4befa368dd2e1f697)](https://www.codacy.com/gh/VictorHachard/user-application/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VictorHachard/user-application&amp;utm_campaign=Badge_Grade)
+[![CI/CD](https://github.com/VictorHachard/user-application/actions/workflows/actions-ci-cd-angular-app.yml/badge.svg)](https://github.com/VictorHachard/user-application/actions/workflows/actions-ci-cd-angular-app.yml)
 
 # User Application
 
@@ -39,9 +40,9 @@ listen [::]:80 default_server;
 
     root /var/www/html;
     index index.html index.htm index.nginx-debian.html;
- 
+
     server_name _;
- 
+
     location / {
         try_files $uri $uri/ /index.html =404;
     }
@@ -70,6 +71,20 @@ When you run the `ng build --prod` command, it creates a `/dist` folder and it p
 sudo rm -R /var/www/html/*
 sudo mv dist/<application>/* /var/www/html/
 ```
+
+#### CI/CD
+
+Using the `actions-ci-cd-angular-app.yml` workflow:
+
+Make sure on that the target directory was the right permission (`sudo chmod 777 target_directory`).
+
+##### Github secrets
+
+-  HOST
+-  PASSWORD
+-  PATH
+-  PORT
+-  USERNAME
 
 ## Running unit tests
 
