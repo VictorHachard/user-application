@@ -23,7 +23,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: |
-          npm cache clean --force
           npm install
           npm install -g @angular/cli > /dev/null
       - name: Build
