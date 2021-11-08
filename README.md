@@ -1,3 +1,5 @@
+[![Alpha](https://raster.shields.io/badge/maturity-Alpha-red.png)]()
+[![MIT license](https://img.shields.io/badge/license-MIT-green)](https://mit-license.org/)
 [![BCH compliance](https://bettercodehub.com/edge/badge/VictorHachard/user-application?branch=master)](https://bettercodehub.com/)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/89c960f1999542b4befa368dd2e1f697)](https://www.codacy.com/gh/VictorHachard/user-application/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VictorHachard/user-application&amp;utm_campaign=Badge_Grade)
 [![CI/CD](https://github.com/VictorHachard/user-application/actions/workflows/actions-ci-cd-angular-app.yml/badge.svg)](https://github.com/VictorHachard/user-application/actions/workflows/actions-ci-cd-angular-app.yml)
@@ -72,19 +74,19 @@ sudo rm -R /var/www/html/*
 sudo mv dist/<application>/* /var/www/html/
 ```
 
-#### CI/CD
+### Build and Deploy using Github Actions - CI/CD
 
 Using the `actions-ci-cd-angular-app.yml` workflow:
 
 Make sure on that the target directory was the right permission (`sudo chmod 777 target_directory`).
 
-##### Github secrets
+#### Github secrets
 
--  HOST
--  PASSWORD
--  PATH
--  PORT
--  USERNAME
+-   HOST
+-   PASSWORD
+-   PATH
+-   PORT
+-   USERNAME
 
 ## Running unit tests
 
