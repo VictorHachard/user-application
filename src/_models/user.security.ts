@@ -9,7 +9,7 @@ import {Address} from "./address";
 export class UserSecurity extends AbstractModel {
   username?: string;
   nameFormatted?: string;
-  authToken?: string;
+  authToken?: string; //TODO Move the authToken to the cookie side
   privacy?: string;
   birth?: Date;
   firstName?: string;

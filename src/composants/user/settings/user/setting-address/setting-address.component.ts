@@ -39,7 +39,7 @@ export class SettingAddressComponent implements OnInit {
     this.addAddressForm = new FormGroup({
       alias: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
-      building: new FormControl('', [Validators.required]),
+      building: new FormControl(''),
       street: new FormControl('', [Validators.required]),
       postcode: new FormControl('', [Validators.required])
     });

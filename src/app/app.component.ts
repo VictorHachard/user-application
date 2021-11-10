@@ -70,7 +70,6 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/login']);
     this.ngOnInit();
   }
 

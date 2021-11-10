@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {first, map} from 'rxjs/operators';
 import {environment} from "../environments/environment";
 
 @Injectable({ providedIn: 'root' })
@@ -20,7 +20,7 @@ export class AuthenticationService {
 
   updateUser() {
     return this.http.post<any>(`${environment.apiUrl}user/login/update`, {}).pipe(map(user => {
-      user.authToken = this.currentUserValue.authToken
+      user.authToken = this.currentUserValue.authToken //TODO Move the authToken to the cookie side
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
       return user;
@@ -40,6 +40,12 @@ export class AuthenticationService {
   }
 
   logout() {
+    this.http.post(`${environment.apiUrl}user/logout`, {}).subscribe(value => {
+      this.forceLogout();
+    });
+  }
+
+  forceLogout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }

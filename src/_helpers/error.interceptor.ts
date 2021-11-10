@@ -12,7 +12,11 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(catchError(err => {
       if (err.status === 401) {
         // auto logout if 401 response returned from api
-        this.authenticationService.logout();
+        this.authenticationService.forceLogout();
+        location.reload(true);
+      } else if (err.statusText == 'Unknown Error') {
+        // auto logout if Unknown Error returned from api - It when the API is not responding
+        this.authenticationService.forceLogout();
         location.reload(true);
       }
 
