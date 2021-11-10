@@ -20,6 +20,7 @@ export class AuthenticationService {
 
   updateUser() {
     return this.http.post<any>(`${environment.apiUrl}user/login/update`, {}).pipe(map(user => {
+      user.authToken = this.currentUserValue.authToken
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
       return user;
