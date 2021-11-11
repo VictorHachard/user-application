@@ -28,7 +28,7 @@ export class ConfirmEmailComponent implements OnInit {
         this.router.navigate(['/home']);
       }, 2000);
     }, error => {
-      this.alertManagerManager.addAlert(error.error.message, 'alert-danger');
+      this.alertManagerManager.addAlert(error.error.message, 'alert-danger'); //TODO better error handling
     });
   }
 

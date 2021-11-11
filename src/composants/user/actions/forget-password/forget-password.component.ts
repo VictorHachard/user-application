@@ -36,8 +36,12 @@ export class ForgetPasswordComponent implements OnInit {
 
   forget(): void {
     this.userService.actionForgetPassword(this.f.username.value).subscribe(value => {
-      this.router.navigate(['/login']);
+      this.alertManagerManager.addAlert('You will receive an email with instructions on how to reset your password in a few minutes', 'alert-success');
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 2000);
     }, error => {
+      this.alertManagerManager.addAlert(error.error.message, 'alert-danger'); //TODO better error handling
       this.alertManagerManager.addAlert('The username is incorrect', 'alert-danger');
     });
   }

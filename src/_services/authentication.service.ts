@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {first, map} from 'rxjs/operators';
 import {environment} from "../environments/environment";
+import {UserSecurity} from "../_models/user.security";
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -14,13 +15,13 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): any {
+  public get currentUserValue(): UserSecurity {
     return this.currentUserSubject.value;
   }
 
   updateUser() {
     return this.http.post<any>(`${environment.apiUrl}user/login/update`, {}).pipe(map(user => {
-      user.authToken = this.currentUserValue.authToken //TODO Move the authToken to the cookie side
+      user.actualSessionDto = this.currentUserValue.actualSessionDto;
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
       return user;
@@ -40,9 +41,7 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.http.post(`${environment.apiUrl}user/logout`, {}).subscribe(value => {
-      this.forceLogout();
-    });
+    return this.http.post(`${environment.apiUrl}user/logout`, {});
   }
 
   forceLogout() {

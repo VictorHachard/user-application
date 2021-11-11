@@ -69,8 +69,10 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.authenticationService.logout();
-    this.ngOnInit();
+    this.authenticationService.logout().subscribe(value => {
+      this.authenticationService.forceLogout();
+      this.router.navigate(['/login']);
+    });
   }
 
 }

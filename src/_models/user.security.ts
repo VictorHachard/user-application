@@ -5,11 +5,11 @@ import {Group} from "./group";
 import {Role} from "./role";
 import {UserSecuritySimplified} from "./user.security.simplified";
 import {Address} from "./address";
+import {Session} from "./session";
 
 export class UserSecurity extends AbstractModel {
   username?: string;
   nameFormatted?: string;
-  authToken?: string; //TODO Move the authToken to the cookie side
   privacy?: string;
   birth?: Date;
   firstName?: string;
@@ -26,4 +26,5 @@ export class UserSecurity extends AbstractModel {
   emailPreferences?: string;
   twoFactorEmail?: boolean;
   addressDtoList?: Address[];
+  actualSessionDto?: Session;
 }

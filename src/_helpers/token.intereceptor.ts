@@ -9,8 +9,8 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const currentUser = this.authenticationService.currentUserValue;
-    if (currentUser && currentUser.authToken) {
-      request = request.clone({setHeaders: {Authorization: currentUser.authToken}});
+    if (currentUser && currentUser.actualSessionDto?.authToken) {
+      request = request.clone({setHeaders: {Authorization: currentUser.actualSessionDto?.authToken}});
     }
     return next.handle(request);
   }
