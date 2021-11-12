@@ -62,3 +62,20 @@
     </div>
   </div>
 </div>
+
+<h3 class="pb-2 border-bottom">Sessions</h3>
+
+<form class="mb-3" *ngIf="user.sessionDtoList && user.sessionDtoList.length > 0">
+  <div class="list-group mb-3">
+    <div class="list-group-item" *ngFor="let s of user.sessionDtoList ">
+      <div class="d-flex bd-highlight">
+        <div class="bd-highlight">
+          <p class="mb-1">{{s.ip}}</p>
+        </div>
+        <div class="ms-auto bd-highlight">
+          <button (click)="emailTwoFactor()" class="btn btn-sm {{!user.twoFactorEmail ? 'btn-success' : 'btn-danger'}} d-inline float-end">{{!user.twoFactorEmail ? 'Enable' : 'Disable' }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

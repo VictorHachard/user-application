@@ -17,13 +17,13 @@ export class TwoFactorEmailComponent implements OnInit {
 
   twoFactorEmailForm!: FormGroup;
   alertManagerManager: AlertManager = new AlertManager();
-  @Input() auth!: string;
+  @Input() queryParams!: any;
 
   constructor(private authenticationService: AuthenticationService,
               private userService: UserService,
               private route: ActivatedRoute,
               private router: Router) {
-    this.auth = this.route.snapshot.queryParams.auth;
+    this.queryParams = this.route.snapshot.queryParams;
   }
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class TwoFactorEmailComponent implements OnInit {
   get f() { return this.twoFactorEmailForm.controls; }
 
   twoFactorEmail(): void {
-    this.authenticationService.login(this.auth, this.f.code.value).pipe(first()).subscribe(value => {
+    this.authenticationService.login(this.queryParams.auth, this.queryParams.rememberMe, this.f.code.value).pipe(first()).subscribe(value => {
       this.router.navigate(['/']);
     }, error => {
       this.alertManagerManager.addAlert(error, 'alert-danger');

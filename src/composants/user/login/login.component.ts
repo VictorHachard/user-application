@@ -32,18 +32,19 @@ export class LoginComponent implements OnInit {
     this.alertManagerManager = new AlertManager();
     this.loginForm = new FormGroup({
       username: new FormControl(!environment.production ? 'Paulin' : '', Validators.required),
-      password: new FormControl(!environment.production ? 'Test123*' : '', Validators.required)
+      password: new FormControl(!environment.production ? 'Test123*' : '', Validators.required),
+      rememberMe: new FormControl(false)
     });
   }
 
   get f() { return this.loginForm.controls; }
 
   login(): void {
-    this.authenticationService.login(btoa(this.f.username.value + ":" + this.f.password.value), '').pipe(first()).subscribe(value => {
+    this.authenticationService.login(btoa(this.f.username.value + ":" + this.f.password.value), this.f.rememberMe.value, '').pipe(first()).subscribe(value => {
         this.router.navigate([this.route.snapshot.queryParams['returnUrl'] || '/']);
     }, error => {
       if (error.includes('2FA')) {
-        this.router.navigate(['/two-factor'], {queryParams: {auth: btoa(this.f.username.value + ":" + this.f.password.value)}});
+        this.router.navigate(['/two-factor'], {queryParams: {auth: btoa(this.f.username.value + ":" + this.f.password.value), rememberMe: this.f.rememberMe.value}});
       } else {
         this.alertManagerManager.addAlert('The username or password is incorrect', 'alert-danger');
       }

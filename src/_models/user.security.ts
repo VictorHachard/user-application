@@ -26,5 +26,5 @@ export class UserSecurity extends AbstractModel {
   emailPreferences?: string;
   twoFactorEmail?: boolean;
   addressDtoList?: Address[];
-  actualSessionDto?: Session;
+  sessionDtoList?: Session[];
 }
