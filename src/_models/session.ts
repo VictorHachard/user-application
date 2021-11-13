@@ -4,4 +4,6 @@ export class Session extends AbstractModel {
   token?: string;
   authToken?: string;
   ip?: string;
+  lastConnection?: Date;
+  onMobile?: boolean;
 }

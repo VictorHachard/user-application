@@ -9,19 +9,26 @@ import {HomeComponent} from "../composants/home/home.component";
 import {SettingsComponent} from "../composants/user/settings/settings/settings.component";
 import {ProfileComponent} from "../composants/user/profile/profile.component";
 import {ForgetPasswordComponent} from "../composants/user/actions/forget-password/forget-password.component";
-import {AuthGuardService, NotAuthGuardService} from "../_helpers/_guards/auth-guard.service";
+import {
+  AuthGuardService,
+  NotAuthGuardService
+} from "../_helpers/_guards/auth-guard.service";
 import {TwoFactorEmailComponent} from "../composants/user/two-factor/two-factor-email/two-factor-email.component";
 import {NotificationsComponent} from "../composants/user/notifications/notifications.component";
 import {HelpComponent} from "../composants/help/help.component";
 import {TermsOfServiceComponent} from "../composants/laws/terms-of-service/terms-of-service.component";
 import {PrivacyComponent} from "../composants/laws/privacy/privacy.component";
+import {
+  PermissionAdministratorGuardService,
+  PermissionOwnerGuardService, PermissionUserGuardService
+} from "../_helpers/_guards/permission-guard.service";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'home', component: HomeComponent},
 
-  { path: 'terms-of-service', component: TermsOfServiceComponent },
-  { path: 'privacy', component: PrivacyComponent },
+  { path: 'terms-of-service', component: TermsOfServiceComponent},
+  { path: 'privacy', component: PrivacyComponent},
 
   { path: 'login', component: LoginComponent, canActivate: [NotAuthGuardService]},
   { path: 'register', component: RegisterComponent, canActivate: [NotAuthGuardService]},
@@ -30,12 +37,12 @@ const routes: Routes = [
   { path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuardService]},
   { path: 'help', component: HelpComponent},
 
-  { path: 'settings/owner/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
-  { path: 'settings/owner/:param/:param2', component: SettingsComponent, canActivate: [AuthGuardService]},
-  { path: 'settings/administrator/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]},
-  { path: 'settings/:param', component: SettingsComponent, canActivate: [AuthGuardService]},
-  { path: 'settings/:param/:param2', component: SettingsComponent, canActivate: [AuthGuardService]},
+  { path: 'settings/owner/:param', component: SettingsComponent, canActivate: [AuthGuardService, PermissionOwnerGuardService]},
+  { path: 'settings/owner/:param/:param2', component: SettingsComponent, canActivate: [AuthGuardService, PermissionOwnerGuardService]},
+  { path: 'settings/administrator/:param', component: SettingsComponent, canActivate: [AuthGuardService, PermissionAdministratorGuardService]},
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService, PermissionUserGuardService]},
+  { path: 'settings/:param', component: SettingsComponent, canActivate: [AuthGuardService, PermissionUserGuardService]},
+  { path: 'settings/:param/:param2', component: SettingsComponent, canActivate: [AuthGuardService, PermissionUserGuardService]},
 
   { path: 'profile/:username', component: ProfileComponent},
 

@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
 import {AuthenticationService} from "../../_services/authentication.service";
 
+//TODO add guards to handle roles
+//TODO add guards to handle settings
+
 @Injectable({
   providedIn: 'root'
 })

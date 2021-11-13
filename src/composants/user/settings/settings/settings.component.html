@@ -13,31 +13,31 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="settingList && settingList.length > 0 && permissionList && permissionList.length > 0">
     <div class="set-nav col-md-auto mb-3 align-items-start">
-      <div class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
+      <div *ngIf="permissionList.includes('ROLE_USER')" class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
         <p class="mb-0 p-2 ps-3">Account settings</p>
-        <button class="nav-link {{param === 'profile' || !param ? 'active' : ''}}" type="button" routerLink="/settings/profile">Profile</button>
-        <button class="nav-link {{param === 'account' ? 'active' : ''}}" type="button" routerLink="/settings/account">Account</button>
-        <button class="nav-link {{param === 'appearance' ? 'active' : ''}}" type="button" routerLink="/settings/appearance">Appearance</button>
-        <button class="nav-link {{param === 'security' ? 'active' : ''}}" type="button" routerLink="/settings/security">Account security</button>
-        <button class="nav-link {{param === 'emails' ? 'active' : ''}}" type="button" routerLink="/settings/emails">Emails</button>
-        <button class="nav-link {{param === 'address' ? 'active' : ''}}" type="button" routerLink="/settings/address">Address</button>
-        <button class="nav-link {{param === 'cookies' ? 'active' : ''}}" type="button" routerLink="/settings/cookies">Cookies</button>
-        <button class="nav-link {{param === 'notifications' ? 'active' : ''}}" type="button" routerLink="/settings/notifications">Notifications</button>
-        <button class="nav-link {{param === 'security-log' ? 'active' : ''}}" type="button" routerLink="/settings/security-log">Security log</button>
+        <button class="nav-link {{settingList.includes('profile') && param === 'profile' || !param ? 'active' : ''}}" type="button" routerLink="/settings/profile">Profile</button>
+        <button class="nav-link {{settingList.includes('account') && param === 'account' ? 'active' : ''}}" type="button" routerLink="/settings/account">Account</button>
+        <button class="nav-link {{settingList.includes('appearance') && param === 'appearance' ? 'active' : ''}}" type="button" routerLink="/settings/appearance">Appearance</button>
+        <button class="nav-link {{settingList.includes('security') && param === 'security' ? 'active' : ''}}" type="button" routerLink="/settings/security">Account security</button>
+        <button class="nav-link {{settingList.includes('emails') && param === 'emails' ? 'active' : ''}}" type="button" routerLink="/settings/emails">Emails</button>
+        <button class="nav-link {{settingList.includes('address') && param === 'address' ? 'active' : ''}}" type="button" routerLink="/settings/address">Address</button>
+        <button class="nav-link {{settingList.includes('cookies') && param === 'cookies' ? 'active' : ''}}" type="button" routerLink="/settings/cookies">Cookies</button>
+        <button class="nav-link {{settingList.includes('notifications') && param === 'notifications' ? 'active' : ''}}" type="button" routerLink="/settings/notifications">Notifications</button>
+        <button class="nav-link {{settingList.includes('security-log') && param === 'security-log' ? 'active' : ''}}" type="button" routerLink="/settings/security-log">Security log</button>
       </div>
-      <div class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
+      <div *ngIf="permissionList.includes('ROLE_USER')" class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
         <p class="mb-0 p-2 ps-3">Moderation settings</p>
-        <button class="nav-link {{param === 'blocked-users' ? 'active' : ''}}" type="button" routerLink="/settings/blocked-users">Blocked users</button>
-        <button class="nav-link {{param === 'interaction-limits' ? 'active' : ''}}" type="button" routerLink="/settings/interaction-limits">Interaction limits</button>
+        <button class="nav-link {{settingList.includes('blocked-users') && param === 'blocked-users' ? 'active' : ''}}" type="button" routerLink="/settings/blocked-users">Blocked users</button>
+        <button class="nav-link {{settingList.includes('interaction-limits') && param === 'interaction-limits' ? 'active' : ''}}" type="button" routerLink="/settings/interaction-limits">Interaction limits</button>
       </div>
-      <div class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
+      <div *ngIf="permissionList.includes('ROLE_ADMINISTRATOR')" class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
         <p class="mb-0 p-2 ps-3">Administrator settings</p>
         <button class="nav-link {{param === 'users' ? 'active' : ''}}" type="button" routerLink="/settings/administrator/users">Users</button>
         <button class="nav-link {{param === 'emails-action' ? 'active' : ''}}" type="button" routerLink="/settings/administrator/emails-action">Emails action</button>
       </div>
-      <div class="nav flex-column nav-pills border rounded ish-table" aria-orientation="vertical">
+      <div *ngIf="permissionList.includes('ROLE_OWNER')" class="nav flex-column nav-pills border rounded ish-table" aria-orientation="vertical">
         <p class="mb-0 p-2 ps-3">Owner settings</p>
         <button class="nav-link {{param === 'user-settings' ? 'active' : ''}}" type="button" routerLink="/settings/owner/user-settings">User settings</button>
         <button class="nav-link {{param === 'groups' ? 'active' : ''}}" type="button" routerLink="/settings/owner/groups">Groups</button>
