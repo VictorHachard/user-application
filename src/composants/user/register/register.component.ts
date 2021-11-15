@@ -30,7 +30,6 @@ export class RegisterComponent implements OnInit {
               private authenticationService: AuthenticationService,
               private route: ActivatedRoute,
               private router: Router) {
-    console.log(this.authenticationService.currentUserValue)
     if (this.authenticationService.currentUserValue) {
       this.router.navigate([this.route.snapshot.queryParams['returnUrl'] || '/']);
     }
@@ -51,7 +50,7 @@ export class RegisterComponent implements OnInit {
 
   register(): void {
     this.authenticationService.register(this.f.username.value, this.f.email.value, this.f.password.value).pipe(first()).subscribe(value => {
-      this.router.navigate([this.route.snapshot.queryParams['returnUrl'] || '/']);
+      this.router.navigate(['/login']);
     }, error => {
       this.alertManagerManager.addAlert('The user already exists', 'alert-danger');
     });
