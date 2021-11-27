@@ -1,8 +1,8 @@
 <section class="my-4 container">
 
   <div class="mb-3 d-flex bd-highlight">
-    <div *ngIf="user.profileImage" class="p-2 bd-highlight">
-      <img [src]="apiResourceUrl + user.profileImage" class="rounded-circle" height="50" width="50" style="object-fit: cover;" alt="">
+    <div *ngIf="user.profileImage && imageUrl" class="p-2 bd-highlight">
+      <img [src]="imageUrl" class="rounded-circle" height="50" width="50" style="object-fit: cover;" alt="">
     </div>
     <div class="px-2 pt-1 bd-highlight">
         <h2 class="m-0">{{user.username}}</h2>
@@ -17,6 +17,7 @@
     <div class="set-nav col-md-auto mb-3 align-items-start">
       <div *ngIf="permissionList.includes('ROLE_USER')" class="nav flex-column nav-pills border rounded ish-table mb-4" aria-orientation="vertical">
         <p class="mb-0 p-2 ps-3">Account settings</p>
+        <!--- When landing on this page the profile is not selected -->
         <button class="nav-link {{settingList.includes('profile') && param === 'profile' || !param ? 'active' : ''}}" type="button" routerLink="/settings/profile">Profile</button>
         <button class="nav-link {{settingList.includes('account') && param === 'account' ? 'active' : ''}}" type="button" routerLink="/settings/account">Account</button>
         <button class="nav-link {{settingList.includes('appearance') && param === 'appearance' ? 'active' : ''}}" type="button" routerLink="/settings/appearance">Appearance</button>

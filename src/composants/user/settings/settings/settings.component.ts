@@ -6,6 +6,8 @@ import {environment} from "../../../../environments/environment";
 import {SettingService} from "../../../../_services/_api/setting.service";
 import {Theme} from "../../../../_models/theme";
 import {Setting} from "../../../../_models/setting";
+import {ImageService} from "../../../../_services/_api/image.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-settings',
@@ -14,15 +16,16 @@ import {Setting} from "../../../../_models/setting";
 })
 export class SettingsComponent implements OnInit {
 
-  apiResourceUrl = environment.apiResourceUrl
-
   user!: UserSecurity;
   param!: string | null;
   settingList!: any[];
   permissionList!: any[];
+  imageUrl!: any;
 
   constructor(private authenticationService: AuthenticationService,
               private route: ActivatedRoute,
+              private imageService: ImageService,
+              private sanitizer: DomSanitizer,
               private settingService: SettingService) {
     this.authenticationService.currentUser.subscribe(x => {this.user = x;});
     this.permissionList = []
@@ -36,6 +39,11 @@ export class SettingsComponent implements OnInit {
         this.settingList.push(setting.name);
       }
     });
+    if (this.user.profileImage) {
+      this.imageService.get(this.user.profileImage!).subscribe(value => {
+        this.imageUrl = this.sanitizer.bypassSecurityTrustUrl('data:image;base64,' + value.content);
+      });
+    }
   }
 
   ngOnInit(): void {

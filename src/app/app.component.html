@@ -31,7 +31,7 @@
         </li>
         <li *ngIf="currentUser" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img *ngIf="currentUser.profileImage; else noData" [src]="apiResourceUrl + currentUser.profileImage" class="rounded-circle" height="22" width="22" style="object-fit: cover;" alt="">
+            <img *ngIf="currentUser.profileImage && imageUrl; else noData" [src]="imageUrl" class="rounded-circle" height="22" width="22" style="object-fit: cover;" alt="">
             <ng-template #noData>
               {{ currentUser.username }}
             </ng-template>

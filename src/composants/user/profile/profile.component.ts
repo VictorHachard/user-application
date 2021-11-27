@@ -5,6 +5,7 @@ import {UserService} from "../../../_services/_api/user.service";
 import {ImageService} from "../../../_services/_api/image.service";
 import {ActivatedRoute} from "@angular/router";
 import {environment} from "../../../environments/environment";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-profile',
@@ -13,15 +14,15 @@ import {environment} from "../../../environments/environment";
 })
 export class ProfileComponent {
 
-  apiResourceUrl = environment.apiResourceUrl
-
   user!: UserSecurity;
   currentUser!: UserSecurity;
   username!: string;
+  imageUrl!: any;
 
   constructor(private authenticationService: AuthenticationService,
               private userService: UserService,
               private imageService: ImageService,
+              private sanitizer: DomSanitizer,
               private route: ActivatedRoute) {
     this.authenticationService.currentUser.subscribe(x => {this.currentUser = x; this.ngOnInit();});
     this.route.paramMap.subscribe(params => {this.ngOnInit();});
@@ -33,6 +34,11 @@ export class ProfileComponent {
       this.userService.getProfile(this.username).subscribe(value => {
         this.user = value;
       });
+      if (this.currentUser.profileImage) {
+        this.imageService.get(this.currentUser.profileImage!).subscribe(value => {
+          this.imageUrl = this.sanitizer.bypassSecurityTrustUrl('data:image;base64,' + value.content);
+        });
+      }
     } else {
       this.user = this.currentUser;
     }

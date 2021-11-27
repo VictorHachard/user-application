@@ -6,7 +6,7 @@ import {UserService} from "../../../../../_services/_api/user.service";
 import {AuthenticationService} from "../../../../../_services/authentication.service";
 import {ImageService} from "../../../../../_services/_api/image.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {environment} from "../../../../../environments/environment";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-setting-profile',
@@ -15,14 +15,13 @@ import {environment} from "../../../../../environments/environment";
 })
 export class SettingProfileComponent {
 
-  apiResourceUrl = environment.apiResourceUrl
-
   profileForm!: FormGroup;
   privacyForm!: FormGroup;
   alertManagerManager: AlertManager = new AlertManager();
   _reload = true;
   trustedUrl: any;
   param!: string | null;
+  imageUrl!: any;
 
   user!: UserSecurity;
   @Output() isSummited = new EventEmitter<boolean>();
@@ -31,8 +30,14 @@ export class SettingProfileComponent {
               private router: Router,
               private authenticationService: AuthenticationService,
               private userService: UserService,
-              private imageService: ImageService) {
+              private imageService: ImageService,
+              private sanitizer: DomSanitizer) {
     this.authenticationService.currentUser.subscribe(x => {this.user = x; this.ngOnInit();});
+    if (this.user.profileImage) {
+      this.imageService.get(this.user.profileImage!).subscribe(value => {
+        this.imageUrl = this.sanitizer.bypassSecurityTrustUrl('data:image;base64,' + value.content);
+      });
+    }
   }
 
   ngOnInit(): void {

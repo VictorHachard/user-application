@@ -5,6 +5,8 @@ import {AuthenticationService} from "../_services/authentication.service";
 import {Router} from "@angular/router";
 import {UserSecurity} from "../_models/user.security";
 import {environment} from "../environments/environment";
+import {ImageService} from "../_services/_api/image.service";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
@@ -13,19 +15,25 @@ import {environment} from "../environments/environment";
 })
 export class AppComponent implements OnInit {
 
-  apiResourceUrl = environment.apiResourceUrl
-
   title = 'user-application';
   currentUser!: UserSecurity;
   value!: string;
+  imageUrl: SafeUrl | undefined;
 
   constructor(private router: Router,
-    private authenticationService: AuthenticationService) {
+              private imageService: ImageService,
+              private sanitizer: DomSanitizer,
+              private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => { this.currentUser = x; this.ngOnInit(); });
   }
 
   ngOnInit(): void {
     if (this.currentUser) {
+      if (this.currentUser.profileImage) {
+        this.imageService.get(this.currentUser.profileImage!).subscribe(value => {
+          this.imageUrl = this.sanitizer.bypassSecurityTrustUrl('data:image;base64,' + value.content);
+        });
+      }
       document.documentElement.style.setProperty('--primary-color', this.currentUser.themeSimplifiedDto!.primaryColor!);
       document.documentElement.style.setProperty('--secondary-color', this.currentUser.themeSimplifiedDto!.secondaryColor!);
       document.documentElement.style.setProperty('--tertiary-color', this.currentUser.themeSimplifiedDto!.tertiaryColor!);
