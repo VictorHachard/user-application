@@ -15,14 +15,14 @@ export class ErrorInterceptor implements HttpInterceptor {
       if (err.status === 401) {
         // auto logout if 401 response returned from api
         this.authenticationService.forceLogout();
-        location.reload(true);
+        location.reload();
         this.router.navigate(['/login']);
       } else if (err.status === 403) {
         this.router.navigate(['/home']);
       } else if (err.statusText == 'Unknown Error') {
         // auto logout if Unknown Error returned from api - It when the API is not responding
         this.authenticationService.forceLogout();
-        location.reload(true);
+        location.reload();
         this.router.navigate(['/login']);
       }
 
