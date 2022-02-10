@@ -9,18 +9,32 @@ import {Observable} from "rxjs";
 export class UserService {
   constructor(private http: HttpClient) { }
 
-
-
   count(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/user/count`);
+    return this.http.get<any>(`${environment.apiUrl}user/count`);
   }
 
   get(id: number): Observable<UserSecurity> {
-    return this.http.get<UserSecurity>(`${environment.apiUrl}/user/dto/${id}`);
+    return this.http.get<UserSecurity>(`${environment.apiUrl}user/dto/${id}`);
   }
 
   getAll(pageIndex = 0, pageSize = 10, sortBy= 'id', orderBy = 'asc', searchBy = 'null', searchValue = 'null'): Observable<UserSecurity[]> {
-    return this.http.get<UserSecurity[]>(`${environment.apiUrl}/user/dto`, {
+    return this.http.get<UserSecurity[]>(`${environment.apiUrl}user/dto`, {
+      params: new HttpParams()
+        .set('pageIndex', pageIndex.toString())
+        .set('pageSize', pageSize.toString())
+        .set('sortBy', sortBy)
+        .set('orderBy', orderBy)
+        .set('searchBy', searchBy)
+        .set('searchValue', searchValue)
+    });
+  }
+
+  /**
+   * This method is used to find user to ban for another user.
+   * This is to avoid to return an dto object with to confidential data.
+   */
+  getAllBlockedUser(pageIndex = 0, pageSize = 10, sortBy= 'id', orderBy = 'asc', searchBy = 'null', searchValue = 'null'): Observable<UserSecurity[]> {
+    return this.http.get<UserSecurity[]>(`${environment.apiUrl}user/dto/blocked-user`, {
       params: new HttpParams()
         .set('pageIndex', pageIndex.toString())
         .set('pageSize', pageSize.toString())

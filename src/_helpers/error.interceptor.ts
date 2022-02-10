@@ -14,13 +14,17 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(catchError(err => {
       if (err.status === 401) {
         // auto logout if 401 response returned from api
+        console.log('The API response with a 401 (UNAUTHORIZED) code. Logging out the user.');
         this.authenticationService.forceLogout();
         location.reload();
         this.router.navigate(['/login']);
       } else if (err.status === 403) {
-        this.router.navigate(['/home']);
+        console.log('The API response with a 403 (FORBIDDEN) code. Reloading the user.');
+        this.authenticationService.reloadUser().subscribe(value => {});
+        // this.router.navigate(['/home']);
       } else if (err.statusText == 'Unknown Error') {
-        // auto logout if Unknown Error returned from api - It when the API is not responding
+        // auto logout if Unknown Error is returned from the api - It when the API is not responding
+        console.log('The API response with a Unknown Error. Logging out the user.');
         this.authenticationService.forceLogout();
         location.reload();
         this.router.navigate(['/login']);

@@ -52,6 +52,6 @@ export class SettingsComponent implements OnInit {
   }
 
   refresh($event: boolean): void {
-    if ($event) {this.authenticationService.updateUser().subscribe(value => {});}
+    if ($event) {this.authenticationService.reloadUser().subscribe(value => {});}
   }
 }

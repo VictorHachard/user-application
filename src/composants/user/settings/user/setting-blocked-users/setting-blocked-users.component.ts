@@ -42,7 +42,7 @@ export class SettingBlockedUsersComponent {
   inputChange($event: any): void {
     this.proposal = [];
     if (this.f.preference.value.length > 0) {
-      this.userService.getAll(0, 10, 'username', 'asc', 'username', this.f.preference.value).subscribe(value => {
+      this.userService.getAllBlockedUser(0, 10, 'username', 'asc', 'username', this.f.preference.value).subscribe(value => {
         this.proposal = value
       });
     }

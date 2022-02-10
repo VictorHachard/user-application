@@ -38,7 +38,11 @@ export class AuthenticationService {
     return this.currentSessionSubject.value;
   }
 
-  updateUser() {
+  /**
+   * Update the current user. This method reload the current user from the server.
+   * @returns {Observable<any>}
+   */
+  reloadUser() {
     return this.http.post<any>(`${environment.apiUrl}user/login/update`, {}).pipe(map(user => {
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
@@ -52,6 +56,12 @@ export class AuthenticationService {
       return user;
     }));
   }
+
+  /**
+   * Update the current user. This method reload the role of the current user from the server.
+   * @returns {Observable<any>}
+   */
+  reloadUserRole() {  }
 
   login(auth: string, rememberMe: boolean, code: string) {
     return this.http.post<any>(`${environment.apiUrl}user/login`, {auth: auth, rememberMe: rememberMe, code: code}).pipe(map(user => {
@@ -76,5 +86,7 @@ export class AuthenticationService {
     this.currentUserSubject.next(null);
     localStorage.removeItem('currentSession');
     this.currentSessionSubject.next(null);
+    localStorage.removeItem('imageUser');
+    this.imageUserSubject.next(null);
   }
 }

@@ -55,10 +55,10 @@ export class SettingSecurityComponent {
   emailTwoFactor(): void {
     this.userService.updateTwoFactorEmail({active: !this.fTwoFactorEmailForm.email.value}).subscribe(value => {
       this.alertManagerManager.addAlertIcon('emailTwoFactor');
-      this.alertManagerManager.addAlert('Your password has been changed', 'alert-success');
+      this.alertManagerManager.addAlert('Your activated the two-factor authentication by email ', 'alert-success');
       this.isSummited.emit(true);
     }, error => {
-      this.alertManagerManager.addAlert('Your old password is incorrect', 'alert-danger');
+      this.alertManagerManager.addAlert('The principal email is not confirmed', 'alert-danger');
     });
   }
 }
