@@ -20,6 +20,7 @@
             <p>{{a.building}}</p>
             <p>{{a.street}}</p>
             <p>{{a.postcode}}</p>
+            <p>{{a.countryDto?.name}}</p>
           </div>
           <div class="ms-auto bd-highlight">
             <h6 (click)="removeAddress(a.id!)" style="cursor: pointer" class="d-inline ms-3 bi bi-trash text-danger"></h6>
@@ -64,6 +65,15 @@
   <div class="mb-3">
     <label class="form-label">Postcode and name of city</label>
     <input type="text" formControlName="postcode" class="form-control">
+  </div>
+  <div class="autocomplete mb-3">
+    <label class="form-label">Country</label>
+    <div class="input-group">
+      <input type="text" class="form-control no-click-ish" formControlName="country" placeholder="Search" (click)="inputChange($event)" (ngModelChange)="inputChange($event)">
+      <div class="autocomplete-items">
+        <div *ngFor="let c of proposalCountryList" (click)="select(c)">{{ c.name }}</div>
+      </div>
+    </div>
   </div>
   <button type="submit" [disabled]="addAddressForm.invalid" class="btn btn-sm btn-primary">Add address</button>
 </form>

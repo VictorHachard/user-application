@@ -1,11 +1,8 @@
 import {AbstractModel} from "./commons/abstract.model";
 
-export class Session extends AbstractModel {
-  token?: string;
-  authToken?: string;
+export class SessionSimplified extends AbstractModel {
   ip?: string;
   lastConnection?: Date;
-  onMobile?: boolean;
   userAgent?: string;
   platform?: string;
 }

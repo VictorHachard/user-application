@@ -53,6 +53,10 @@ export class SettingBlockedUsersComponent {
     this.userBlocked = user;
   }
 
+  /**
+   * Allow to click everywhere to close the dropdown.
+   * @param event
+   */
   @HostListener('document:click', ['$event'])
   documentClick(event: any): void {
     if (!(event.target as Element).className.includes('no-click-ish')) {

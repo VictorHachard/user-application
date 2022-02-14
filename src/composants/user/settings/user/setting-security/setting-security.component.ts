@@ -16,6 +16,7 @@ export class SettingSecurityComponent {
 
   passwordForm!: FormGroup;
   twoFactorEmailForm!: FormGroup;
+  recoveryCodes!: FormGroup;
   alertManagerManager: AlertManager = new AlertManager();
 
   user!: UserSecurity;
@@ -34,13 +35,18 @@ export class SettingSecurityComponent {
       { validators: Utils.matchPassword('newPassword', 'newPasswordConfirm')
     });
     this.twoFactorEmailForm = new FormGroup({
-        email: new FormControl(this.user.twoFactorEmail, Validators.required)
+        twoFactorEmail: new FormControl(this.user.twoFactorEmail, Validators.required)
+    });
+    this.recoveryCodes = new FormGroup({
+
     });
   }
 
   get f() { return this.passwordForm.controls; }
 
   get fTwoFactorEmailForm() { return this.twoFactorEmailForm.controls; }
+
+  get fRecoveryCodes() { return this.recoveryCodes.controls; }
 
   password(): void {
     this.userService.actionSetPassword({oldPassword: this.f.oldPassword.value, newPassword: this.f.newPassword.value}).subscribe(value => {
@@ -53,7 +59,7 @@ export class SettingSecurityComponent {
   }
 
   emailTwoFactor(): void {
-    this.userService.updateTwoFactorEmail({active: !this.fTwoFactorEmailForm.email.value}).subscribe(value => {
+    this.userService.updateTwoFactorEmail({active: !this.fTwoFactorEmailForm.twoFactorEmail.value}).subscribe(value => {
       this.alertManagerManager.addAlertIcon('emailTwoFactor');
       this.alertManagerManager.addAlert('Your activated the two-factor authentication by email ', 'alert-success');
       this.isSummited.emit(true);

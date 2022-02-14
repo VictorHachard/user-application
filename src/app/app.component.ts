@@ -76,6 +76,10 @@ export class AppComponent implements OnInit {
     document.documentElement.style.setProperty('--secondary-btn-color', '#eaeaea');
   }
 
+  /**
+   * Log out of the user's account. This will clear the current user's data and redirect the user to the login page.
+   * The clearing of the current user's data is done before the redirect. So it can generate errors.
+   */
   logout() {
     this.authenticationService.logout().subscribe(value => {
       this.authenticationService.forceLogout();

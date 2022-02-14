@@ -16,7 +16,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         // auto logout if 401 response returned from api
         console.log('The API response with a 401 (UNAUTHORIZED) code. Logging out the user.');
         this.authenticationService.forceLogout();
-        location.reload();
         this.router.navigate(['/login']);
       } else if (err.status === 403) {
         console.log('The API response with a 403 (FORBIDDEN) code. Reloading the user.');
@@ -26,7 +25,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         // auto logout if Unknown Error is returned from the api - It when the API is not responding
         console.log('The API response with a Unknown Error. Logging out the user.');
         this.authenticationService.forceLogout();
-        location.reload();
         this.router.navigate(['/login']);
       }
 
