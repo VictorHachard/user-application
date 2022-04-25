@@ -37,13 +37,13 @@ Then open the default file to configure server which is located in /etc/nginx/si
 
 ```bash
 server {
-listen 80 default_server;
-listen [::]:80 default_server;
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
+    root /var/www/html/<application>;
+    index index.html;
 
-    server_name _;
+    server_name <server_name>;
 
     location / {
         try_files $uri $uri/ /index.html =404;
@@ -55,23 +55,21 @@ To make the changes active, restart the web server nginx:
 
 ```bash
 sudo systemctl restart nginx
-sudo systemctl restart nginx
 ```
 
 Now check the status of Nginx service by running following command, you should get “active” green color text along with other text.
 
 ```bash
 sudo systemctl status nginx
-sudo systemctl status nginx
 ```
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-When you run the `ng build --prod` command, it creates a `/dist` folder and it places all compiled files inside it. You have to move those files to web server root folder, ex: `/var/www/html`.
+When you run the `ng build --prod` command, it creates a `/dist` folder and it places all compiled files inside it. You have to move those files to the web server root folder, ex: `/var/www/html/<application>/`.
 
 ```bash
-sudo rm -R /var/www/html/*
-sudo mv dist/<application>/* /var/www/html/
+sudo rm -R /var/www/html/<application>/*
+sudo mv dist/<angular-application-name>/* /var/www/html/<application>/
 ```
 
 ### Build and Deploy using Github Actions - CI/CD
@@ -84,7 +82,7 @@ Make sure on that the target directory was the right permission (`sudo chmod 777
 
 -   HOST
 -   PASSWORD
--   PATH
+-   PATH: `/var/www/html/<application>/`
 -   PORT
 -   USERNAME
 
