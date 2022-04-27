@@ -71,7 +71,7 @@ jobs:
             rm -rf ${{ secrets.PATH }}*
       - name: Copy file via ssh key
         uses: appleboy/scp-action@master
-        with: # sudo chmod 777 target directory
+        with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}

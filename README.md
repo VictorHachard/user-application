@@ -37,10 +37,31 @@ Then open the default file to configure server which is located in /etc/nginx/si
 
 ```bash
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+    listen 80 http2;
+    listen [::]:80 http2;
 
-    root /var/www/html/<application>;
+    gzip on;
+    gzip_types text/plain application/xml;
+    gzip_proxied no-cache no-store private expired auth;
+    gzip_min_length 1000;
+
+    location ~* \.(css|js|woff|ttf|otf|svg|woff2|eot)$ {
+       expires 7d;
+       access_log off;
+       add_header Pragma public;
+       add_header Cache-Control "public, max-age=604800";
+       add_header X-Asset "yes";
+   }
+
+   location ~* \.(ico|gif|jpeg|jpg|png)$ {
+       expires 30d;
+       access_log off;
+       add_header Pragma public;
+       add_header Cache-Control "public, max-age=18144000";
+       add_header X-Asset "yes";
+   }
+
+    root /var/www/html/<repository-name>/deploy_dist/<application-name>;
     index index.html;
 
     server_name <server_name>;
@@ -65,11 +86,10 @@ sudo systemctl status nginx
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-When you run the `ng build --prod` command, it creates a `/dist` folder and it places all compiled files inside it. You have to move those files to the web server root folder, ex: `/var/www/html/<application>/`.
+When you run the `ng build --prod` command, it creates a `/dist` folder and it places all compiled files inside it.
 
 ```bash
-sudo rm -R /var/www/html/<application>/*
-sudo mv dist/<angular-application-name>/* /var/www/html/<application>/
+sudo rm -rf /var/www/html/<repository-name>/deploy_dist/<application-name>/*
 ```
 
 ### Build and Deploy using Github Actions - CI/CD
@@ -82,7 +102,7 @@ Make sure on that the target directory was the right permission (`sudo chmod 777
 
 -   HOST
 -   PASSWORD
--   PATH: `/var/www/html/<application>/`
+-   PATH: `/var/www/html/<repository-name>/`
 -   PORT
 -   USERNAME
 
