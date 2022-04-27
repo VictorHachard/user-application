@@ -78,12 +78,3 @@ jobs:
           port: ${{ secrets.PORT }}
           source: deploy_dist/user-application/*
           target: ${{ secrets.PATH }}
-      - name: Move files
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            mv ${{ secrets.PATH }}/deploy_dist/user-application/* ${{ secrets.PATH }}
