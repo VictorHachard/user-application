@@ -88,7 +88,7 @@ export class SettingAddressComponent implements OnInit {
   inputChange($event: any): void {
     this.proposalCountryList = [];
     if (this.f.country.value.length > 0) {
-      this.countryService.getAllActiveDto(this.f.country.value).subscribe(value => {
+      this.countryService.getAllActiveDto(this.f.country.value, 'name', 'name').subscribe(value => {
         this.proposalCountryList = value
       });
     } else {

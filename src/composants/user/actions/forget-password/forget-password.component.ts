@@ -27,7 +27,7 @@ export class ForgetPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.alertManagerManager = new AlertManager();
     this.forgetForm = new FormGroup({
-      username: new FormControl(!environment.production ? 'Paulin' : '', Validators.required),
+      usernameOrEmail: new FormControl(!environment.production ? 'Paulin' : '', Validators.required),
       password: new FormControl('')
     });
   }
@@ -35,14 +35,14 @@ export class ForgetPasswordComponent implements OnInit {
   get f() { return this.forgetForm.controls; }
 
   forget(): void {
-    this.userService.actionForgetPassword(this.f.username.value).subscribe(value => {
+    this.userService.actionForgetPassword(this.f.usernameOrEmail.value).subscribe(value => {
       this.alertManagerManager.addAlert('You will receive an email with instructions on how to reset your password in a few minutes', 'alert-success');
       setTimeout(() => {
         this.router.navigate(['/login']);
       }, 2000);
     }, error => {
       this.alertManagerManager.addAlert(error.error.message, 'alert-danger'); //TODO better error handling
-      this.alertManagerManager.addAlert('The username is incorrect', 'alert-danger');
+      this.alertManagerManager.addAlert('The username or email is incorrect', 'alert-danger');
     });
   }
 }
