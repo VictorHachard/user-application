@@ -39,7 +39,7 @@ jobs:
           npm ci --legacy-peer-deps
       - name: Build
         run: |
-          npm run build -- --prod
+          npm run build -- --output-hashing none
       - name: Archive build
         uses: actions/upload-artifact@v1
         with:
