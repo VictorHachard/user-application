@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {UserSecurity} from "../../../../../_models/user.security";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {UserSecurityDataSource} from "../../../../../_models/_datasource/UserSecurityDataSource";
 import {UserService} from "../../../../../_services/_api/user.service";
 import {ActivatedRoute} from "@angular/router";
@@ -25,15 +25,15 @@ export class SettingUsersComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   length!: number;
   @ViewChild(MatSort) sort!: MatSort;
-  searchForm!: FormGroup;
+  searchForm!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
 
   searchColumns: string[] = ['username', 'email'];
   displayedColumns: string[] = ['id', 'username', 'email', 'action'];
   dataSource!: UserSecurityDataSource;
 
-  roleForm!: FormGroup;
-  groupForm!: FormGroup;
+  roleForm!: UntypedFormGroup;
+  groupForm!: UntypedFormGroup;
   groupList!: Group[];
 
   constructor(private userService: UserService,
@@ -44,24 +44,24 @@ export class SettingUsersComponent implements AfterViewInit {
   ngOnInit(): void {
     this.dataSource = new UserSecurityDataSource(this.userService);
     this.dataSource.loadLessons(0);
-    this.searchForm = new FormGroup({
-      select: new FormControl(this.searchColumns[0], Validators.required),
-      value: new FormControl('', Validators.required),
+    this.searchForm = new UntypedFormGroup({
+      select: new UntypedFormControl(this.searchColumns[0], Validators.required),
+      value: new UntypedFormControl('', Validators.required),
     });
     this.userService.count().subscribe(value => {
       this.length = value;
     });
 
     if (this.user) {
-      this.roleForm = new FormGroup({
-        ROLE_OWNER: new FormControl(this.user.roleDtoList?.filter(r => r.name === 'ROLE_OWNER').length === 1),
-        ROLE_ADMINISTRATOR: new FormControl(this.user.roleDtoList?.filter(r => r.name === 'ROLE_ADMINISTRATOR').length === 1)
+      this.roleForm = new UntypedFormGroup({
+        ROLE_OWNER: new UntypedFormControl(this.user.roleDtoList?.filter(r => r.name === 'ROLE_OWNER').length === 1),
+        ROLE_ADMINISTRATOR: new UntypedFormControl(this.user.roleDtoList?.filter(r => r.name === 'ROLE_ADMINISTRATOR').length === 1)
       });
       this.groupService.getAllActiveDto().subscribe(value => {
         this.groupList = value;
-        this.groupForm = new FormGroup({});
+        this.groupForm = new UntypedFormGroup({});
         for (let e of this.groupList!) {
-          this.groupForm.addControl('group' + e.id!.toString(), new FormControl(false));
+          this.groupForm.addControl('group' + e.id!.toString(), new UntypedFormControl(false));
         }
       });
     }

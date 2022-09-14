@@ -2,7 +2,7 @@ import {Component, OnDestroy} from '@angular/core';
 import {AlertManager} from "../../../../../../_helpers/alert.manager";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Editor} from "ngx-editor";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {Toolbar} from "ngx-editor/lib/types";
 import {HtmlTextHistoryService} from "../../../../../../_services/_api/html.text.history.service";
 import {HtmlTextHistory} from "../../../../../../_models/html.text.history";
@@ -28,7 +28,7 @@ export class SettingTermsOfServiceComponent implements OnDestroy {
 
   private htmlTextHistory!: HtmlTextHistory;
   alertManagerManager: AlertManager = new AlertManager();
-  updateTermsForm!: FormGroup;
+  updateTermsForm!: UntypedFormGroup;
   editor!: Editor;
   toolbar: Toolbar = [
     ["bold", "italic"],
@@ -51,8 +51,8 @@ export class SettingTermsOfServiceComponent implements OnDestroy {
     this.htmlTextHistoryService.getAllDto('name', 'terms').subscribe(value => {
       this.htmlTextHistory = value[0];
       this.editor = new Editor();
-      this.updateTermsForm = new FormGroup({
-        html: new FormControl(value[0].htmlHistory![0].htmlContent, Validators.required)
+      this.updateTermsForm = new UntypedFormGroup({
+        html: new UntypedFormControl(value[0].htmlHistory![0].htmlContent, Validators.required)
       });
     });
   }

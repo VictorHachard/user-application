@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../../_models/user.security";
 import {UserService} from "../../../../../_services/_api/user.service";
@@ -14,9 +14,9 @@ import {AuthenticationService} from "../../../../../_services/authentication.ser
 })
 export class SettingSecurityComponent {
 
-  passwordForm!: FormGroup;
-  twoFactorEmailForm!: FormGroup;
-  recoveryCodes!: FormGroup;
+  passwordForm!: UntypedFormGroup;
+  twoFactorEmailForm!: UntypedFormGroup;
+  recoveryCodes!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
 
   user!: UserSecurity;
@@ -28,16 +28,16 @@ export class SettingSecurityComponent {
   }
 
   ngOnInit(): void {
-    this.passwordForm = new FormGroup({
-        oldPassword: new FormControl(!environment.production ? 'Test123*' : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')]),
-        newPassword: new FormControl(!environment.production ? 'Test123**' : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')]),
-        newPasswordConfirm: new FormControl(!environment.production ? 'Test123**' : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')])},
+    this.passwordForm = new UntypedFormGroup({
+        oldPassword: new UntypedFormControl(!environment.production ? 'Test123*' : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')]),
+        newPassword: new UntypedFormControl(!environment.production ? 'Test123**' : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')]),
+        newPasswordConfirm: new UntypedFormControl(!environment.production ? 'Test123**' : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')])},
       { validators: Utils.matchPassword('newPassword', 'newPasswordConfirm')
     });
-    this.twoFactorEmailForm = new FormGroup({
-        twoFactorEmail: new FormControl(this.user.twoFactorEmail, Validators.required)
+    this.twoFactorEmailForm = new UntypedFormGroup({
+        twoFactorEmail: new UntypedFormControl(this.user.twoFactorEmail, Validators.required)
     });
-    this.recoveryCodes = new FormGroup({
+    this.recoveryCodes = new UntypedFormGroup({
 
     });
   }

@@ -1,7 +1,7 @@
 // noinspection JSIgnoredPromiseFromCall
 
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../_helpers/alert.manager";
 import {UserService} from "../../../_services/_api/user.service";
 import {AuthenticationService} from "../../../_services/authentication.service";
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     password: 'Test123*',
   };
 
-  registerForm!: FormGroup;
+  registerForm!: UntypedFormGroup;
   alertManagerManager!: AlertManager;
 
   constructor(private userService: UserService,
@@ -37,11 +37,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.alertManagerManager = new AlertManager();
-    this.registerForm = new FormGroup({
-        username: new FormControl(!environment.production ? this.default.username : '', Validators.required),
-        email: new FormControl(!environment.production ? this.default.email : '', [Validators.required, Validators.email]),
-        password: new FormControl(!environment.production ? this.default.password : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')]),
-        password_confirm: new FormControl(!environment.production ? this.default.password : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')])},
+    this.registerForm = new UntypedFormGroup({
+        username: new UntypedFormControl(!environment.production ? this.default.username : '', Validators.required),
+        email: new UntypedFormControl(!environment.production ? this.default.email : '', [Validators.required, Validators.email]),
+        password: new UntypedFormControl(!environment.production ? this.default.password : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')]),
+        password_confirm: new UntypedFormControl(!environment.production ? this.default.password : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')])},
       { validators: Utils.matchPassword('password', 'password_confirm')
     });
   }

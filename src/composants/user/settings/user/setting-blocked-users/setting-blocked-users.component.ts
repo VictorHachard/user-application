@@ -2,7 +2,7 @@ import {Component, EventEmitter, HostListener, Output} from '@angular/core';
 import {UserSecurity} from "../../../../../_models/user.security";
 import {AuthenticationService} from "../../../../../_services/authentication.service";
 import {UserService} from "../../../../../_services/_api/user.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
 
 @Component({
@@ -18,15 +18,15 @@ export class SettingBlockedUsersComponent {
   @Output() isSummited = new EventEmitter<boolean>();
 
   proposal!: UserSecurity[];
-  searchFormHeader!: FormGroup;
+  searchFormHeader!: UntypedFormGroup;
 
   constructor(private authenticationService: AuthenticationService, private userService: UserService) {
     this.authenticationService.currentUser.subscribe(x => {this.user = x; this.ngOnInit();});
   }
 
   ngOnInit(): void {
-    this.searchFormHeader = new FormGroup({
-      preference: new FormControl('', [Validators.required])
+    this.searchFormHeader = new UntypedFormGroup({
+      preference: new UntypedFormControl('', [Validators.required])
     });
   }
 

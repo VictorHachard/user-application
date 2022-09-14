@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../../_models/user.security";
 import {UserService} from "../../../../../_services/_api/user.service";
@@ -15,8 +15,8 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class SettingProfileComponent {
 
-  profileForm!: FormGroup;
-  privacyForm!: FormGroup;
+  profileForm!: UntypedFormGroup;
+  privacyForm!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
   _reload = true;
   trustedUrl: any;
@@ -42,16 +42,16 @@ export class SettingProfileComponent {
 
   ngOnInit(): void {
     this.param = this.route.snapshot.paramMap.get('param');
-    this.profileForm = new FormGroup({
-      firstName: new FormControl(this.user.firstName),
-      middleName: new FormControl(this.user.middleName),
-      lastName: new FormControl(this.user.lastName),
-      biography: new FormControl(this.user.biography),
-      url: new FormControl(this.user.url),
-      fileSource: new FormControl('')
+    this.profileForm = new UntypedFormGroup({
+      firstName: new UntypedFormControl(this.user.firstName),
+      middleName: new UntypedFormControl(this.user.middleName),
+      lastName: new UntypedFormControl(this.user.lastName),
+      biography: new UntypedFormControl(this.user.biography),
+      url: new UntypedFormControl(this.user.url),
+      fileSource: new UntypedFormControl('')
     });
-    this.privacyForm = new FormGroup({
-      privacy: new FormControl(this.user.privacy, [Validators.required])
+    this.privacyForm = new UntypedFormGroup({
+      privacy: new UntypedFormControl(this.user.privacy, [Validators.required])
     });
   }
 

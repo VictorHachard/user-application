@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../../_models/user.security";
 import {AuthenticationService} from "../../../../../_services/authentication.service";
@@ -12,7 +12,7 @@ import {UserService} from "../../../../../_services/_api/user.service";
 })
 export class SettingInteractionLimitsComponent implements OnInit {
 
-  emailPreference!: FormGroup;
+  emailPreference!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
 
   user!: UserSecurity;
@@ -23,8 +23,8 @@ export class SettingInteractionLimitsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.emailPreference = new FormGroup({
-      preference: new FormControl(this.user.emailPreferences, [Validators.required])
+    this.emailPreference = new UntypedFormGroup({
+      preference: new UntypedFormControl(this.user.emailPreferences, [Validators.required])
     });
   }
 

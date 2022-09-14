@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ThemeService} from "../../../../../_services/_api/theme.service";
 import {Theme} from "../../../../../_models/theme";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
@@ -12,8 +12,8 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class SettingThemesComponent {
 
-  addThemeForm!: FormGroup;
-  activeThemeForm!: FormGroup;
+  addThemeForm!: UntypedFormGroup;
+  activeThemeForm!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
   themeList!: Theme[];
 
@@ -28,19 +28,19 @@ export class SettingThemesComponent {
         let imageStyle: string = <string>theme.image!;
         theme.image = this.sanitizer.bypassSecurityTrustHtml(imageStyle.replace('style=""', 'style="width: 100%"'));
       }
-      this.addThemeForm = new FormGroup({
-        name: new FormControl('', Validators.required),
-        fileSource: new FormControl('#fffff', Validators.required),
-        primaryColor: new FormControl('#fffff', Validators.required),
-        secondaryColor: new FormControl('#fffff', Validators.required),
-        tertiaryColor: new FormControl('#fffff', Validators.required),
-        quaternaryColor: new FormControl('#fffff', Validators.required),
-        primaryTextColor: new FormControl('#fffff', Validators.required),
-        secondaryTextColor: new FormControl('#fffff', Validators.required)
+      this.addThemeForm = new UntypedFormGroup({
+        name: new UntypedFormControl('', Validators.required),
+        fileSource: new UntypedFormControl('#fffff', Validators.required),
+        primaryColor: new UntypedFormControl('#fffff', Validators.required),
+        secondaryColor: new UntypedFormControl('#fffff', Validators.required),
+        tertiaryColor: new UntypedFormControl('#fffff', Validators.required),
+        quaternaryColor: new UntypedFormControl('#fffff', Validators.required),
+        primaryTextColor: new UntypedFormControl('#fffff', Validators.required),
+        secondaryTextColor: new UntypedFormControl('#fffff', Validators.required)
       });
-      this.activeThemeForm = new FormGroup({});
+      this.activeThemeForm = new UntypedFormGroup({});
       for (let e of this.themeList!) {
-        this.activeThemeForm.addControl('theme' + e.id!.toString(), new FormControl(e.active))
+        this.activeThemeForm.addControl('theme' + e.id!.toString(), new UntypedFormControl(e.active))
       }
     });
   }

@@ -1,10 +1,10 @@
-import {FormGroup} from "@angular/forms";
+import {UntypedFormGroup} from "@angular/forms";
 
 export class Utils {
 
   public static matchPassword(firstControl: string, secondControl: string): any {
     // @ts-ignore //TODO edit this fuck ?????
-    return (control: FormGroup): { [key: string]: boolean } | null => {
+    return (control: UntypedFormGroup): { [key: string]: boolean } | null => {
       if (control.get(firstControl)?.value !== control.get(secondControl)?.value) {
         const err = {noMatch: true};
         control.get(firstControl)?.setErrors(err);

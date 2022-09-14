@@ -1,7 +1,7 @@
 // noinspection JSIgnoredPromiseFromCall
 
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../_helpers/alert.manager";
 import {AuthenticationService} from "../../../../_services/authentication.service";
 import {UserService} from "../../../../_services/_api/user.service";
@@ -15,7 +15,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TwoFactorEmailComponent implements OnInit {
 
-  twoFactorEmailForm!: FormGroup;
+  twoFactorEmailForm!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
   @Input() queryParams!: any;
 
@@ -27,8 +27,8 @@ export class TwoFactorEmailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.twoFactorEmailForm = new FormGroup({
-      code: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{6}$')])
+    this.twoFactorEmailForm = new UntypedFormGroup({
+      code: new UntypedFormControl('', [Validators.required, Validators.pattern('^[0-9]{6}$')])
     });
   }
 

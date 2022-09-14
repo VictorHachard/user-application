@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
 import {GroupService} from "../../../../../_services/_api/group.service";
 import {Group} from "../../../../../_models/group";
@@ -11,8 +11,8 @@ import {Group} from "../../../../../_models/group";
 })
 export class SettingGroupsComponent implements OnInit {
 
-  addGroupForm!: FormGroup;
-  activeGroupForm!: FormGroup;
+  addGroupForm!: UntypedFormGroup;
+  activeGroupForm!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
   groupList!: Group[];
 
@@ -22,13 +22,13 @@ export class SettingGroupsComponent implements OnInit {
     this.groupService.getAllDto().subscribe(value => {
       this.groupList = value;
       console.log(value);
-      this.addGroupForm = new FormGroup({
-        name: new FormControl('', Validators.required),
-        color: new FormControl('#0d6efd', Validators.required)
+      this.addGroupForm = new UntypedFormGroup({
+        name: new UntypedFormControl('', Validators.required),
+        color: new UntypedFormControl('#0d6efd', Validators.required)
       });
-      this.activeGroupForm = new FormGroup({});
+      this.activeGroupForm = new UntypedFormGroup({});
       for (let e of this.groupList!) {
-        this.activeGroupForm.addControl('group' + e.id!.toString(), new FormControl(e.active))
+        this.activeGroupForm.addControl('group' + e.id!.toString(), new UntypedFormControl(e.active))
       }
     });
   }

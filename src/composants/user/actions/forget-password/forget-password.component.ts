@@ -1,7 +1,7 @@
 // noinspection JSIgnoredPromiseFromCall
 
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../_helpers/alert.manager";
 import {UserService} from "../../../../_services/_api/user.service";
 import {AuthenticationService} from "../../../../_services/authentication.service";
@@ -15,7 +15,7 @@ import {environment} from "../../../../environments/environment";
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  forgetForm!: FormGroup;
+  forgetForm!: UntypedFormGroup;
   alertManagerManager!: AlertManager;
 
   constructor(private userService: UserService,
@@ -26,9 +26,9 @@ export class ForgetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.alertManagerManager = new AlertManager();
-    this.forgetForm = new FormGroup({
-      usernameOrEmail: new FormControl(!environment.production ? 'Paulin' : '', Validators.required),
-      password: new FormControl('')
+    this.forgetForm = new UntypedFormGroup({
+      usernameOrEmail: new UntypedFormControl(!environment.production ? 'Paulin' : '', Validators.required),
+      password: new UntypedFormControl('')
     });
   }
 

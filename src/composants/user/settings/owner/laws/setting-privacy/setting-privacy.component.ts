@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AlertManager} from "../../../../../../_helpers/alert.manager";
 import {HtmlTextHistory} from "../../../../../../_models/html.text.history";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {Editor} from "ngx-editor";
 import {Toolbar} from "ngx-editor/lib/types";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -28,7 +28,7 @@ export class SettingPrivacyComponent {
 
   private htmlTextHistory!: HtmlTextHistory;
   alertManagerManager: AlertManager = new AlertManager();
-  updatePrivacyForm!: FormGroup;
+  updatePrivacyForm!: UntypedFormGroup;
   editor!: Editor;
   toolbar: Toolbar = [
     ["bold", "italic"],
@@ -51,8 +51,8 @@ export class SettingPrivacyComponent {
     this.htmlTextHistoryService.getAllDto('name', 'privacy').subscribe(value => {
       this.htmlTextHistory = value[0];
       this.editor = new Editor();
-      this.updatePrivacyForm = new FormGroup({
-        html: new FormControl(value[0].htmlHistory![0].htmlContent, Validators.required)
+      this.updatePrivacyForm = new UntypedFormGroup({
+        html: new UntypedFormControl(value[0].htmlHistory![0].htmlContent, Validators.required)
       });
       console.log(value)
     });

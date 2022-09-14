@@ -1,7 +1,7 @@
 // noinspection JSIgnoredPromiseFromCall
 
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {Component, OnInit} from '@angular/core';
 import {AlertManager} from "../../../_helpers/alert.manager";
 import {UserService} from "../../../_services/_api/user.service";
@@ -16,7 +16,7 @@ import {environment} from "../../../environments/environment";
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup;
+  loginForm!: UntypedFormGroup;
   alertManagerManager!: AlertManager;
 
   constructor(private userService: UserService,
@@ -30,10 +30,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.alertManagerManager = new AlertManager();
-    this.loginForm = new FormGroup({
-      username: new FormControl(!environment.production ? 'Paulin' : '', Validators.required),
-      password: new FormControl(!environment.production ? 'Test123*' : '', Validators.required),
-      rememberMe: new FormControl(false)
+    this.loginForm = new UntypedFormGroup({
+      username: new UntypedFormControl(!environment.production ? 'Paulin' : '', Validators.required),
+      password: new UntypedFormControl(!environment.production ? 'Test123*' : '', Validators.required),
+      rememberMe: new UntypedFormControl(false)
     });
   }
 

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
 import {AddressService} from "../../../../../_services/_api/address.service";
 import {Address} from "../../../../../_models/address";
@@ -16,8 +16,8 @@ import {Country} from "../../../../../_models/country";
 })
 export class SettingAddressComponent implements OnInit {
 
-  addAddressForm!: FormGroup;
-  addressForm!: FormGroup;
+  addAddressForm!: UntypedFormGroup;
+  addressForm!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
   addressList!: Address[];
   countryList!: Country[];
@@ -36,16 +36,16 @@ export class SettingAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.value = this.user.themeSimplifiedDto?.id;
-    this.addressForm = new FormGroup({
-      id: new FormControl(this.user.themeSimplifiedDto?.id, Validators.required)
+    this.addressForm = new UntypedFormGroup({
+      id: new UntypedFormControl(this.user.themeSimplifiedDto?.id, Validators.required)
     });
-    this.addAddressForm = new FormGroup({
-      alias: new FormControl('', [Validators.required]),
-      name: new FormControl('', [Validators.required]),
-      building: new FormControl(''),
-      street: new FormControl('', [Validators.required]),
-      postcode: new FormControl('', [Validators.required]),
-      country: new FormControl('', [Validators.required])
+    this.addAddressForm = new UntypedFormGroup({
+      alias: new UntypedFormControl('', [Validators.required]),
+      name: new UntypedFormControl('', [Validators.required]),
+      building: new UntypedFormControl(''),
+      street: new UntypedFormControl('', [Validators.required]),
+      postcode: new UntypedFormControl('', [Validators.required]),
+      country: new UntypedFormControl('', [Validators.required])
     });
     this.reload(); //TODO find better way
   }

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../../_models/user.security";
 import {UserService} from "../../../../../_services/_api/user.service";
@@ -12,8 +12,8 @@ import {AuthenticationService} from "../../../../../_services/authentication.ser
 })
 export class SettingAccountComponent {
 
-  usernameForm!: FormGroup;
-  deleteForm!: FormGroup;
+  usernameForm!: UntypedFormGroup;
+  deleteForm!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
 
   user!: UserSecurity;
@@ -24,10 +24,10 @@ export class SettingAccountComponent {
   }
 
   ngOnInit(): void {
-    this.usernameForm = new FormGroup({
-        username: new FormControl(this.user.username, Validators.required)
+    this.usernameForm = new UntypedFormGroup({
+        username: new UntypedFormControl(this.user.username, Validators.required)
     });
-    this.deleteForm = new FormGroup({});
+    this.deleteForm = new UntypedFormGroup({});
   }
 
   get f() { return this.usernameForm.controls; }

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../../_models/user.security";
 import {UserService} from "../../../../../_services/_api/user.service";
@@ -15,7 +15,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class SettingAppearanceComponent {
 
-  themeForm!: FormGroup;
+  themeForm!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
   themeList!: Theme[];
   _reload = true;
@@ -40,8 +40,8 @@ export class SettingAppearanceComponent {
 
   ngOnInit(): void {
     this.value = this.user.themeSimplifiedDto?.id;
-    this.themeForm = new FormGroup({
-      id: new FormControl(this.user.themeSimplifiedDto?.id, Validators.required)
+    this.themeForm = new UntypedFormGroup({
+      id: new UntypedFormControl(this.user.themeSimplifiedDto?.id, Validators.required)
     });
   }
 

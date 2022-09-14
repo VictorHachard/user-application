@@ -2,7 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {UserSecurity} from "../../../../../../_models/user.security";
 import {AuthenticationService} from "../../../../../../_services/authentication.service";
 import {UserService} from "../../../../../../_services/_api/user.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-setting-cookies-authentication',
@@ -11,7 +11,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class SettingCookiesAuthenticationComponent {
 
-  cookieAuthenticationForm!: FormGroup;
+  cookieAuthenticationForm!: UntypedFormGroup;
   user!: UserSecurity;
   @Output() isSummited = new EventEmitter<boolean>();
 
@@ -20,8 +20,8 @@ export class SettingCookiesAuthenticationComponent {
   }
 
   ngOnInit(): void {
-    this.cookieAuthenticationForm = new FormGroup({
-      username: new FormControl(this.user.username, Validators.required)
+    this.cookieAuthenticationForm = new UntypedFormGroup({
+      username: new UntypedFormControl(this.user.username, Validators.required)
     });
   }
 

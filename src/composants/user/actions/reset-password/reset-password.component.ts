@@ -2,7 +2,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import {AlertManager} from "../../../../_helpers/alert.manager";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../../../_services/_api/user.service";
 import {Utils} from "../../../../_helpers/utils";
@@ -16,7 +16,7 @@ import {environment} from "../../../../environments/environment";
 export class ResetPasswordComponent implements OnInit {
 
   alertManagerManager!: AlertManager;
-  resetForm!: FormGroup;
+  resetForm!: UntypedFormGroup;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
@@ -24,9 +24,9 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.alertManagerManager = new AlertManager();
-    this.resetForm = new FormGroup({
-        password: new FormControl(!environment.production ? 'Test123*' : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')]),
-        password_confirm: new FormControl(!environment.production ? 'Test123*' : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')])},
+    this.resetForm = new UntypedFormGroup({
+        password: new UntypedFormControl(!environment.production ? 'Test123*' : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')]),
+        password_confirm: new UntypedFormControl(!environment.production ? 'Test123*' : '', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\\S+$).{6,}')])},
       { validators: Utils.matchPassword('password', 'password_confirm') });
   }
 

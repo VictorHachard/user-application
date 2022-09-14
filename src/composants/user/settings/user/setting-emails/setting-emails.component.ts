@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AlertManager} from "../../../../../_helpers/alert.manager";
 import {UserSecurity} from "../../../../../_models/user.security";
 import {UserService} from "../../../../../_services/_api/user.service";
@@ -14,10 +14,10 @@ import {EmailService} from "../../../../../_services/_api/email.service";
 })
 export class SettingEmailsComponent {
 
-  addEmailForm!: FormGroup;
-  primaryEmailForm!: FormGroup;
-  backupEmailForm!: FormGroup;
-  emailPreference!: FormGroup;
+  addEmailForm!: UntypedFormGroup;
+  primaryEmailForm!: UntypedFormGroup;
+  backupEmailForm!: UntypedFormGroup;
+  emailPreference!: UntypedFormGroup;
   alertManagerManager: AlertManager = new AlertManager();
   _reload = true;
 
@@ -31,18 +31,18 @@ export class SettingEmailsComponent {
   }
 
   ngOnInit(): void {
-    this.addEmailForm = new FormGroup({
-      email: new FormControl(!environment.production ? 'test1@test.test' : '', [Validators.required, Validators.email])
+    this.addEmailForm = new UntypedFormGroup({
+      email: new UntypedFormControl(!environment.production ? 'test1@test.test' : '', [Validators.required, Validators.email])
     });
-    this.primaryEmailForm = new FormGroup({
-      email: new FormControl(this.user.emailList!.filter(e => e.priority === 'PRIMARY')[0].email, [Validators.required])
+    this.primaryEmailForm = new UntypedFormGroup({
+      email: new UntypedFormControl(this.user.emailList!.filter(e => e.priority === 'PRIMARY')[0].email, [Validators.required])
     });
-    this.emailPreference = new FormGroup({
-      preference: new FormControl(this.user.emailPreferences, [Validators.required])
+    this.emailPreference = new UntypedFormGroup({
+      preference: new UntypedFormControl(this.user.emailPreferences, [Validators.required])
     });
-    this.backupEmailForm = new FormGroup({});
+    this.backupEmailForm = new UntypedFormGroup({});
     for (let e of this.user!.emailList!) {
-      this.backupEmailForm.addControl('email' + e.id!.toString(), new FormControl(e.backup))
+      this.backupEmailForm.addControl('email' + e.id!.toString(), new UntypedFormControl(e.backup))
     }
     this.reload(); //TODO find better way
   }
